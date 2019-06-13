@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Educasa</string>
+    <string name="title_activity_bottom_navigation">BottomNavigation</string>
+    <string name="title_inicio">Inicio</string>
+    <string name="title_misclases">Mis Clases</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_solicitudes">Solicitudes</string>
+    <string name="title_perfil">Perfil</string>
+</resources>
