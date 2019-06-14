@@ -10,24 +10,22 @@ import android.view.MenuItem;
 import com.example.educasa.R;
 
 public class MainActivity extends MenuBottom {
-    private Context micontexto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        micontexto = this;
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
-        //BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
-        menuItem.setChecked(true);
-        ListenerMiMenu(micontexto);
+        ListenerMiMenu(this, 0);
+
+        // INICIO ACTIVIDAD MAINACTIVITY
+
+        // FIN ACTIVIDAD MAINACTIVITY
+
     }
 
+    // LISTENER MENU BOTTOM NAVIGATION
     @Override
-    public void ListenerMiMenu(Context cont) {
-        super.ListenerMiMenu(cont);
+    public void ListenerMiMenu(Context cont, int numberactivity) {
+        super.ListenerMiMenu(cont,numberactivity);
     }
 }
-

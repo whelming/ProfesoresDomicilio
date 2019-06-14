@@ -6,4 +6,10 @@
     <string name="title_chat">Chat</string>
     <string name="title_solicitudes">Solicitudes</string>
     <string name="title_perfil">Perfil</string>
+
+    <string name="bienvenida_iniciar_sesion">Iniciar Sesión</string>
+    <string name="bienvenida_crear_cuenta">Crear Cuenta</string>
+    <string name="bienvenida_text1">Encuentra todos los profesores de todas las materias.</string>
+    <string name="bienvenida_text2">Gratis y sin salir de tu casa al precio que tu eligas.</string>
+
 </resources>

@@ -33,7 +33,13 @@ public class MenuBottom extends AppCompatActivity {
         //ListenerMiMenu(this);
     }
 
-    public void ListenerMiMenu(final Context contexxto) {
+    public void ListenerMiMenu(final Context contexxto, int numeroactivity) {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
+        //BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(numeroactivity);
+        menuItem.setChecked(true);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

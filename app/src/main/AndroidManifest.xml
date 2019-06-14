@@ -14,13 +14,15 @@
         <activity android:name=".MisClases.MisClases" />
         <activity android:name=".Inicio.Inicio" />
         <activity android:name=".Chat.Chat" />
-        <activity android:name=".Bienvenida.Bienvenida" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Bienvenida.Bienvenida" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 

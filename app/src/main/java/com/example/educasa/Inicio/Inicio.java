@@ -11,23 +11,21 @@ import com.example.educasa.MenuBottom;
 import com.example.educasa.R;
 
 public class Inicio extends MenuBottom {
-    private Context micontexto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-        micontexto = this;
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
-        //BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        Menu menu = bottomNavigationView.getMenu();
-        MenuItem menuItem = menu.getItem(0);
-        menuItem.setChecked(true);
-        ListenerMiMenu(micontexto);
+        ListenerMiMenu(this, 0);
+
+        // INICIO ACTIVIDAD INICIO
+
+        // FIN ACTIVIDAD INICIO
     }
 
+    // LISTENER MENU BOTTOM NAVIGATION
     @Override
-    public void ListenerMiMenu(Context cont) {
-        super.ListenerMiMenu(cont);
+    public void ListenerMiMenu(Context cont, int numberactivity) {
+        super.ListenerMiMenu(cont,numberactivity);
     }
 }
