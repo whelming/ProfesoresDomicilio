@@ -12,4 +12,6 @@
     <string name="bienvenida_text1">Encuentra todos los profesores de todas las materias.</string>
     <string name="bienvenida_text2">Gratis y sin salir de tu casa al precio que tu eligas.</string>
 
+    <string name="hello_blank_fragment">Hello blank fragment 1</string>
+
 </resources>
