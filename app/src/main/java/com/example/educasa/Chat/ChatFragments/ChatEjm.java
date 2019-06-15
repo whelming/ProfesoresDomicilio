@@ -1,4 +1,5 @@
-package com.example.educasa.Bienvenida.BienvenidaFragments;
+package com.example.educasa.Chat.ChatFragments;
+
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,20 +9,22 @@ import android.view.ViewGroup;
 
 import com.example.educasa.R;
 
-//import educasa.example.com.educasa.R;
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ChatEjm extends Fragment {
 
-public class BienvenidaFragment1 extends Fragment {
 
-
-    public BienvenidaFragment1() {
+    public ChatEjm() {
+        // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_bienvenida_fragment1, container, false);
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_chat_ejm, container, false);
     }
 
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilos de Solicitudes -->
+    <style name="AppTheme.Solicitudes_Nombre1" parent="Base.Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/colorWhite</item>
+    </style>
+    <style name="AppTheme.Solicitudes_Nombre2" parent="Base.Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/colorWhite</item>
+    </style>
+</resources>

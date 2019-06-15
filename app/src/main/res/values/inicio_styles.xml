@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilos de Inicio -->
+    <style name="AppTheme.Inicio_Nombre1" parent="Base.Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/colorWhite</item>
+    </style>
+    <style name="AppTheme.Inicio_Nombre2" parent="Base.Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/colorWhite</item>
+    </style>
+</resources>

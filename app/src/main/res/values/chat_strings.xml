@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Textos de chat -->
+    <string name="chat_ejemplo_texto">Tu texto a usar.</string>
+    <string name="chat_ejemplo_texto2">Tu texto a usar 2.</string>
+    <string name="chat_ejemplo_texto3">Tu texto a usar 3.</string>
+</resources>

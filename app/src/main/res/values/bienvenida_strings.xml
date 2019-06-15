@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bienvenida_iniciar_sesion">Iniciar Sesión</string>
+    <string name="bienvenida_crear_cuenta">Crear Cuenta</string>
+    <string name="bienvenida_text1">Encuentra todos los profesores de todas las materias.</string>
+    <string name="bienvenida_text2">Gratis y sin salir de tu casa al precio que tu eligas.</string>
+
+</resources>

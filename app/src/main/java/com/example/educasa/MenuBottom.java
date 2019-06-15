@@ -30,7 +30,6 @@ public class MenuBottom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menuxml);
-        //ListenerMiMenu(this);
     }
 
     public void ListenerMiMenu(final Context contexxto, int numeroactivity) {
@@ -46,27 +45,27 @@ public class MenuBottom extends AppCompatActivity {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Intent intent;
+
                 switch (item.getItemId()) {
                     case R.id.navigation_inicio:
-                        intent = new Intent(contexxto, Inicio.class);
-                        startActivity(intent);
+                        Intent intent0 = new Intent(contexxto, Inicio.class);
+                        startActivity(intent0);
                         return true;
                     case R.id.navigation_misclases:
-                        intent = new Intent(contexxto, MisClases.class);
-                        startActivity(intent);
+                        Intent intent1 = new Intent(contexxto, MisClases.class);
+                        startActivity(intent1);
                         return true;
                     case R.id.navigation_chat:
-                        intent = new Intent(contexxto, Chat.class);
-                        startActivity(intent);
+                        Intent intent2 = new Intent(contexxto, Chat.class);
+                        startActivity(intent2);
                         return true;
                     case R.id.navigation_solicitudes:
-                        intent = new Intent(contexxto, Solicitudes.class);
-                        startActivity(intent);
+                        Intent intent3 = new Intent(contexxto, Solicitudes.class);
+                        startActivity(intent3);
                         return true;
                     case R.id.navigation_perfil:
-                        intent = new Intent(contexxto, Perfil.class);
-                        startActivity(intent);
+                        Intent intent4 = new Intent(contexxto, Perfil.class);
+                        startActivity(intent4);
                         return true;
                 }
                 return false;
