@@ -30,6 +30,7 @@ public class Perfil extends MenuBottom {
         btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Perfil.this, Bienvenida.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                 startActivity(intent);
             }
         });

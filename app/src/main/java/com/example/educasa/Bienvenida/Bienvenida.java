@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.educasa.Inicio.Inicio;
 import com.example.educasa.MainActivity;
 import com.example.educasa.R;
 
@@ -40,7 +41,8 @@ public class Bienvenida extends AppCompatActivity {
 
         btn_iniciar_sesion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Bienvenida.this, MainActivity.class);
+                Intent intent = new Intent(Bienvenida.this, Inicio.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                 startActivity(intent);
             }
         });
