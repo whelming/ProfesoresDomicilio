@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.educasa.Bienvenida.Bienvenida;
 import com.example.educasa.MainActivity;
@@ -22,7 +23,7 @@ public class Perfil extends MenuBottom {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-        ListenerMiMenu(this,4);
+        //ListenerMiMenu(this,4);
 
         // INICIO ACTIVIDAD PERFIL
         btn_cerrar_sesion = findViewById(R.id.btn_cerrar_sesion);
@@ -34,7 +35,12 @@ public class Perfil extends MenuBottom {
         });
         // FIN ACTIVIDAD PERFIL
     }
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        ListenerMiMenu(this, 4);
+        Toast.makeText(this, "START PERFIL", Toast.LENGTH_SHORT).show();
+    }
     // LISTENER MENU BOTTOM NAVIGATION
     @Override
     public void ListenerMiMenu(Context cont, int numberactivity) {

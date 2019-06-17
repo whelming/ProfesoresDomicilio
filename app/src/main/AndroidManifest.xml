@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Solicitudes.Solicitudes"></activity>
+        <activity android:name=".Solicitudes.Solicitudes" ></activity>
         <activity android:name=".Perfil.Perfil" />
         <activity android:name=".MisClases.MisClases" />
         <activity android:name=".Inicio.Inicio" />
@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
 
         </activity>
     </application>

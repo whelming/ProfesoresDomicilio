@@ -36,8 +36,11 @@ public class MenuBottom extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.nav_view);
         //BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
+
         MenuItem menuItem = menu.getItem(numeroactivity);
         menuItem.setChecked(true);
+
+
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
@@ -49,22 +52,27 @@ public class MenuBottom extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.navigation_inicio:
                         Intent intent0 = new Intent(contexxto, Inicio.class);
+                        intent0.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                         startActivity(intent0);
                         return true;
                     case R.id.navigation_misclases:
                         Intent intent1 = new Intent(contexxto, MisClases.class);
+                        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                         startActivity(intent1);
                         return true;
                     case R.id.navigation_chat:
                         Intent intent2 = new Intent(contexxto, Chat.class);
+                        intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                         startActivity(intent2);
                         return true;
                     case R.id.navigation_solicitudes:
                         Intent intent3 = new Intent(contexxto, Solicitudes.class);
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                         startActivity(intent3);
                         return true;
                     case R.id.navigation_perfil:
                         Intent intent4 = new Intent(contexxto, Perfil.class);
+                        intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
                         startActivity(intent4);
                         return true;
                 }
