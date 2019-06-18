@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.educasa.Inicio.Inicio;
 import com.example.educasa.Inicio.InicioAdapters.AdaptadorMaterias;
 import com.example.educasa.MenuBottom;
+import com.example.educasa.MisClases.MisClasesAdapters.AdaptadorMisClases;
 import com.example.educasa.R;
 
 public class MisClases extends MenuBottom {
@@ -45,7 +46,7 @@ public class MisClases extends MenuBottom {
         recyclerView.setLayoutManager(layoutManager);
 
         String[] myDataset = {"matematica","fisica","comunicacion","historia","computacion"};
-        mAdapter = new AdaptadorMaterias(this, myDataset);
+        mAdapter = new AdaptadorMisClases(this, myDataset);
         recyclerView.setAdapter(mAdapter);
 
         //RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);

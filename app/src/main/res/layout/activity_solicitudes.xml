@@ -5,26 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Solicitudes.Solicitudes">
-    <ScrollView
-        android:id="@+id/scrollviewChat"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/solicitudes_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_toolbar"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="55dp"
+        />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingBottom="60sp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="SOLICITUDES Actividad..." />
-
-        </LinearLayout>
-
-    </ScrollView>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/solicitudes_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryAlpha"
+        android:minHeight="?attr/actionBarSize"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <include layout="@layout/menuxml"/>
 </android.support.constraint.ConstraintLayout>
