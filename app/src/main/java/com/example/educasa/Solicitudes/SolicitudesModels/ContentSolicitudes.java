@@ -1,10 +1,10 @@
-package com.example.educasa.Chat.ChatModels;
+package com.example.educasa.Solicitudes.SolicitudesModels;
 
-public class ContentChat {
+public class ContentSolicitudes {
     private int id;
     private String textodemo;
 
-    public ContentChat(int id, String textodemo) {
+    public ContentSolicitudes(int id, String textodemo) {
         this.id = id;
         this.textodemo = textodemo;
     }

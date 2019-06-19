@@ -8,20 +8,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
+import com.example.educasa.MisClases.MisClasesModels.ContentMisClases;
 import com.example.educasa.R;
 
+import java.util.List;
+
 public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.MyViewHolder> {
-    private String[] mDataset;
     private LayoutInflater mInflater;
     private CardView card;
     private Context context;
+    private final List<ContentMisClases> items;
+    private final OnItemClickListener listener;
 
-    public AdaptadorMisClases(Context context, String[] myDataset) {
-        mDataset = myDataset;
-        mInflater = LayoutInflater.from(context);
+    public AdaptadorMisClases(Context context, List<ContentMisClases> items, OnItemClickListener listener) {
+        this.mInflater = LayoutInflater.from(context);
         this.context = context;
+        this.items = items;
+        this.listener = listener;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -32,13 +35,16 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
             super(v);
             nombre = v.findViewById(R.id.nombre);
             card = v.findViewById(R.id.misclases_cardview_alumnos);
-            card.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(adapter.context, nombre.getText(), Toast.LENGTH_SHORT).show();
+            AdaptadorMisClases = adapter;
+        }
+
+        public void bind(final ContentMisClases item, final OnItemClickListener listener) {
+            nombre.setText(item.getTextodemo());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
                 }
             });
-            AdaptadorMisClases = adapter;
         }
     }
 
@@ -50,11 +56,16 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.nombre.setText(mDataset[position]);
+        holder.bind(items.get(position), listener);
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return items.size();
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(ContentMisClases item);
+    }
+
 }

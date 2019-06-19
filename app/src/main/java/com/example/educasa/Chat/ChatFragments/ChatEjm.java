@@ -52,11 +52,11 @@ public class ChatEjm extends Fragment {
                 if (getActivity() != null){
                     Bundle bundle = new Bundle();
                     bundle.putString("datousuario", item.getTextodemo());
-                    ChatDetalle fragmentdetalle = new ChatDetalle();
-                    fragmentdetalle.setArguments(bundle);
+                    ChatDetalle fragmentDetalleChat = new ChatDetalle();
+                    fragmentDetalleChat.setArguments(bundle);
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.frag_chat_principal, fragmentdetalle, "fragmentDetalle")
+                            .replace(R.id.frag_chat_principal, fragmentDetalleChat, "fragmentDetalleChat")
                             .addToBackStack(null).commit();
                 }
             }

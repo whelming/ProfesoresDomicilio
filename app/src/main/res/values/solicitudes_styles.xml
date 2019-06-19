@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Estilos de Solicitudes -->
+    <style name="AppTheme.Solicitudes_Button_Eliminar_Solicitud" parent="Base.Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/colorRed</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:paddingTop">20sp</item>
+        <item name="android:paddingRight">60sp</item>
+        <item name="android:paddingBottom">20sp</item>
+        <item name="android:paddingLeft">60sp</item>
+    </style>
+
     <style name="AppTheme.Solicitudes_Nombre1" parent="Base.Widget.AppCompat.Button">
         <item name="colorButtonNormal">@color/colorWhite</item>
     </style>

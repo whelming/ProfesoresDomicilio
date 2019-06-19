@@ -1,24 +1,11 @@
 package com.example.educasa.Chat;
 
 import android.content.Context;
-import android.support.design.widget.BottomNavigationView;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.educasa.BottomNavigationViewHelper;
-import com.example.educasa.Chat.ChatAdapters.AdaptadorChat;
 import com.example.educasa.Chat.ChatFragments.ChatEjm;
-import com.example.educasa.Chat.ChatModels.ContentChat;
-import com.example.educasa.Inicio.Inicio;
-import com.example.educasa.Inicio.InicioAdapters.AdaptadorMaterias;
 import com.example.educasa.MenuBottom;
 import com.example.educasa.R;
 

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Textos de inicio -->
+    <string name="inicio_solicitar_curso">Solicitar una Clase</string>
+    <string name="inicio_confirmar_solicitar_curso">Solicitar Clase</string>
+    <string name="inicio_cancelar_curso">Cancelar</string>
+
     <string name="inicio_ejemplo_texto">Tu texto a usar.</string>
     <string name="inicio_ejemplo_texto2">Tu texto a usar 2.</string>
     <string name="inicio_ejemplo_texto3">Tu texto a usar 3.</string>

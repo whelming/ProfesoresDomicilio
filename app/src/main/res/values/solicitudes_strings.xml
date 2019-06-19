@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Textos de solicitudes -->
+
+    <string name="solicitudes_eliminar_solicitud">Eliminar Solicitud</string>
     <string name="solicitudes_ejemplo_texto">Tu texto a usar.</string>
     <string name="solicitudes_ejemplo_texto2">Tu texto a usar 2.</string>
     <string name="solicitudes_ejemplo_texto3">Tu texto a usar 3.</string>

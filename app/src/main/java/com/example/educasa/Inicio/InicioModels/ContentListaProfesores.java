@@ -1,10 +1,10 @@
 package com.example.educasa.Inicio.InicioModels;
 
-public class ContentInicio {
+public class ContentListaProfesores {
     private int id;
     private String textodemo;
 
-    public ContentInicio(int id, String textodemo) {
+    public ContentListaProfesores(int id, String textodemo) {
         this.id = id;
         this.textodemo = textodemo;
     }

@@ -8,37 +8,43 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-
+import com.example.educasa.Inicio.InicioModels.ContentInicio;
 import com.example.educasa.R;
 
-public class AdaptadorMaterias extends RecyclerView.Adapter<AdaptadorMaterias.MyViewHolder> {
-    private String[] mDataset;
+import java.util.List;
+
+public class AdaptadorInicio extends RecyclerView.Adapter<AdaptadorInicio.MyViewHolder> {
     private LayoutInflater mInflater;
     private CardView card;
     private Context context;
+    private final List<ContentInicio> items;
+    private final OnItemClickListener listener;
 
-    public AdaptadorMaterias(Context context, String[] myDataset) {
-        mDataset = myDataset;
-        mInflater = LayoutInflater.from(context);
+    public AdaptadorInicio(Context context, List<ContentInicio> items, OnItemClickListener listener) {
+        this.mInflater = LayoutInflater.from(context);
         this.context = context;
+        this.items = items;
+        this.listener = listener;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public final TextView nombre;
-        public final AdaptadorMaterias AdaptadorMaterias;
+        public final AdaptadorInicio AdaptadorInicio;
 
-        public MyViewHolder(@NonNull View v, final AdaptadorMaterias adapter) {
+        public MyViewHolder(@NonNull View v, final AdaptadorInicio adapter) {
             super(v);
             nombre = v.findViewById(R.id.nombre);
             card = v.findViewById(R.id.inicio_cardview_alumnos);
-            card.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(adapter.context, nombre.getText(), Toast.LENGTH_SHORT).show();
+            AdaptadorInicio = adapter;
+        }
+
+        public void bind(final ContentInicio item, final OnItemClickListener listener) {
+            nombre.setText(item.getTextodemo());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override public void onClick(View v) {
+                    listener.onItemClick(item);
                 }
             });
-            AdaptadorMaterias = adapter;
         }
     }
 
@@ -50,11 +56,16 @@ public class AdaptadorMaterias extends RecyclerView.Adapter<AdaptadorMaterias.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.nombre.setText(mDataset[position]);
+        holder.bind(items.get(position), listener);
     }
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return items.size();
     }
+
+    public interface OnItemClickListener {
+        void onItemClick(ContentInicio item);
+    }
+
 }

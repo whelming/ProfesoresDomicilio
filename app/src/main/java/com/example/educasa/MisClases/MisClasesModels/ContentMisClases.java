@@ -1,10 +1,10 @@
-package com.example.educasa.Chat.ChatModels;
+package com.example.educasa.MisClases.MisClasesModels;
 
-public class ContentChat {
+public class ContentMisClases {
     private int id;
     private String textodemo;
 
-    public ContentChat(int id, String textodemo) {
+    public ContentMisClases(int id, String textodemo) {
         this.id = id;
         this.textodemo = textodemo;
     }

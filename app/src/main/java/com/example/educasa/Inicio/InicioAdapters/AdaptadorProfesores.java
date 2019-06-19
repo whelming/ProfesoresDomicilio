@@ -1,4 +1,4 @@
-package com.example.educasa.Solicitudes.SolicitudesAdapters;
+package com.example.educasa.Inicio.InicioAdapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,19 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.educasa.Solicitudes.SolicitudesModels.ContentSolicitudes;
+import com.example.educasa.Inicio.InicioModels.ContentListaProfesores;
 import com.example.educasa.R;
 
 import java.util.List;
 
-public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitudes.MyViewHolder> {
+public class AdaptadorProfesores extends RecyclerView.Adapter<AdaptadorProfesores.MyViewHolder> {
     private LayoutInflater mInflater;
     private CardView card;
     private Context context;
-    private final List<ContentSolicitudes> items;
+    private final List<ContentListaProfesores> items;
     private final OnItemClickListener listener;
 
-    public AdaptadorSolicitudes(Context context, List<ContentSolicitudes> items, OnItemClickListener listener) {
+    public AdaptadorProfesores(Context context, List<ContentListaProfesores> items, OnItemClickListener listener) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.items = items;
@@ -29,20 +29,17 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public final TextView nombre;
-        public final TextView solicitudes_interesados;
-        public final AdaptadorSolicitudes AdaptadorSolicitudes;
+        public final AdaptadorProfesores AdaptadorProfesores;
 
-        public MyViewHolder(@NonNull View v, final AdaptadorSolicitudes adapter) {
+        public MyViewHolder(@NonNull View v, final AdaptadorProfesores adapter) {
             super(v);
             nombre = v.findViewById(R.id.nombre);
-            solicitudes_interesados = v.findViewById(R.id.solicitudes_interesados);
-            card = v.findViewById(R.id.solicitudes_cardview_alumnos);
-            AdaptadorSolicitudes = adapter;
+            card = v.findViewById(R.id.inicio_cardview_listaprofesores_alumnos);
+            AdaptadorProfesores = adapter;
         }
 
-        public void bind(final ContentSolicitudes item, final OnItemClickListener listener) {
+        public void bind(final ContentListaProfesores item, final OnItemClickListener listener) {
             nombre.setText(item.getTextodemo());
-            solicitudes_interesados.setText(item.getId()+" interesados");
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);
@@ -53,7 +50,7 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = mInflater.inflate(R.layout.card_item_solicitudes_alumnos, parent, false);
+        View v = mInflater.inflate(R.layout.card_item_inicio_listaprofesores_alumnos, parent, false);
         return new MyViewHolder(v, this);
     }
 
@@ -68,7 +65,7 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
     }
 
     public interface OnItemClickListener {
-        void onItemClick(ContentSolicitudes item);
+        void onItemClick(ContentListaProfesores item);
     }
 
 }

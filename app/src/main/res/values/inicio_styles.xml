@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Estilos de Inicio -->
+    <style name="AppTheme.Inicio_Button_Solicitar_Curso" parent="Base.Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/colorBlue</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:paddingTop">20sp</item>
+        <item name="android:paddingRight">60sp</item>
+        <item name="android:paddingBottom">20sp</item>
+        <item name="android:paddingLeft">60sp</item>
+    </style>
+    <style name="AppTheme.Inicio_Button_Cancelar_Curso" parent="Base.Widget.AppCompat.Button">
+        <item name="colorButtonNormal">@color/colorWhite</item>
+        <item name="android:paddingTop">20sp</item>
+        <item name="android:paddingRight">60sp</item>
+        <item name="android:paddingBottom">20sp</item>
+        <item name="android:paddingLeft">60sp</item>
+    </style>
     <style name="AppTheme.Inicio_Nombre1" parent="Base.Widget.AppCompat.Button">
         <item name="colorButtonNormal">@color/colorWhite</item>
     </style>
