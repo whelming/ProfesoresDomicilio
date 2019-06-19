@@ -73,9 +73,15 @@ public class Solicitudes extends MenuBottom {
     @Override
     protected void onStart() {
         super.onStart();
-        ListenerMiMenu(this, 3);
         Toast.makeText(this, "START SOLICITUD", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ListenerMiMenu(this, 3);
+    }
+
     // LISTENER MENU BOTTOM NAVIGATION
     @Override
     public void ListenerMiMenu(Context cont, int numberactivity) {

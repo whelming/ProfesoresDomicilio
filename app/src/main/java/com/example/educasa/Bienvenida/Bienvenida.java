@@ -42,7 +42,7 @@ public class Bienvenida extends AppCompatActivity {
         btn_iniciar_sesion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Bienvenida.this, Inicio.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

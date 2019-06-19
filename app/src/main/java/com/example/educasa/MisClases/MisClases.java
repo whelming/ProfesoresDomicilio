@@ -93,7 +93,6 @@ public class MisClases extends MenuBottom {
     @Override
     protected void onStart() {
         super.onStart();
-        ListenerMiMenu(this, 1);
         Toast.makeText(this, "START MIS CLASES", Toast.LENGTH_SHORT).show();
     }
 
@@ -107,6 +106,7 @@ public class MisClases extends MenuBottom {
     protected void onResume() {
         super.onResume();
         Toast.makeText(this, "RESUME", Toast.LENGTH_SHORT).show();
+        ListenerMiMenu(this, 1);
     }
 
     @Override

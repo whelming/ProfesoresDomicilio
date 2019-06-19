@@ -71,9 +71,15 @@ public class Inicio extends MenuBottom {
     @Override
     protected void onStart() {
         super.onStart();
-        ListenerMiMenu(this, 0);
         Toast.makeText(this, "START INICIO", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ListenerMiMenu(this, 0);
+    }
+
     // LISTENER MENU BOTTOM NAVIGATION
     @Override
     public void ListenerMiMenu(Context cont, int numberactivity) {

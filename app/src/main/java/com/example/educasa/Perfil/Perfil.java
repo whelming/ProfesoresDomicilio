@@ -23,25 +23,30 @@ public class Perfil extends MenuBottom {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-        //ListenerMiMenu(this,4);
 
         // INICIO ACTIVIDAD PERFIL
         btn_cerrar_sesion = findViewById(R.id.btn_cerrar_sesion);
         btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Perfil.this, Bienvenida.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
         // FIN ACTIVIDAD PERFIL
     }
     @Override
-    protected void onStart() {
+    protected void onStart()  {
         super.onStart();
-        ListenerMiMenu(this, 4);
         Toast.makeText(this, "START PERFIL", Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ListenerMiMenu(this, 4);
+    }
+
     // LISTENER MENU BOTTOM NAVIGATION
     @Override
     public void ListenerMiMenu(Context cont, int numberactivity) {

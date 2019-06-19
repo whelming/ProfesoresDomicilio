@@ -6,43 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".Inicio.Inicio">
 
-    <View
-        android:id="@+id/inicio_separador1"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/inicio_recycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/inicio_recycler"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginBottom="55dp"
-    />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/inicio_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryAlpha"
+        android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
-        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <include layout="@layout/menuxml" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/inicio_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/include_inicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar" />
+
+
+
+    <include
+        android:id="@+id/include_inicio"
+        layout="@layout/menuxml"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

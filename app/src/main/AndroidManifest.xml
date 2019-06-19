@@ -11,18 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Solicitudes.Solicitudes" />
-        <activity android:name=".Perfil.Perfil" />
-        <activity android:name=".MisClases.MisClases" />
-        <activity android:name=".Inicio.Inicio" />
-        <activity android:name=".Chat.Chat" />
-        <activity android:name=".Bienvenida.Bienvenida" >
+        <activity android:name=".Solicitudes.Solicitudes" android:launchMode="singleInstance"/>
+        <activity android:name=".Perfil.Perfil" android:launchMode="singleInstance"/>
+        <activity android:name=".MisClases.MisClases" android:launchMode="singleInstance"/>
+        <activity android:name=".Inicio.Inicio" android:launchMode="singleInstance"/>
+        <activity android:name=".Chat.Chat" android:launchMode="singleInstance"/>
+        <activity android:name=".Bienvenida.Bienvenida" android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity" android:launchMode="singleInstance">
 
         </activity>
     </application>
