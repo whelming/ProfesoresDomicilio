@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme.Bienvenida_Button" parent="Base.Widget.AppCompat.Button">
-        <item name="colorButtonNormal">@color/colorWhite</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
         <item name="android:paddingTop">15sp</item>
-        <item name="android:paddingRight">60sp</item>
+        <item name="android:paddingRight">15dp</item>
         <item name="android:paddingBottom">15sp</item>
-        <item name="android:paddingLeft">60sp</item>
+        <item name="android:paddingLeft">15dp</item>
     </style>
 </resources>
