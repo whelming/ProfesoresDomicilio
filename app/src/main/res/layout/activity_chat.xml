@@ -6,99 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".Chat.Chat">
 
+    <FrameLayout
+        android:id="@+id/frag_chat_principal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/include_chat"
+         />
+    <!--android:name="com.example.educasa.Chat.ChatFragments.ChatEjm"-->
+    <!--tools:layout="@layout/fragment_chat_ejm"-->
 
-    <ScrollView
-        android:id="@+id/scrollviewChat"
+    <!--<android.support.v7.widget.Toolbar
+        android:id="@+id/chat_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
->
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryAlpha"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingBottom="60sp">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity Primerooo..." />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity..." />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="Chat Activity ULTIMOOOOOO..." />
-        </LinearLayout>
-    </ScrollView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/chat_recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/include_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_toolbar" />-->
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/include_chat"
         layout="@layout/menuxml"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

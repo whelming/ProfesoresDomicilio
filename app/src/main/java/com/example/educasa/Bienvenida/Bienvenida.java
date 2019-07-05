@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.educasa.Inicio.Inicio;
 import com.example.educasa.MainActivity;
 import com.example.educasa.R;
 
@@ -40,7 +41,8 @@ public class Bienvenida extends AppCompatActivity {
 
         btn_iniciar_sesion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Bienvenida.this, MainActivity.class);
+                Intent intent = new Intent(Bienvenida.this, Inicio.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
@@ -88,7 +90,7 @@ public class Bienvenida extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_bienvenida_fragment1, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_bienvenida_ejm, container, false);
             TextView textView  = rootView.findViewById(R.id.texto_detalle);
 
             if (getArguments().getInt(ARG_SECTION_NUMBER)==1){

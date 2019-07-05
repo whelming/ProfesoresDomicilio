@@ -18,13 +18,13 @@
         android:layout_width="326dp"
         android:layout_height="183dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="160dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="224dp"
         android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img_logo_white_medium" />
 
     <Button
@@ -33,11 +33,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/bienvenida_iniciar_sesion"
-        android:theme="@style/AppTheme.ButtonInicio"
-        app:layout_constraintBottom_toBottomOf="@+id/container"
+        android:theme="@style/AppTheme.Bienvenida_Button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_cuenta"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -45,13 +46,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/bienvenida_crear_cuenta"
-        android:theme="@style/AppTheme.ButtonInicio"
+        android:theme="@style/AppTheme.Bienvenida_Button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_iniciar_sesion" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 

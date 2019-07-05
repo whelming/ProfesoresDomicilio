@@ -1,6 +1,5 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -8,11 +7,5 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowAnimationStyle">@null</item>
     </style>
-    <style name="AppTheme.ButtonInicio" parent="Base.Widget.AppCompat.Button">
-        <item name="colorButtonNormal">@color/colorWhite</item>
-        <item name="android:paddingTop">15sp</item>
-        <item name="android:paddingRight">60sp</item>
-        <item name="android:paddingBottom">15sp</item>
-        <item name="android:paddingLeft">60sp</item>
-    </style>
+
 </resources>
