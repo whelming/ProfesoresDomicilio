@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="124dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/imageperfil"
+        app:civ_border_color="#FF000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nombre_profesor"
+        android:layout_width="134dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:text="Nombre"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+    <TextView
+        android:id="@+id/Categoria"
+        android:layout_width="136dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="212dp"
+        android:text="Categoria:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_profesor" />
+
+    <TextView
+        android:id="@+id/Descripcion"
+        android:layout_width="136dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="212dp"
+        android:text="Descripción:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lista_categoria" />
+
+    <TextView
+        android:id="@+id/contenido_descripcion"
+        android:layout_width="285dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="63dp"
+        android:text="Contenido"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Descripcion" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/lista_categoria"
+        android:layout_width="282dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Categoria" />
+
+    <Button
+        android:id="@+id/Descarga_documento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="163dp"
+        android:text="Descarga documento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contenido_descripcion" />
+
+    <Button
+        android:id="@+id/Cerrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="cerrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Solicitar_clases"
+        android:layout_width="179dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="166dp"
+        android:text="Solicitar clases"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Descarga_documento" />
+
+</android.support.constraint.ConstraintLayout>
