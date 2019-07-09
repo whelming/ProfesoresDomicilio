@@ -1,9 +1,17 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportWidth="24.0"
-    android:viewportHeight="24.0">
-    <path
-        android:fillColor="#FF000000"
-        android:pathData="M12,22c1.1,0 2,-0.9 2,-2h-4c0,1.1 0.89,2 2,2zM18,16v-5c0,-3.07 -1.64,-5.64 -4.5,-6.32L13.5,4c0,-0.83 -0.67,-1.5 -1.5,-1.5s-1.5,0.67 -1.5,1.5v0.68C7.63,5.36 6,7.92 6,11v5l-2,2v1h16v-1l-2,-2z" />
+<?xml version="1.0"?>
+
+    <vector android:height="102.02dp" android:width="97.74dp" android:viewportHeight="102.02" android:viewportWidth="97.74" xmlns:aapt="http://schemas.android.com/aapt" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <path android:fillColor="#A3A3A3" android:pathData="M67.85 102h-65A2.81 2.81 0 0 1 0.05 99.21V13.94C0 12.75 -0.33 6.85 3.12 3.05a9.55 9.55 0 0 1 7.32 -3H71.1c8.63 0 12.65 7.81 13.57 12a2.75 2.75 0 0 1 -0.55 2.36 2.79 2.79 0 0 1 -2.19 1H20.19a2.8 2.8 0 0 1 -2.75 -2.25c-0.1 -0.48 -0.19 -0.94 -0.27 -1.4C16.3 7 16 5.62 10.44 5.62a3.86 3.86 0 0 0 -3.16 1.2c-1.69 1.86 -1.74 5.57 -1.63 6.73a2.44 2.44 0 0 1 0 0.27V96.4H65V84.24a2.81 2.81 0 0 1 5.62 0v15A2.81 2.81 0 0 1 67.85 102ZM22.51 9.75H77.77A7.67 7.67 0 0 0 71.1 5.62H21.32A18.51 18.51 0 0 1 22.51 9.75Z"/>
+
+    <path android:fillColor="#A3A3A3" android:pathData="M67.85 56.08A2.81 2.81 0 0 1 65 53.27V12.74a2.81 2.81 0 1 1 5.62 0V53.27A2.81 2.81 0 0 1 67.85 56.08Z"/>
+
+    <path android:fillColor="#A3A3A3" android:pathData="M53.77 33.78H23.44a2.81 2.81 0 1 1 0 -5.62H53.77a2.81 2.81 0 0 1 0 5.62Z"/>
+
+    <path android:fillColor="#A3A3A3" android:pathData="M53.77 44.61H23.44a2.81 2.81 0 1 1 0 -5.61H53.77a2.81 2.81 0 1 1 0 5.61Z"/>
+
+    <path android:fillColor="#A3A3A3" android:pathData="M53.77 55.44H23.44a2.81 2.81 0 1 1 0 -5.61H53.77a2.81 2.81 0 1 1 0 5.61Z"/>
+
+    <path android:fillColor="#A3A3A3" android:pathData="M42.94 90.11a2.82 2.82 0 0 1 -2.61 -3.86l4.33 -10.83a2.8 2.8 0 0 1 0.62 -0.94L86.45 33.32a2.8 2.8 0 0 1 4 0l6.49 6.5a2.8 2.8 0 0 1 0 4L55.75 85a2.61 2.61 0 0 1 -0.94 0.62L44 89.9A2.72 2.72 0 0 1 42.94 90.11ZM49.66 78L48 82.26l4.21 -1.69L91 41.8l-2.53 -2.52Z"/>
+
 </vector>

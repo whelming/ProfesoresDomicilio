@@ -69,18 +69,18 @@ public class InicioEjm extends Fragment {
     }
 
     private void LlenaMILista() {
-        milista.add(new ContentInicio(1,"Matemática"));
-        milista.add(new ContentInicio(2,"Física"));
-        milista.add(new ContentInicio(3,"Programación"));
-        milista.add(new ContentInicio(4,"Computación"));
-        milista.add(new ContentInicio(5,"Trigonometría"));
-        milista.add(new ContentInicio(6,"Química Básica"));
-        milista.add(new ContentInicio(7,"Cálculo"));
-        milista.add(new ContentInicio(8,"Geometría"));
-        milista.add(new ContentInicio(9,"Comunicación"));
-        milista.add(new ContentInicio(10,"Literatura"));
-        milista.add(new ContentInicio(11,"Historia"));
-        milista.add(new ContentInicio(12,"Ciencia"));
+        milista.add(new ContentInicio(1,"Matemática",1,1));
+        milista.add(new ContentInicio(2,"Física",2,2));
+        milista.add(new ContentInicio(3,"Programación",3,3));
+        milista.add(new ContentInicio(4,"Computación",4,4));
+        milista.add(new ContentInicio(5,"Trigonometría",5,5));
+        milista.add(new ContentInicio(6,"Química Básica",6,6));
+        milista.add(new ContentInicio(7,"Cálculo",7,7));
+        milista.add(new ContentInicio(8,"Geometría",8,8));
+        milista.add(new ContentInicio(9,"Comunicación",9,9));
+        milista.add(new ContentInicio(10,"Literatura",10,10));
+        milista.add(new ContentInicio(11,"Historia",11,11));
+        milista.add(new ContentInicio(12,"Ciencia",12,12));
     }
 
     @Override

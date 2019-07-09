@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.educasa.R;
 
@@ -67,13 +68,13 @@ public class DetalleProfesoresDialog extends DialogFragment implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.Cerrar:
-                c.finish();
+                dismiss();
                 break;
             case R.id.Solicitar_clases:
                 dismiss();
                 break;
             case R.id.Descarga_documento:
-                dismiss();
+                Toast.makeText(getActivity(), "Descargar documento", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
