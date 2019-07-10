@@ -5,40 +5,47 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryAlpha"
     tools:context="com.example.educasa.Inicio.InicioFragments.InicioEjm">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/inicio_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryAlpha"
-        android:elevation="6dp"
-        android:minHeight="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="260dp"
+        android:layout_height="197dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorPrimary"
+        android:src="@drawable/kraken"
+        app:layout_constraintBottom_toTopOf="@+id/inicio_recycler"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic"
-        android:background="@color/colorPrimary"/>
+        app:layout_constraintVertical_bias="0.0" />
+
+    <SearchView
+        android:id="@+id/inicio_toolbar"
+        android:layout_width="309dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="172dp"
+        android:queryHint="Buscar"
+        android:background="@color/colorWhite"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/inicio_recycler"
         android:layout_width="0dp"
-        android:layout_height="351dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="415dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar" />
 
 
 </android.support.constraint.ConstraintLayout>

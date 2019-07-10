@@ -23,7 +23,7 @@
         android:layout_height="180dp">
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
+            android:id="@+id/foto_materia"
             android:layout_width="87dp"
             android:layout_height="78dp"
             android:layout_marginStart="8dp"
@@ -51,7 +51,7 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.527"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/profile_image" />
+            card_view:layout_constraintTop_toBottomOf="@+id/foto_materia" />
 
         <RatingBar
             android:id="@+id/inicio_rating_listaprofesores"
