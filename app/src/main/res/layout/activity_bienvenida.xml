@@ -33,7 +33,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/bienvenida_iniciar_sesion"
         android:theme="@style/AppTheme.Bienvenida_Button"
         app:layout_constraintBottom_toTopOf="@+id/btn_crear_cuenta"
@@ -43,8 +43,8 @@
 
     <Button
         android:id="@+id/btn_crear_cuenta"
-        android:layout_width="153dp"
-        android:layout_height="52dp"
+        android:layout_width="145dp"
+        android:layout_height="55dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"

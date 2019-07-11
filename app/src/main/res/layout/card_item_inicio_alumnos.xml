@@ -16,13 +16,14 @@
     android:orientation="vertical"
     android:padding="10dp"
     card_view:cardBackgroundColor="@color/colorPrimaryAlpha"
-    card_view:cardCornerRadius="0dp"
+    card_view:cardCornerRadius="90dp"
     card_view:cardElevation="0dp">
 
 
     <RelativeLayout
         android:layout_width="180dp"
         android:layout_height="180dp">
+
 
         <TextView
             android:id="@+id/nombre"

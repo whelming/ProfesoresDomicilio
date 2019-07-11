@@ -30,8 +30,8 @@ tools:context="com.example.educasa.Bienvenida.BienvenidaFragments.BienvenidaFrag
 
     <TextView
         android:id="@+id/texto_detalle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="307dp"
+        android:layout_height="83dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:padding="15sp"
