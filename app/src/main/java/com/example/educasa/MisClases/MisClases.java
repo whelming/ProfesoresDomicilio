@@ -2,7 +2,7 @@ package com.example.educasa.MisClases;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
+import androidx.fragment.app.FragmentTransaction;
 import android.widget.Toast;
 
 import com.example.educasa.MenuBottom;

@@ -1,25 +1,19 @@
 package com.example.educasa.Solicitudes;
 
 import android.content.Context;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.fragment.app.FragmentTransaction;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.widget.Toast;
 
-import com.example.educasa.BottomNavigationViewHelper;
 import com.example.educasa.MenuBottom;
-import com.example.educasa.MisClases.MisClases;
-import com.example.educasa.MisClases.MisClasesAdapters.AdaptadorMisClases;
 import com.example.educasa.R;
-import com.example.educasa.Solicitudes.SolicitudesAdapters.AdaptadorSolicitudes;
 import com.example.educasa.Solicitudes.SolicitudesFragments.SolicitudesEjm;
 
 public class Solicitudes extends MenuBottom {

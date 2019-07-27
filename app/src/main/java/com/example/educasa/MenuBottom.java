@@ -1,25 +1,20 @@
 package com.example.educasa;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.educasa.Chat.Chat;
 import com.example.educasa.Inicio.Inicio;
 import com.example.educasa.MisClases.MisClases;
 import com.example.educasa.Perfil.Perfil;
 import com.example.educasa.Solicitudes.Solicitudes;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 public class MenuBottom extends AppCompatActivity {
 

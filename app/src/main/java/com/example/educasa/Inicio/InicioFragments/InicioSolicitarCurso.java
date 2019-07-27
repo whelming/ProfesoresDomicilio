@@ -1,12 +1,14 @@
 package com.example.educasa.Inicio.InicioFragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.educasa.Inicio.Inicio;
@@ -17,6 +19,7 @@ public class InicioSolicitarCurso extends Fragment {
     private Button btn_confirmarclase;
     private Button btn_cancelar;
 
+
     public InicioSolicitarCurso() {}
 
     @Override
@@ -25,6 +28,7 @@ public class InicioSolicitarCurso extends Fragment {
         View v = inflater.inflate(R.layout.fragment_inicio_solicitar_curso, container, false);
         btn_confirmarclase = v.findViewById(R.id.btn_confirmar_solicitar_curso);
         btn_cancelar = v.findViewById(R.id.btn_cancelar_curso);
+
 
         bundlerecibido = getArguments().getString("datosolicitarcurso");
         Toolbar toolbar = v.findViewById(R.id.inicio_toolbar_solicitar_curso);

@@ -2,18 +2,13 @@ package com.example.educasa.Inicio;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Toast;
-import android.support.v7.widget.SearchView;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
-import com.example.educasa.Inicio.InicioAdapters.AdaptadorInicio;
+import android.widget.Toast;
+import androidx.appcompat.widget.SearchView;
+
 import com.example.educasa.Inicio.InicioFragments.InicioEjm;
 import com.example.educasa.MenuBottom;
 import com.example.educasa.R;
