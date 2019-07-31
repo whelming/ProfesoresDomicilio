@@ -64,18 +64,18 @@ public class InicioEjm extends Fragment {
     }
 
     private void LlenaMILista() {
-        milista.add(new ContentInicio(1,"Matemática",1,R.drawable.matematica));
-        milista.add(new ContentInicio(2,"Física",2,R.drawable.matematica));
-        milista.add(new ContentInicio(3,"Programación",3,R.drawable.matematica));
-        milista.add(new ContentInicio(4,"Computación",4,R.drawable.matematica));
-        milista.add(new ContentInicio(5,"Trigonometría",5,R.drawable.matematica));
-        milista.add(new ContentInicio(6,"Química Básica",6,R.drawable.matematica));
-        milista.add(new ContentInicio(7,"Cálculo",7,R.drawable.matematica));
-        milista.add(new ContentInicio(8,"Geometría",8,R.drawable.matematica));
-        milista.add(new ContentInicio(9,"Comunicación",9,R.drawable.matematica));
-        milista.add(new ContentInicio(10,"Literatura",10,R.drawable.matematica));
-        milista.add(new ContentInicio(11,"Historia",11,R.drawable.matematica));
-        milista.add(new ContentInicio(12,"Ciencia",12,R.drawable.matematica));
+        milista.add(new ContentInicio(1,"Comunicación",1,R.drawable.matematica));
+        milista.add(new ContentInicio(2,"Matemática",2,R.drawable.matematica));
+        milista.add(new ContentInicio(3,"Historia",3,R.drawable.matematica));
+        milista.add(new ContentInicio(4,"Idiomas",4,R.drawable.matematica));
+        milista.add(new ContentInicio(5,"Biología",5,R.drawable.matematica));
+        milista.add(new ContentInicio(6,"Química",6,R.drawable.matematica));
+        milista.add(new ContentInicio(7,"Economía",7,R.drawable.matematica));
+        milista.add(new ContentInicio(8,"Física",8,R.drawable.matematica));
+        milista.add(new ContentInicio(9,"Computo",9,R.drawable.matematica));
+        milista.add(new ContentInicio(10,"Arte",10,R.drawable.matematica));
+        milista.add(new ContentInicio(11,"Geografía",11,R.drawable.matematica));
+        milista.add(new ContentInicio(12,"Civica",12,R.drawable.matematica));
     }
 
     @Override

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="Materia">
+        <item>Comunicación</item>
+        <item>Matemática</item>
+        <item>Historia</item>
+        <item>Idiomas</item>
+        <item>Biología</item>m
+        <item>Química</item>
+        <item>Física</item>
+        <item>Computo</item>
+        <item>Arte</item>
+        <item>Geografía</item>
+        <item>Arte</item>
+        <item>Civica</item>
+    </string-array>
+</resources>
