@@ -2,6 +2,7 @@ package com.example.educasa.Inicio.InicioFragments;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
@@ -28,6 +29,7 @@ import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.educasa.Inicio.Inicio;
@@ -50,14 +52,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.Executor;
 
-public class InicioSolicitarCurso extends Fragment {
+public class InicioSolicitarCurso extends Fragment implements View.OnClickListener {
     private String bundlerecibido;
     private Button btn_confirmarclase;
     private Button btn_cancelar;
     private Spinner materia;
     private Button bfecha,bhora;
-    private TextView fecha, hora;
-    private int dia,mes,ano,minutos;
+    private TextView fecha, horaa;
+    private int dia,mes,ano,hora,minutos;
 
     public InicioSolicitarCurso() {
 
@@ -71,10 +73,12 @@ public class InicioSolicitarCurso extends Fragment {
         btn_confirmarclase = v.findViewById(R.id.btn_confirmar_solicitar_curso);
         btn_cancelar = v.findViewById(R.id.btn_cancelar_curso);
         materia = (Spinner) v.findViewById(R.id.inicio_solicitud_curso_spinner);
-        bfecha = v.findViewById(R.id.solicitar_curso_fecha);
-        bhora = v.findViewById(R.id.inicio_solicitar_curso_hora);
-        bfecha.setOnClickListener((View.OnClickListener) this);
-        bhora.setOnClickListener((View.OnClickListener) this);
+        horaa= v.findViewById(R.id.inicio_solicitar_curso_hora);
+        fecha = v.findViewById(R.id.solicitar_curso_fecha);
+        bfecha = v.findViewById(R.id.solicitar_curso_fecha_boton);
+        bhora = v.findViewById(R.id.inicio_solicitar_curso_hora_boton);
+        bfecha.setOnClickListener(this);
+        bhora.setOnClickListener(this);
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Materia, android.R.layout.simple_spinner_item);
@@ -111,13 +115,13 @@ public class InicioSolicitarCurso extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClick (View v){
-        Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
-        if (v== fecha){
+       Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
+        if (v== bfecha){
             final Calendar c= Calendar.getInstance();
             dia = c.get(Calendar.DAY_OF_MONTH);
             mes = c.get(Calendar.MONTH);
             ano= c.get (Calendar.YEAR);
-            Toast.makeText(getActivity(), "holaadatee", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
             DatePickerDialog datePickerDialog = new DatePickerDialog
                     (v.getContext(), new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -130,10 +134,20 @@ public class InicioSolicitarCurso extends Fragment {
             datePickerDialog.show();
 
 
-        }if (v== hora){
+        }if (v== bhora){
             final Calendar c= Calendar.getInstance();
             hora = c.get(Calendar.HOUR_OF_DAY);
-            minutos= c.get (Calendar.MINUTE);
+            minutos = c.get(Calendar.MINUTE);
+            TimePickerDialog timePickerDialog = new TimePickerDialog
+                    (v.getContext(), new TimePickerDialog.OnTimeSetListener() {
+                        @Override
+                        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                            horaa.setText(hourOfDay+":" + minute);
+
+                        }
+                    },
+                            hora,minutos,false);
+            timePickerDialog.show();
 
         }
     }
