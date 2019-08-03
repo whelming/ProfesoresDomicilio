@@ -145,16 +145,69 @@
                 android:text="@string/inicio_confirmar_solicitar_curso"
                 android:theme="@style/AppTheme.Bienvenida_Button" />
 
-            <Button
-                android:id="@+id/btn_subir_imagen"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="8dp"
-                android:text="Subir imagen"
-                android:theme="@style/AppTheme.Bienvenida_Button"
-               />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110dp"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                >
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/inicio_solicitud_foto1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        tools:src="@tools:sample/avatars" />
+
+                    <Button
+                        android:id="@+id/inicio_solicitud_btn_foto1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimaryAlpha"
+                        android:text="Button" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/inicio_solicitud_foto2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        tools:src="@tools:sample/avatars" />
+
+                    <Button
+                        android:id="@+id/inicio_solicitud_btn_foto2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryAlpha"
+                        android:text="Button" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:id="@+id/inicio_solicitud_foto3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:src="@tools:sample/avatars" />
+
+                    <Button
+                        android:id="@+id/inicio_solicitud_btn_foto3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimaryAlpha"
+                        android:text="Button" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_cancelar_curso"
@@ -171,6 +224,12 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:fitsSystemWindows="true"/>
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/btn_dialog" />
 
         </LinearLayout>
 

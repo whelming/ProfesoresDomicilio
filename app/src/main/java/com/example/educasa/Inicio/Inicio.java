@@ -1,7 +1,10 @@
 package com.example.educasa.Inicio;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
@@ -54,5 +57,11 @@ public class Inicio extends MenuBottom {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frag_inicio_principal);
+        fragment.onActivityResult(requestCode, resultCode, data);
     }
 }

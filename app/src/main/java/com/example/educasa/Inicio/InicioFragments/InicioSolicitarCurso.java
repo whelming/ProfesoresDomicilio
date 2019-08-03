@@ -1,12 +1,19 @@
 package com.example.educasa.Inicio.InicioFragments;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.icu.util.LocaleData;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,6 +25,8 @@ import androidx.fragment.app.Fragment;
 import androidx.appcompat.widget.Toolbar;
 
 
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -26,6 +35,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -48,8 +58,11 @@ import com.google.android.gms.tasks.Task;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.File;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.Executor;
 
 public class InicioSolicitarCurso extends Fragment implements View.OnClickListener {
@@ -60,6 +73,15 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
     private Button bfecha,bhora;
     private TextView fecha, horaa;
     private int dia,mes,ano,hora,minutos;
+    private static final int TAKE_PICTURE = 1;
+    private Uri imageUri;
+    private View v;
+    private Button bsubirimg1, bsubirimg2, bsubirimg3;
+
+    private static final int CAMERA_REQUEST = 1888;
+    private ImageView imagen1;
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int MY_CAMERA_PERMISSION_CODE = 100;
 
     public InicioSolicitarCurso() {
 
@@ -69,7 +91,7 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_inicio_solicitar_curso, container, false);
+        v = inflater.inflate(R.layout.fragment_inicio_solicitar_curso, container, false);
         btn_confirmarclase = v.findViewById(R.id.btn_confirmar_solicitar_curso);
         btn_cancelar = v.findViewById(R.id.btn_cancelar_curso);
         materia = (Spinner) v.findViewById(R.id.inicio_solicitud_curso_spinner);
@@ -79,6 +101,25 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
         bhora = v.findViewById(R.id.inicio_solicitar_curso_hora_boton);
         bfecha.setOnClickListener(this);
         bhora.setOnClickListener(this);
+        bsubirimg1 = v.findViewById(R.id.inicio_solicitud_btn_foto1);
+        bsubirimg2 = v.findViewById(R.id.inicio_solicitud_btn_foto2);
+        bsubirimg3 = v.findViewById(R.id.inicio_solicitud_btn_foto3);
+
+        bsubirimg1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+                {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
+                }
+                else
+                {
+                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, CAMERA_REQUEST);
+                }
+            }
+        });
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Materia, android.R.layout.simple_spinner_item);
@@ -118,19 +159,20 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
        Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
         if (v== bfecha){
             final Calendar c= Calendar.getInstance();
-            dia = c.get(Calendar.DAY_OF_MONTH);
+            ano= c.get(Calendar.YEAR);
             mes = c.get(Calendar.MONTH);
-            ano= c.get (Calendar.YEAR);
+            dia = c.get(Calendar.DAY_OF_MONTH);
+
             //Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
             DatePickerDialog datePickerDialog = new DatePickerDialog
                     (v.getContext(), new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    fecha.setText(dayOfMonth+"/" +(monthOfYear+1)+"/"+year);
+                    fecha.setText(dayOfMonth+"/" +(monthOfYear+1)+"/"+ year);
 
                 }
             },
-            dia,mes,ano);
+                            ano,mes,dia);
             datePickerDialog.show();
 
 
@@ -151,6 +193,45 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
 
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == MY_CAMERA_PERMISSION_CODE)
+        {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                Toast.makeText(getContext(), "camera permission granted", Toast.LENGTH_LONG).show();
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                getActivity().startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            }
+            else
+            {
+                Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
+            }
+        }
+
+
+
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK && data!= null)
+        {
+            Toast.makeText(getContext(), "okkkdo", Toast.LENGTH_SHORT).show();
+
+            //Bitmap photo = (Bitmap) data.getExtras().get("data");
+
+            //imagen1.setImageBitmap(photo);
+        }
+        else {
+            Toast.makeText(getContext(), "invalido", Toast.LENGTH_SHORT).show();
+
+        }
+        //super.onActivityResult(requestCode, resultCode, data); comment this unless you want to pass your result to the activity.
+    }
+
 
 
 }
