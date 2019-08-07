@@ -68,7 +68,7 @@ public class MisClasesEjm extends Fragment {
     }
 
     private void LlenaMILista() {
-        milista.add(new ContentMisClases(1,"Matemática"));
+        milista.add(new ContentMisClases(1,"Matemática","Carlo Magno",""));
         milista.add(new ContentMisClases(2,"Física"));
         milista.add(new ContentMisClases(3,"Química"));
         milista.add(new ContentMisClases(4,"Trigonometría"));

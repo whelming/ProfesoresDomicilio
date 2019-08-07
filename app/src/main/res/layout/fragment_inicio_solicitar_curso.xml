@@ -19,8 +19,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="544dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -38,7 +39,8 @@
                     android:id="@+id/inicio_solicitud_curso_spinner"
                     android:layout_width="252dp"
                     android:layout_height="38dp"
-                    android:layout_below="@+id/Categoria"/>
+
+                    android:layout_below="@+id/Categoria" />
 
             </LinearLayout>
 
@@ -53,6 +55,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:hint="descripción"
                     android:inputType="textMultiLine" />
 
             </LinearLayout>
@@ -63,14 +68,15 @@
                 android:orientation="horizontal">
 
                 <EditText
+
                     android:id="@+id/inicio_solicitar_curso_precio"
                     android:layout_width="251dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:ems="18"
-                    android:inputType="textPersonName"
-                    android:text="Precio" />
+                    android:inputType="numberDecimal"
+                    android:hint="Precio" />
             </LinearLayout>
 
             <LinearLayout
@@ -148,88 +154,74 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
-                android:orientation="horizontal"
                 android:layout_weight="1"
-                >
+                android:orientation="horizontal">
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
+
                     <ImageView
                         android:id="@+id/inicio_solicitud_foto1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:src="@tools:sample/avatars" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@color/colorPrimaryAlpha"
+
+                        />
 
                     <Button
                         android:id="@+id/inicio_solicitud_btn_foto1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@color/colorPrimaryAlpha"
-                        android:text="Button" />
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/photoscamera"
+                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
+
                     <ImageView
                         android:id="@+id/inicio_solicitud_foto2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_weight="1"
-                        tools:src="@tools:sample/avatars" />
+                        android:background="@color/colorPrimaryAlpha"
+
+                        />
 
                     <Button
                         android:id="@+id/inicio_solicitud_btn_foto2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/colorPrimaryAlpha"
-                        android:text="Button" />
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/photoscamera"
+                        />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent">
+
                     <ImageView
                         android:id="@+id/inicio_solicitud_foto3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:src="@tools:sample/avatars" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@color/colorPrimaryAlpha"/>
 
                     <Button
                         android:id="@+id/inicio_solicitud_btn_foto3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/colorPrimaryAlpha"
-                        android:text="Button" />
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:background="@drawable/photoscamera"
+
+                         />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_cancelar_curso"
-                android:layout_width="47dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:text="@string/inicio_cancelar_curso"
-                android:theme="@style/AppTheme.Bienvenida_Button" />
-
-            <com.google.android.material.navigation.NavigationView
-                android:id = "@+id/map"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:fitsSystemWindows="true"/>
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/btn_dialog" />
 
         </LinearLayout>
 

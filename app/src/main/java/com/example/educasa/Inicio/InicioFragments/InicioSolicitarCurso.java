@@ -11,8 +11,10 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.icu.util.LocaleData;
 import android.location.Location;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -65,21 +67,27 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.Executor;
 
+import static android.app.Activity.RESULT_OK;
+
 public class InicioSolicitarCurso extends Fragment implements View.OnClickListener {
     private String bundlerecibido;
     private Button btn_confirmarclase;
     private Button btn_cancelar;
     private Spinner materia;
-    private Button bfecha,bhora;
+    private Button bfecha, bhora;
     private TextView fecha, horaa;
-    private int dia,mes,ano,hora,minutos;
+    private int dia, mes, ano, hora, minutos;
     private static final int TAKE_PICTURE = 1;
     private Uri imageUri;
     private View v;
     private Button bsubirimg1, bsubirimg2, bsubirimg3;
 
-    private static final int CAMERA_REQUEST = 1888;
+    private static final int CAMERA_REQUEST1 = 1887;
+    private static final int CAMERA_REQUEST2 = 1888;
+    private static final int CAMERA_REQUEST3 = 1889;
     private ImageView imagen1;
+    private ImageView imagen2;
+    private ImageView imagen3;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int MY_CAMERA_PERMISSION_CODE = 100;
 
@@ -93,9 +101,9 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
                              Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_inicio_solicitar_curso, container, false);
         btn_confirmarclase = v.findViewById(R.id.btn_confirmar_solicitar_curso);
-        btn_cancelar = v.findViewById(R.id.btn_cancelar_curso);
+        //btn_cancelar = v.findViewById(R.id.btn_cancelar_curso);
         materia = (Spinner) v.findViewById(R.id.inicio_solicitud_curso_spinner);
-        horaa= v.findViewById(R.id.inicio_solicitar_curso_hora);
+        horaa = v.findViewById(R.id.inicio_solicitar_curso_hora);
         fecha = v.findViewById(R.id.solicitar_curso_fecha);
         bfecha = v.findViewById(R.id.solicitar_curso_fecha_boton);
         bhora = v.findViewById(R.id.inicio_solicitar_curso_hora_boton);
@@ -104,28 +112,34 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
         bsubirimg1 = v.findViewById(R.id.inicio_solicitud_btn_foto1);
         bsubirimg2 = v.findViewById(R.id.inicio_solicitud_btn_foto2);
         bsubirimg3 = v.findViewById(R.id.inicio_solicitud_btn_foto3);
+        imagen1 = v.findViewById(R.id.inicio_solicitud_foto1);
+        imagen2 = v.findViewById(R.id.inicio_solicitud_foto2);
+        imagen3 = v.findViewById(R.id.inicio_solicitud_foto3);
 
         bsubirimg1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-                {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
-                }
-                else
-                {
-                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, CAMERA_REQUEST);
-                }
+            public void onClick(View v) {
+                TomarFoto(CAMERA_REQUEST1);
             }
         });
+        bsubirimg2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TomarFoto(CAMERA_REQUEST2);
+            }
+        });
+        bsubirimg3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TomarFoto(CAMERA_REQUEST3);
+            }
+        });
+
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Materia, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         materia.setAdapter(adapter);
-
 
 
         bundlerecibido = getArguments().getString("datosolicitarcurso");
@@ -144,94 +158,110 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
                 getActivity().onBackPressed();
             }
         });
-        btn_cancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
-            }
-        });
+        //btn_cancelar.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        //        getActivity().onBackPressed();
+        //    }
+        //});
 
         return v;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void onClick (View v){
-       Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
-        if (v== bfecha){
-            final Calendar c= Calendar.getInstance();
-            ano= c.get(Calendar.YEAR);
+    public void onClick(View v) {
+        Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
+        if (v == bfecha) {
+            final Calendar c = Calendar.getInstance();
+            ano = c.get(Calendar.YEAR);
             mes = c.get(Calendar.MONTH);
             dia = c.get(Calendar.DAY_OF_MONTH);
 
             //Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
             DatePickerDialog datePickerDialog = new DatePickerDialog
                     (v.getContext(), new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                    fecha.setText(dayOfMonth+"/" +(monthOfYear+1)+"/"+ year);
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            fecha.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
 
-                }
-            },
-                            ano,mes,dia);
+                        }
+                    },
+                            ano, mes, dia);
             datePickerDialog.show();
 
 
-        }if (v== bhora){
-            final Calendar c= Calendar.getInstance();
+        }
+        if (v == bhora) {
+            final Calendar c = Calendar.getInstance();
             hora = c.get(Calendar.HOUR_OF_DAY);
             minutos = c.get(Calendar.MINUTE);
             TimePickerDialog timePickerDialog = new TimePickerDialog
                     (v.getContext(), new TimePickerDialog.OnTimeSetListener() {
                         @Override
                         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                            horaa.setText(hourOfDay+":" + minute);
+                            horaa.setText(hourOfDay + ":" + minute);
 
                         }
                     },
-                            hora,minutos,false);
+                            hora, minutos, false);
             timePickerDialog.show();
 
         }
     }
 
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
-    {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == MY_CAMERA_PERMISSION_CODE)
-        {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            {
+        if (requestCode == MY_CAMERA_PERMISSION_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(getContext(), "camera permission granted", Toast.LENGTH_LONG).show();
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                getActivity().startActivityForResult(cameraIntent, CAMERA_REQUEST);
-            }
-            else
-            {
+                Intent intent = new Intent(
+                        MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,
+                        CAMERA_REQUEST1);
+            } else {
                 Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
             }
         }
 
 
-
     }
+
+    public void TomarFoto (int codigocamara){
+        if (getActivity().checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_PERMISSION_CODE);
+        } else {
+            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent, codigocamara);
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK && data!= null)
-        {
-            Toast.makeText(getContext(), "okkkdo", Toast.LENGTH_SHORT).show();
+        super.onActivityResult(requestCode, resultCode, data);
 
-            //Bitmap photo = (Bitmap) data.getExtras().get("data");
-
-            //imagen1.setImageBitmap(photo);
+        if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST1) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imagen1.setImageBitmap(photo);
+            bsubirimg1.setVisibility(View.INVISIBLE);
         }
-        else {
-            Toast.makeText(getContext(), "invalido", Toast.LENGTH_SHORT).show();
 
+        if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST2) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imagen2.setImageBitmap(photo);
+            bsubirimg2.setVisibility(View.INVISIBLE);
         }
-        //super.onActivityResult(requestCode, resultCode, data); comment this unless you want to pass your result to the activity.
+
+        if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST3) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            imagen3.setImageBitmap(photo);
+            bsubirimg3.setVisibility(View.INVISIBLE);
+        }
+
     }
-
-
-
 }
+
+
+
+

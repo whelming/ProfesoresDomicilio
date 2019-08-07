@@ -1,27 +1,61 @@
 package com.example.educasa.MisClases.MisClasesModels;
 
-public class ContentMisClases {
-    private int id;
-    private String textodemo;
+import java.util.Date;
 
-    public ContentMisClases(int id, String textodemo) {
+public class ContentMisClases {
+
+    private String id;
+    private String categoria;
+    private String profesor;
+    private String foto;
+    private Date horafecha;
+
+    public ContentMisClases(String id, String categoria, String profesor, String foto, Date horafecha) {
         this.id = id;
-        this.textodemo = textodemo;
+        this.categoria = categoria;
+        this.profesor = profesor;
+        this.foto = foto;
+        this.horafecha = horafecha;
     }
 
-    public int getId() {
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getTextodemo() {
-        return textodemo;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setTextodemo(String textodemo) {
-        this.textodemo = textodemo;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(String profesor) {
+        this.profesor = profesor;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public Date getHorafecha() {
+        return horafecha;
+    }
+
+    public void setHorafecha(Date horafecha) {
+        this.horafecha = horafecha;
     }
 }
