@@ -8,9 +8,9 @@ public class ContentMisClases {
     private String categoria;
     private String profesor;
     private String foto;
-    private Date horafecha;
+    private String horafecha;
 
-    public ContentMisClases(String id, String categoria, String profesor, String foto, Date horafecha) {
+    public ContentMisClases(String id, String categoria, String profesor, String foto, String horafecha) {
         this.id = id;
         this.categoria = categoria;
         this.profesor = profesor;
@@ -51,11 +51,11 @@ public class ContentMisClases {
         this.foto = foto;
     }
 
-    public Date getHorafecha() {
+    public String getHorafecha() {
         return horafecha;
     }
 
-    public void setHorafecha(Date horafecha) {
+    public void setHorafecha(String horafecha) {
         this.horafecha = horafecha;
     }
 }

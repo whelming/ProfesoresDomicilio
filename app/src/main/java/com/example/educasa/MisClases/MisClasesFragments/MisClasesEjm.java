@@ -22,6 +22,7 @@ import com.example.educasa.MisClases.MisClasesModels.ContentMisClases;
 import com.example.educasa.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MisClasesEjm extends Fragment {
@@ -68,10 +69,8 @@ public class MisClasesEjm extends Fragment {
     }
 
     private void LlenaMILista() {
-        milista.add(new ContentMisClases(1,"Matemática","Carlo Magno",""));
-        milista.add(new ContentMisClases(2,"Física"));
-        milista.add(new ContentMisClases(3,"Química"));
-        milista.add(new ContentMisClases(4,"Trigonometría"));
+        milista.add(new ContentMisClases("1","Matemática","Carlo Magno","USLRLLLLL","20"));
+
     }
 
     @Override
