@@ -4,10 +4,14 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.example.educasa.MisClases.MisClasesModels.ContentMisClases;
 import com.example.educasa.R;
 
@@ -28,18 +32,30 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public final TextView nombre;
+        public final TextView categoria;
+        public final TextView profesor;
+        public final TextView horafecha;
+        public final CircleImageView foto;
+
         public final AdaptadorMisClases AdaptadorMisClases;
 
         public MyViewHolder(@NonNull View v, final AdaptadorMisClases adapter) {
             super(v);
-            nombre = v.findViewById(R.id.nombre);
+            categoria = v.findViewById(R.id.mis_clases_categoria);
+            profesor = v.findViewById(R.id.mis_clases_profesores);
+            horafecha= v.findViewById(R.id.mis_clases_fecha);
+            foto = v.findViewById(R.id.mis_clases_foto);
+
             card = v.findViewById(R.id.misclases_cardview_alumnos);
             AdaptadorMisClases = adapter;
         }
 
         public void bind(final ContentMisClases item, final OnItemClickListener listener) {
-            nombre.setText(item.getTextodemo());
+            categoria.setText(item.getCategoria());
+            profesor.setText(item.getProfesor());
+            horafecha.setText(item.getHorafecha());
+            Glide.with(context).load(item.getFoto()).into(foto);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);

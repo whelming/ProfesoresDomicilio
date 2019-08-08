@@ -69,7 +69,10 @@ public class MisClasesEjm extends Fragment {
     }
 
     private void LlenaMILista() {
-        milista.add(new ContentMisClases("1","Matemática","Carlo Magno","USLRLLLLL","20"));
+        milista.add(new ContentMisClases("1","Matemática","Carla Magno","https://www.infobae.com/new-resizer/4nEEHHVs5-II9SXlh4b4DI34iU4=/750x0/filters:quality(100)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2018/05/01181948/05-Salma-Hayek.jpg"
+                ,"05 pm | 12 Agosto "));
+        milista.add(new ContentMisClases("2","Geometria","Eduardo Perez","https://laverdadnoticias.com/__export/1565136077693/sites/laverdad/img/2019/08/06/mauricio_ochmann_defiende_a_aislinn_derbez_tras_ser_criticada_por_foto_de_instagram.jpg_1834093470.jpg"
+                ,"03:30 pm | 30 Agosto"));
 
     }
 
