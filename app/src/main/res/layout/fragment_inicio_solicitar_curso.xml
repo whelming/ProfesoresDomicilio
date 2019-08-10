@@ -17,11 +17,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="544dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -30,41 +31,48 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="52dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <Spinner
                     android:id="@+id/inicio_solicitud_curso_spinner"
                     android:layout_width="252dp"
-                    android:layout_height="38dp"
-
-                    android:layout_below="@+id/Categoria" />
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/Categoria"
+                    android:tooltipText="Materia" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/inicio_solicitar_curso_descripcion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginEnd="15dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:hint="descripción"
+                    android:hint="Descripción del curso"
                     android:inputType="textMultiLine" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <EditText
@@ -72,88 +80,63 @@
                     android:id="@+id/inicio_solicitar_curso_precio"
                     android:layout_width="251dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginEnd="8dp"
                     android:ems="18"
-                    android:inputType="numberDecimal"
-                    android:hint="Precio" />
+                    android:hint="Precio"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/solicitar_curso_fecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="fecha" />
+                    android:hint="Fecha"
+                    android:inputType="date" />
 
                 <Button
                     android:id="@+id/solicitar_curso_fecha_boton"
-                    android:layout_width="62dp"
-                    android:layout_height="39dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/calendarr"
                     android:ems="18"
-                    android:inputType="textPersonName"
-                    android:text="fecha"
                     tools:layout_editor_absoluteX="24dp"
                     tools:layout_editor_absoluteY="350dp" />
 
                 <EditText
                     android:id="@+id/inicio_solicitar_curso_hora"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="11dp"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="hora" />
+                    android:hint="Hora"
+                    android:inputType="time" />
 
                 <Button
                     android:id="@+id/inicio_solicitar_curso_hora_boton"
-                    android:layout_width="81dp"
-                    android:layout_height="39dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="hora"
-                    tools:layout_editor_absoluteX="176dp"
-                    tools:layout_editor_absoluteY="350dp" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/oclock" />
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/inicio_solicitar_curso_direccion"
-                    android:layout_width="246dp"
-                    android:layout_height="41dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Direccion" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btn_confirmar_solicitar_curso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/inicio_confirmar_solicitar_curso"
-                android:theme="@style/AppTheme.Bienvenida_Button" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
@@ -166,6 +149,8 @@
                         android:id="@+id/inicio_solicitud_foto1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:background="@color/colorPrimaryAlpha"
 
                         />
@@ -174,8 +159,14 @@
                         android:id="@+id/inicio_solicitud_btn_foto1"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
                         android:background="@drawable/photoscamera"
-                         />
+                        app:layout_constraintBottom_toBottomOf="@+id/inicio_solicitud_foto1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/inicio_solicitud_foto1" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -196,8 +187,13 @@
                         android:id="@+id/inicio_solicitud_btn_foto2"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
                         android:background="@drawable/photoscamera"
-                        />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/inicio_solicitud_foto2" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -209,19 +205,71 @@
                         android:id="@+id/inicio_solicitud_foto3"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:background="@color/colorPrimaryAlpha"/>
+                        android:background="@color/colorPrimaryAlpha" />
 
                     <Button
                         android:id="@+id/inicio_solicitud_btn_foto3"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:background="@drawable/photoscamera"
+                        android:layout_marginStart="8dp"
 
-                         />
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/photoscamera"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/inicio_solicitud_foto3" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/inicio_solicitar_curso_direccion"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/mapslocation"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/inicio_solicitar_curso_latitud"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Latitud"
+                    android:inputType="textPersonName" />
+
+                <EditText
+                    android:id="@+id/inicio_solicitar_curso_longitud"
+                    android:layout_width="110dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Longitud"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_confirmar_solicitar_curso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:text="@string/inicio_confirmar_solicitar_curso"
+                android:theme="@style/AppTheme.Bienvenida_Button" />
+
 
         </LinearLayout>
 

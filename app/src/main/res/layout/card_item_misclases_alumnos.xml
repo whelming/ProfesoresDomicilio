@@ -56,17 +56,6 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="204dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginStart="140dp"
-            android:text="Hora"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/mis_clases_fecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

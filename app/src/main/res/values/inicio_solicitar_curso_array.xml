@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="Materia">
+        <item>Seleccionar materia</item>
         <item>Comunicación</item>
         <item>Matemática</item>
         <item>Historia</item>

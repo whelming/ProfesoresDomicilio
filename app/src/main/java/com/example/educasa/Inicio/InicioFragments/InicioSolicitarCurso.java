@@ -80,7 +80,7 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
     private static final int TAKE_PICTURE = 1;
     private Uri imageUri;
     private View v;
-    private Button bsubirimg1, bsubirimg2, bsubirimg3;
+    private Button bsubirimg1, bsubirimg2, bsubirimg3,direccion;
 
     private static final int CAMERA_REQUEST1 = 1887;
     private static final int CAMERA_REQUEST2 = 1888;
@@ -109,6 +109,7 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
         bhora = v.findViewById(R.id.inicio_solicitar_curso_hora_boton);
         bfecha.setOnClickListener(this);
         bhora.setOnClickListener(this);
+        direccion=v.findViewById(R.id.inicio_solicitar_curso_direccion);
         bsubirimg1 = v.findViewById(R.id.inicio_solicitud_btn_foto1);
         bsubirimg2 = v.findViewById(R.id.inicio_solicitud_btn_foto2);
         bsubirimg3 = v.findViewById(R.id.inicio_solicitud_btn_foto3);
@@ -135,10 +136,18 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
             }
         });
 
+        direccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(getContext(),InicioMapaFragmen.class);
+               startActivity(intent);            }
+        });
+
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.Materia, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        materia.setPrompt("Seleciona una materia");
         materia.setAdapter(adapter);
 
 
@@ -170,7 +179,7 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onClick(View v) {
-        Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), "holaa", Toast.LENGTH_SHORT).show();
         if (v == bfecha) {
             final Calendar c = Calendar.getInstance();
             ano = c.get(Calendar.YEAR);
@@ -221,7 +230,7 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
                 startActivityForResult(intent,
                         CAMERA_REQUEST1);
             } else {
-                Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "camera permission", Toast.LENGTH_LONG).show();
             }
         }
 

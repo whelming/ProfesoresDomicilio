@@ -45,7 +45,6 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
             profesor = v.findViewById(R.id.mis_clases_profesores);
             horafecha= v.findViewById(R.id.mis_clases_fecha);
             foto = v.findViewById(R.id.mis_clases_foto);
-
             card = v.findViewById(R.id.misclases_cardview_alumnos);
             AdaptadorMisClases = adapter;
         }
