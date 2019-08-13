@@ -6,59 +6,86 @@
     android:layout_height="match_parent"
     tools:context=".Perfil.Perfil">
 
+    <Button
+        android:id="@+id/btn_editar_perfil"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/foto_materia"
+        android:id="@+id/perfil_foto_usuario"
         android:layout_width="186dp"
         android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="36dp"
         android:src="@drawable/fotoperfiljuego"
         app:civ_border_color="#FF000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ScrollView
-        android:id="@+id/scrollviewChat"
-        android:layout_width="0dp"
-        android:layout_height="328dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/include_perfil"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:paddingBottom="60sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/perfil_foto_usuario">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/perfil_nombres"
+            android:layout_width="118dp"
+            android:layout_height="30dp"
+            android:text="Nombres" />
+
+        <TextView
+            android:id="@+id/perfil_apellidos"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingBottom="60sp">
+            android:layout_height="wrap_content"
+            android:text="Apellidos" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="MI PERFIL Actividad..." />
+        <TextView
+            android:id="@+id/perfil_dni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DNI" />
 
-            <Button
-                android:id="@+id/btn_cerrar_sesion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="80dp"
-                android:text="@string/perfil_cerrar_sesion"
-                android:theme="@style/AppTheme.Bienvenida_Button" />
+        <TextView
+            android:id="@+id/perfil_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="telefono" />
 
-        </LinearLayout>
+        <TextView
+            android:id="@+id/perfil_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="correo" />
 
-    </ScrollView>
+        <TextView
+            android:id="@+id/perfil_direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dirección" />
+
+        <Button
+            android:id="@+id/btn_cerrar_sesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="80dp"
+            android:text="@string/perfil_cerrar_sesion"
+            android:theme="@style/AppTheme.Bienvenida_Button" />
+
+    </LinearLayout>
+
 
     <include
         android:id="@+id/include_perfil"

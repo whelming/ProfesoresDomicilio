@@ -1,0 +1,91 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.educasa.Perfil.PerfilFragments.EditarPerfil">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/inicio_solicitud_foto3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorPrimaryAlpha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/inicio_solicitud_btn_foto3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/photoscamera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:paddingBottom="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inicio_solicitud_btn_foto3">
+
+
+        <EditText
+            android:id="@+id/perfil_apellidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Apellidos" />
+
+        <EditText
+            android:id="@+id/perfil_nombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombres" />
+
+        <EditText
+            android:id="@+id/perfil_dni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DNI" />
+
+        <EditText
+            android:id="@+id/perfil_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="telefono" />
+
+        <EditText
+            android:id="@+id/perfil_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="correo" />
+
+        <EditText
+            android:id="@+id/perfil_direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dirección" />
+
+        <Button
+            android:id="@+id/btn_guardar_cambios"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+
+            android:text="@string/perfil_cerrar_sesion"
+            android:theme="@style/AppTheme.Bienvenida_Button" />
+
+    </LinearLayout>
+
+</FrameLayout>

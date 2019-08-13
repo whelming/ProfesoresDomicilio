@@ -15,6 +15,7 @@ import com.example.educasa.R;
 
 public class Perfil extends MenuBottom {
     private Button btn_cerrar_sesion;
+    //private Button btn_editar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,8 @@ public class Perfil extends MenuBottom {
 
         // INICIO ACTIVIDAD PERFIL
         btn_cerrar_sesion = findViewById(R.id.btn_cerrar_sesion);
+        //btn_editar = findViewById(R.id.btn_editar_perfil);
+
         btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(Perfil.this, Bienvenida.class);
@@ -30,6 +33,7 @@ public class Perfil extends MenuBottom {
                 startActivity(intent);
             }
         });
+
         // FIN ACTIVIDAD PERFIL
     }
     @Override
