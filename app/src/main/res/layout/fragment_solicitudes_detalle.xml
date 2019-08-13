@@ -1,52 +1,135 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.educasa.Solicitudes.SolicitudesFragments.SolicitudesDetalle">
+    tools:context="com.example.educasa.Solicitudes.SolicitudesFragments.SolicitudesDetalle"
+    tools:layout_editor_absoluteY="25dp">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/solicitudes_toolbar_detalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryAlpha"
         android:elevation="6dp"
-        android:minHeight="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:minHeight="?attr/actionBarSize" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="327dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/descripccion_detalle"
+        android:layout_width="96dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="12dp"
+        android:singleLine="false"
+        android:soundEffectsEnabled="false"
+        android:text="Descripcion: "
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_toolbar_detalle" />
+
+    <TextView
+        android:id="@+id/descripccion_detalle_text"
+        android:layout_width="287dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="4dp"
+        android:singleLine="false"
+        android:soundEffectsEnabled="false"
+        android:text="Quiero una clase de 2 horas para Aritmetica nivel II "
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripccion_detalle" />
+
+    <TextView
+        android:id="@+id/precio_detalle"
+        android:layout_width="26dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:text=" $20"
+        android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@+id/precio_detalle_descripcion"
+        app:layout_constraintTop_toBottomOf="@+id/fechahoraDetalle_text" />
+
+    <TextView
+        android:id="@+id/precio_detalle_descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="Precio:"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fechahoraDetalle_text" />
+
+    <TextView
+        android:id="@+id/fechahoraDetalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="6dp"
+        android:text="Fecha/Hora:"
+        android:textColor="@color/colorBlack"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descripccion_detalle_text" />
+
+    <TextView
+        android:id="@+id/fechahoraDetalle_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="15/10   5:00"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fechahoraDetalle" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="63dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="288dp"
+        android:layout_marginTop="116dp"
+        android:src="@drawable/libro"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/solicitudes_detalle_text1"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Detalle de la Solicitud"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/solicitudes_toolbar_detalle" />
-    <TextView
-        android:id="@+id/solicitudes_detalle_text2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Detalle de la Solicitud"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_text1" />
-    <Button
-        android:id="@+id/btn_eliminar_solicitud"
+        android:id="@+id/Foto_detalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/solicitudes_eliminar_solicitud"
-        android:theme="@style/AppTheme.Solicitudes_Button_Eliminar_Solicitud"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="120dp"
+        android:text="Foto Adjunta:"
+        android:textColor="@color/colorBlack"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_text2"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="189dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="Profesores Interesados" />
+    </android.support.design.widget.TextInputLayout>
+
 </android.support.constraint.ConstraintLayout>

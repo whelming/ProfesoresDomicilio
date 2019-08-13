@@ -40,6 +40,7 @@ public class AdaptadorInicio extends RecyclerView.Adapter<AdaptadorInicio.MyView
 
         public void bind(final ContentInicio item, final OnItemClickListener listener) {
             nombre.setText(item.getTextodemo());
+            //card.setBackgroundResource(item.getImagen_categoria());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);

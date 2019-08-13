@@ -24,7 +24,7 @@ import com.example.educasa.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SolicitudesEjm extends Fragment {
+public class    SolicitudesEjm extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     List<ContentSolicitudes> milista;
@@ -47,7 +47,8 @@ public class SolicitudesEjm extends Fragment {
         milista = new ArrayList<>();
         LlenaMILista();
 
-        recyclerView.setAdapter(new AdaptadorSolicitudes(getActivity(), milista, new AdaptadorSolicitudes.OnItemClickListener() {
+        recyclerView.setAdapter(new AdaptadorSolicitudes(getContext(), milista, new AdaptadorSolicitudes.OnItemClickListener() {
+
             @Override public void onItemClick(ContentSolicitudes item) {
                 //Toast.makeText(getActivity(), item.getId()+"", Toast.LENGTH_SHORT).show();
                 if (getActivity() != null){
@@ -67,6 +68,7 @@ public class SolicitudesEjm extends Fragment {
     }
 
     private void LlenaMILista() {
+
         milista.add(new ContentSolicitudes(1,"Tarea de Matematica"));
         milista.add(new ContentSolicitudes(2,"Proyecto de Fisica"));
         milista.add(new ContentSolicitudes(3,"Repaso para Examen de Quimica"));

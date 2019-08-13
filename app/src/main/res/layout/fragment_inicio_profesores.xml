@@ -18,11 +18,11 @@
         android:id="@+id/btn_solicitar_curso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.Bienvenida_Button"
         android:layout_marginTop="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/inicio_solicitar_curso"
-        android:theme="@style/AppTheme.Inicio_Button_Solicitar_Curso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar_profesores"/>

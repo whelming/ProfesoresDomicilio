@@ -35,11 +35,11 @@ public class InicioEjm extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_inicio_ejm, container, false);
-        Toolbar toolbar = v.findViewById(R.id.inicio_toolbar);
+       /* Toolbar toolbar = v.findViewById(R.id.inicio_toolbar);
         toolbar.setTitle("Inicio General");
         if (getActivity() != null) {
-            ((Inicio)getActivity()).setSupportActionBar(toolbar);
-        }
+          ((Inicio)getActivity()).setSupportActionBar(toolbar);
+        }*/
         recyclerView = v.findViewById(R.id.inicio_recycler);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
@@ -69,18 +69,18 @@ public class InicioEjm extends Fragment {
     }
 
     private void LlenaMILista() {
-        milista.add(new ContentInicio(1,"Matemática"));
-        milista.add(new ContentInicio(2,"Física"));
-        milista.add(new ContentInicio(3,"Programación"));
-        milista.add(new ContentInicio(4,"Computación"));
-        milista.add(new ContentInicio(5,"Trigonometría"));
-        milista.add(new ContentInicio(6,"Química Básica"));
-        milista.add(new ContentInicio(7,"Cálculo"));
-        milista.add(new ContentInicio(8,"Geometría"));
-        milista.add(new ContentInicio(9,"Comunicación"));
-        milista.add(new ContentInicio(10,"Literatura"));
-        milista.add(new ContentInicio(11,"Historia"));
-        milista.add(new ContentInicio(12,"Ciencia"));
+        milista.add(new ContentInicio(1,"Matemática",1,R.drawable.matematica));
+        milista.add(new ContentInicio(2,"Física",2,R.drawable.matematica));
+        milista.add(new ContentInicio(3,"Programación",3,R.drawable.matematica));
+        milista.add(new ContentInicio(4,"Computación",4,R.drawable.matematica));
+        milista.add(new ContentInicio(5,"Trigonometría",5,R.drawable.matematica));
+        milista.add(new ContentInicio(6,"Química Básica",6,R.drawable.matematica));
+        milista.add(new ContentInicio(7,"Cálculo",7,R.drawable.matematica));
+        milista.add(new ContentInicio(8,"Geometría",8,R.drawable.matematica));
+        milista.add(new ContentInicio(9,"Comunicación",9,R.drawable.matematica));
+        milista.add(new ContentInicio(10,"Literatura",10,R.drawable.matematica));
+        milista.add(new ContentInicio(11,"Historia",11,R.drawable.matematica));
+        milista.add(new ContentInicio(12,"Ciencia",12,R.drawable.matematica));
     }
 
     @Override
@@ -89,7 +89,7 @@ public class InicioEjm extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    @Override
+ /* @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.inicio_buscador,menu);
         MenuItem mSearch = menu.findItem(R.id.inicio_buscar);
@@ -106,5 +106,5 @@ public class InicioEjm extends Fragment {
             }
         });
         super.onCreateOptionsMenu(menu,inflater);
-    }
+    }*/
 }

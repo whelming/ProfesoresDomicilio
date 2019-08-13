@@ -1,6 +1,8 @@
 package com.example.educasa.Inicio.InicioModels;
 
 public class ContentListaProfesores {
+    String url_foto;
+
     private int id;
     private String textodemo;
 

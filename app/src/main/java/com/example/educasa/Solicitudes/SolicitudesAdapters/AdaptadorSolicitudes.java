@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.educasa.Solicitudes.SolicitudesModels.ContentSolicitudes;
 import com.example.educasa.R;
+import com.example.educasa.Solicitudes.SolicitudesModels.ContentSolicitudesDetalle;
 
 import java.util.List;
 
@@ -30,14 +31,13 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public final TextView nombre;
         public final TextView solicitudes_interesados;
-        public final AdaptadorSolicitudes AdaptadorSolicitudes;
 
         public MyViewHolder(@NonNull View v, final AdaptadorSolicitudes adapter) {
             super(v);
             nombre = v.findViewById(R.id.nombre);
             solicitudes_interesados = v.findViewById(R.id.solicitudes_interesados);
             card = v.findViewById(R.id.solicitudes_cardview_alumnos);
-            AdaptadorSolicitudes = adapter;
+
         }
 
         public void bind(final ContentSolicitudes item, final OnItemClickListener listener) {
@@ -53,7 +53,7 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = mInflater.inflate(R.layout.card_item_solicitudes_alumnos, parent, false);
+            View v = mInflater.inflate(R.layout.card_item_solicitudes_alumnos, parent, false);
         return new MyViewHolder(v, this);
     }
 

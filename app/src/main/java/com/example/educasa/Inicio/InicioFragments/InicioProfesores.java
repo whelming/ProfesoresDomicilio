@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.educasa.Bienvenida.Bienvenida;
+import com.example.educasa.Inicio.Class.DetalleProfesoresDialog;
 import com.example.educasa.Inicio.Inicio;
 import com.example.educasa.Inicio.InicioAdapters.AdaptadorProfesores;
 import com.example.educasa.Inicio.InicioModels.ContentListaProfesores;
@@ -52,15 +54,19 @@ public class InicioProfesores extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        //RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
-        //recyclerView.setLayoutManager(mLayoutManager);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        recyclerView.setLayoutManager(mLayoutManager);
         milista = new ArrayList<>();
         LlenaMILista();
 
         recyclerView.setAdapter(new AdaptadorProfesores(getActivity(), milista, new AdaptadorProfesores.OnItemClickListener() {
             @Override public void onItemClick(ContentListaProfesores item) {
                 Toast.makeText(getActivity(), item.getId()+"", Toast.LENGTH_SHORT).show();
-                new AlertDialog.Builder(getActivity())
+                //R.id.TXT_Exit:
+                DetalleProfesoresDialog dialog = new DetalleProfesoresDialog();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                dialog.show(ft, DetalleProfesoresDialog.TAG);
+                /*new AlertDialog.Builder(getActivity())
                         .setTitle(item.getTextodemo())
                         .setMessage("Persona responsable y con unagran trayectoria.\n\nEdad: 35\nCategorías:\n- Matemática\n- Física\n- Trigonometría")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -70,7 +76,7 @@ public class InicioProfesores extends Fragment {
                         })
                         //.setNegativeButton(android.R.string.no, null)
                         .setIcon(R.drawable.ic_perfil_black_24dp)
-                        .show();
+                        .show();*/
 
 
             }

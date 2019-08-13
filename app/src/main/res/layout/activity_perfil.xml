@@ -6,16 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".Perfil.Perfil">
 
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imgdetalle"
+        android:layout_width="186dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/fotoperfiljuego"
+        app:civ_border_color="#FF000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <ScrollView
         android:id="@+id/scrollviewChat"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="328dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/include_perfil"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,16 +42,48 @@
             android:paddingBottom="60sp">
 
             <TextView
+                android:id="@+id/apellido_perfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20sp"
-                android:text="MI PERFIL Actividad..." />
+                android:padding="8dp"
+                android:text="Alvarez Alvarado" />
+
+            <TextView
+                android:id="@+id/nombre_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Juan Luis" />
+
+            <TextView
+                android:id="@+id/dni_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Dni: 23345093" />
+
+            <TextView
+                android:id="@+id/correo_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="juancito12@gmail.com"
+                tools:layout_editor_absoluteX="8dp"
+                android:padding="8dp"
+                tools:layout_editor_absoluteY="370dp" />
+
+            <TextView
+                android:id="@+id/telefono_perfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Telf: 958958123" />
 
             <Button
                 android:id="@+id/btn_cerrar_sesion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="70dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="80dp"
                 android:text="@string/perfil_cerrar_sesion"
@@ -51,4 +101,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
