@@ -20,7 +20,8 @@ import com.example.educasa.R;
  * A simple {@link Fragment} subclass.
  */
 public class EditarPerfil extends Fragment {
-    private Button btn_editar;
+    private Button btn_guardar_cambios;
+
     public EditarPerfil() {
         // Required empty public constructor
     }

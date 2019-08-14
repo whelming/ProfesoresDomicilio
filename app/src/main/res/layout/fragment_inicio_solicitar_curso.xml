@@ -57,10 +57,9 @@
 
                 <EditText
                     android:id="@+id/inicio_solicitar_curso_descripcion"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Descripción del curso"
@@ -234,8 +233,8 @@
 
                 <Button
                     android:id="@+id/inicio_solicitar_curso_direccion"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/mapslocation"
                     android:ems="10"
@@ -243,16 +242,17 @@
 
                 <EditText
                     android:id="@+id/inicio_solicitar_curso_latitud"
-                    android:layout_width="110dp"
+                    android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+
                     android:ems="10"
                     android:hint="Latitud"
                     android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/inicio_solicitar_curso_longitud"
-                    android:layout_width="110dp"
+                    android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:ems="10"

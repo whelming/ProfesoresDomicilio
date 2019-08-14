@@ -3,6 +3,8 @@ package com.example.educasa;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.educasa.Perfil.PerfilFragments.PerfilEjm;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -66,7 +68,7 @@ public class MenuBottom extends AppCompatActivity {
                         startActivity(intent3);
                         return true;
                     case R.id.navigation_perfil:
-                        Intent intent4 = new Intent(contexxto, Perfil.class);
+                        Intent intent4 = new Intent(contexxto,Perfil.class);
                         intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent4);
                         return true;

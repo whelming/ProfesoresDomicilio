@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.educasa.Perfil.PerfilFragments.EditarPerfil">
 
     <!-- TODO: Update blank fragment layout -->
@@ -9,9 +10,9 @@
         android:id="@+id/inicio_solicitud_foto3"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginRight="40dp"
         android:background="@color/colorPrimaryAlpha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,10 +22,8 @@
         android:id="@+id/inicio_solicitud_btn_foto3"
         android:layout_width="40dp"
         android:layout_height="40dp"
-
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="90dp"
         android:background="@drawable/photoscamera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +31,11 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="360dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="300dp"
+        android:layout_height="380dp"
+        android:layout_marginTop="80dp"
         android:orientation="vertical"
-        android:paddingBottom="60sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/inicio_solicitud_btn_foto3">
 
 
@@ -81,9 +78,8 @@
         <Button
             android:id="@+id/btn_guardar_cambios"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-
-            android:text="@string/perfil_cerrar_sesion"
+            android:layout_height="60dp"
+            android:text="Guardar cambios"
             android:theme="@style/AppTheme.Bienvenida_Button" />
 
     </LinearLayout>
