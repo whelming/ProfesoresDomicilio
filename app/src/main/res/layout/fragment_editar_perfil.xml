@@ -1,79 +1,94 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.educasa.Perfil.PerfilFragments.EditarPerfil">
+    tools:context="com.example.educasa.Perfil.PerfilFragments.PerfilEditar">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/perfil_editar_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryAlpha"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- TODO: Update blank fragment layout -->
     <ImageView
-        android:id="@+id/inicio_solicitud_foto3"
+        android:id="@+id/perfil_editarfoto"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
         android:background="@color/colorPrimaryAlpha"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perfil_editar_toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/inicio_solicitud_btn_foto3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="90dp"
+        android:id="@+id/perfil_editar_btn_foto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/photoscamera"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/perfil_editar_toolbar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+         />
 
 
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="380dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/inicio_solicitud_btn_foto3">
+        app:layout_constraintTop_toBottomOf="@+id/perfil_editar_btn_foto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
 
         <EditText
             android:id="@+id/perfil_apellidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apellidos" />
+            android:hint="Apellidos" />
 
         <EditText
             android:id="@+id/perfil_nombres"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombres" />
+            android:hint="Nombres" />
 
         <EditText
             android:id="@+id/perfil_dni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DNI" />
+            android:hint="DNI"
+            android:inputType="number"/>
 
         <EditText
             android:id="@+id/perfil_telefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="telefono" />
+            android:hint="telefono"
+            android:inputType="number"/>
 
         <EditText
             android:id="@+id/perfil_correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="correo" />
+            android:hint="correo" />
 
         <EditText
             android:id="@+id/perfil_direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dirección" />
+            android:hint="Dirección" />
 
         <Button
             android:id="@+id/btn_guardar_cambios"
@@ -84,4 +99,4 @@
 
     </LinearLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

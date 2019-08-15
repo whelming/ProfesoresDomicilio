@@ -61,9 +61,14 @@ public class InicioProfesores extends Fragment {
             @Override public void onItemClick(ContentListaProfesores item) {
                 Toast.makeText(getActivity(), item.getId()+"", Toast.LENGTH_SHORT).show();
                 //R.id.TXT_Exit:
+
                 DetalleProfesoresDialog dialog = new DetalleProfesoresDialog();
+                Bundle args = new Bundle();
+                args.putString("idprofesor", item.getTextodemo());
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
+                dialog.setArguments(args);
                 dialog.show(ft, DetalleProfesoresDialog.TAG);
+
                 /*new AlertDialog.Builder(getActivity())
                         .setTitle(item.getTextodemo())
                         .setMessage("Persona responsable y con unagran trayectoria.\n\nEdad: 35\nCategorías:\n- Matemática\n- Física\n- Trigonometría")

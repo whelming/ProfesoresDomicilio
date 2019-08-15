@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -47,10 +48,10 @@ public class Perfil extends MenuBottom {
 
     }
 
-   /* @Override
+    @Override
     protected void onStart()  {
         super.onStart();
-        Toast.makeText(this, "START PERFIL", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -63,5 +64,16 @@ public class Perfil extends MenuBottom {
     @Override
     public void ListenerMiMenu(Context cont, int numberactivity) {
         super.ListenerMiMenu(cont,numberactivity);
-    }*/
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frag_perfil_principal);
+        fragment.onActivityResult(requestCode, resultCode, data);
+    }
 }

@@ -23,15 +23,14 @@ public class DetalleProfesoresDialog extends DialogFragment implements
     public Button cerrar, solicitarClases, descargarDoc;
     public String nombre;
     public TextView nombre_profesor;
+    public String id_profesor;
     public  DetalleProfesoresDialog(){
-
-
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        id_profesor = getArguments().getString("idprofesor");
     }
 
     @Nullable
@@ -43,8 +42,9 @@ public class DetalleProfesoresDialog extends DialogFragment implements
         solicitarClases = (Button) v.findViewById(R.id.Solicitar_clases);
         descargarDoc = (Button) v.findViewById(R.id.Descarga_documento);
         nombre_profesor = v.findViewById(R.id.nombre_profesor);
+        Toast.makeText(getContext(), id_profesor, Toast.LENGTH_SHORT).show();
 
-        nombre_profesor.setText(nombre);
+        nombre_profesor.setText(id_profesor);
         cerrar.setOnClickListener(this);
         solicitarClases.setOnClickListener(this);
         descargarDoc.setOnClickListener(this);

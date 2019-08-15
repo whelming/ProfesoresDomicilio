@@ -256,6 +256,7 @@ public class InicioSolicitarCurso extends Fragment implements View.OnClickListen
             bsubirimg1.setVisibility(View.INVISIBLE);
         }
 
+
         if (resultCode == RESULT_OK && requestCode == CAMERA_REQUEST2) {
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             imagen2.setImageBitmap(photo);
