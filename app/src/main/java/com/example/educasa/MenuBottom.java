@@ -37,8 +37,6 @@ public class MenuBottom extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(numeroactivity);
         menuItem.setChecked(true);
 
-
-
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
