@@ -14,7 +14,6 @@ public class MainActivity extends MenuBottom {
         ListenerMiMenu(this, 0);
 
         // INICIO ACTIVIDAD MAINACTIVITY
-
         // FIN ACTIVIDAD MAINACTIVITY
 
     }
