@@ -43,10 +43,13 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
         public void bind(final ContentSolicitudes item, final OnItemClickListener listener) {
             nombre.setText(item.getTextodemo());
             solicitudes_interesados.setText(item.getId()+" interesados");
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override public void onClick(View v) {
+//                    listener.onItemClick(item);
+//                }
+//            });
+            itemView.setOnClickListener((View v) -> {
                     listener.onItemClick(item);
-                }
             });
         }
     }

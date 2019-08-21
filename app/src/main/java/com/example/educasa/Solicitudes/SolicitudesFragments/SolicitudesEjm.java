@@ -47,8 +47,8 @@ public class SolicitudesEjm extends Fragment {
         milista = new ArrayList<>();
         LlenaMILista();
 
-        recyclerView.setAdapter(new AdaptadorSolicitudes(getActivity(), milista, new AdaptadorSolicitudes.OnItemClickListener() {
-            @Override public void onItemClick(ContentSolicitudes item) {
+        recyclerView.setAdapter(new AdaptadorSolicitudes(getActivity(), milista, (ContentSolicitudes item) -> {
+
                 //Toast.makeText(getActivity(), item.getId()+"", Toast.LENGTH_SHORT).show();
                 if (getActivity() != null){
                     Bundle bundle = new Bundle();
@@ -60,7 +60,7 @@ public class SolicitudesEjm extends Fragment {
                             .replace(R.id.frag_solicitudes_principal, fragmentSolicitudDetalle, "fragdetallesolicitud")
                             .addToBackStack(null).commit();
                 }
-            }
+
         }));
 
         return v;
