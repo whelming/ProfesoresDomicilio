@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/include_chat"
          />
-    <!--android:name="com.example.educasa.Chat.ChatFragments.ChatEjm"-->
+    <!--android:name="ChatEjm"-->
     <!--tools:layout="@layout/fragment_chat_ejm"-->
 
     <!--<android.support.v7.widget.Toolbar

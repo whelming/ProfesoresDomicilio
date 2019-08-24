@@ -24,7 +24,7 @@
         android:layout_height="180dp">
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/foto_materia"
+            android:id="@+id/inicio_lista_profesores_foto"
             android:layout_width="87dp"
             android:layout_height="78dp"
             android:layout_marginStart="8dp"
@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/nombre"
+            android:id="@+id/inicio_listaprofesores_nombres"
             android:layout_width="177dp"
             android:layout_height="18dp"
             android:layout_alignParentTop="true"
@@ -52,7 +52,7 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.527"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/foto_materia" />
+            card_view:layout_constraintTop_toBottomOf="@+id/inicio_lista_profesores_foto" />
 
         <RatingBar
             android:id="@+id/inicio_rating_listaprofesores"
@@ -70,11 +70,11 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="1.0"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/textView"
+            card_view:layout_constraintTop_toBottomOf="@+id/inicio_card_lista_profesores_descripcion"
             card_view:layout_constraintVertical_bias="0.2" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/inicio_card_lista_profesores_descripcion"
             android:layout_width="117dp"
             android:layout_height="15dp"
             android:layout_marginStart="12dp"
@@ -84,7 +84,7 @@
             android:textSize="12dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/nombre" />
+            card_view:layout_constraintTop_toBottomOf="@+id/inicio_listaprofesores_nombres" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

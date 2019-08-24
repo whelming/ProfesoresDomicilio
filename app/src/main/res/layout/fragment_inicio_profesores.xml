@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.educasa.Inicio.InicioFragments.InicioProfesores">
+    tools:context=".Inicio.InicioFragments.InicioProfesores">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/inicio_toolbar_profesores"
         android:layout_width="match_parent"

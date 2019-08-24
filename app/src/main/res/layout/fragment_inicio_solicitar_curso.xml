@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.educasa.Inicio.InicioFragments.InicioSolicitarCurso">
+    tools:context=".Inicio.InicioFragments.InicioSolicitarCurso">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/inicio_toolbar_solicitar_curso"

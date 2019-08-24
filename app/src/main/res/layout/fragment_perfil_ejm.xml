@@ -44,12 +44,6 @@
             android:text="Nombres" />
 
         <TextView
-            android:id="@+id/perfil_apellidos"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:text="Apellidos" />
-
-        <TextView
             android:id="@+id/perfil_dni"
             android:layout_width="200dp"
             android:layout_height="30dp"

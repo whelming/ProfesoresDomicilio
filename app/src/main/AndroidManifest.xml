@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.educasa">
+    package="com.tdlzgroup.educasa">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    
     <uses-permission android:name="android.permission.CAMERA" />
-    
 
     <application
+        android:name=".Globales"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,17 +19,17 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Solicitudes.Solicitudes" android:launchMode="singleInstance"/>
         <activity android:name=".Perfil.Perfil" android:launchMode="singleInstance"/>
-        <activity android:name=".Inicio.InicioFragments.InicioMapaFragmen" android:launchMode="singleInstance"/>
+        <activity android:name=".Inicio.InicioFragments.InicioMapaFragmen" />
         <activity android:name=".MisClases.MisClases" android:launchMode="singleInstance"/>
         <activity android:name=".Inicio.Inicio" android:launchMode="singleInstance"/>
         <activity android:name=".Chat.Chat" android:launchMode="singleInstance"/>
-        <activity android:name=".Bienvenida.Bienvenida" android:launchMode="singleInstance">
+        <activity android:name=".Bienvenida.Bienvenida">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:launchMode="singleInstance">
+        <activity android:name=".MainActivity">
 
         </activity>
     </application>
