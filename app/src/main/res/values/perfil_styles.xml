@@ -15,4 +15,17 @@
     <style name="AppTheme.Perfil_Nombre2" parent="Base.Widget.AppCompat.Button">
         <item name="colorButtonNormal">@color/colorWhite</item>
     </style>
+
+    <style name="AppTheme.Perfil_Textos_Lista" parent="android:Theme.Light">
+        <item name="android:textAppearance">@style/AppTheme.Perfil_Textos</item>
+    </style>
+
+    <style name="AppTheme.Perfil_Textos" parent="@android:style/TextAppearance">
+        <item name="android:textSize">16dp</item>
+        <item name="android:color">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
 </resources>

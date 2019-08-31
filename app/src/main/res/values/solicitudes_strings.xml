@@ -2,8 +2,14 @@
 <resources>
     <!-- Textos de solicitudes -->
 
+    <string name="solicitudes_title_descripcion">Descripción:</string>
+    <string name="solicitudes_descripcion">Tarea de Matematica.</string>
+    <string name="solicitudes_title_fechahora">Fecha y Hora:</string>
+    <string name="solicitudes_fechahora">15/09 3:30pm</string>
+    <string name="solicitudes_title_precio">Precio:</string>
+    <string name="solicitudes_precio">S/40 x hora.</string>
+    <string name="solicitudes_title_foto">Foto Adjunta:</string>
+    <string name="solicitudes_profesores_interesados">Profesores Interesados:</string>
     <string name="solicitudes_eliminar_solicitud">Eliminar Solicitud</string>
-    <string name="solicitudes_ejemplo_texto">Tu texto a usar.</string>
-    <string name="solicitudes_ejemplo_texto2">Tu texto a usar 2.</string>
-    <string name="solicitudes_ejemplo_texto3">Tu texto a usar 3.</string>
+
 </resources>

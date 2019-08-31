@@ -1,5 +1,6 @@
 package com.tdlzgroup.educasa.MisClases.MisClasesFragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,6 +33,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.tdlzgroup.educasa.Globales;
 import com.tdlzgroup.educasa.Inicio.Class.DetalleProfesoresDialog;
+import com.tdlzgroup.educasa.Inicio.Inicio;
 import com.tdlzgroup.educasa.Inicio.InicioAdapters.AdaptadorProfesores;
 import com.tdlzgroup.educasa.Inicio.InicioModels.ContentListaProfesores;
 import com.tdlzgroup.educasa.MisClases.MisClases;
@@ -59,14 +62,14 @@ public class MisClasesEjm extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_mis_clases_ejm, container, false);
         Toolbar toolbar = v.findViewById(R.id.misclases_toolbar);
-        toolbar.setTitle("Mis Clases General");
+        toolbar.setTitle("Mis Clases");
         if (getActivity() != null) {
             ((MisClases)getActivity()).setSupportActionBar(toolbar);
         }
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         //IDAlumno = ((Globales) getActivity().getApplicationContext()).getIDUsuario();
         IDAlumno = currentFirebaseUser.getUid();
-        Toast.makeText(getContext(), ""+IDAlumno, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), ""+IDAlumno, Toast.LENGTH_SHORT).show();
 
         db = FirebaseFirestore.getInstance();
         milista = new ArrayList<>();
@@ -75,12 +78,13 @@ public class MisClasesEjm extends Fragment {
         if (getActivity() != null) {
           ((Inicio)getActivity()).setSupportActionBar(toolbar);
         }*/
-        dialog = new SpotsDialog.Builder()
+
+/*        dialog = new SpotsDialog.Builder()
                 .setContext(getContext())
                 .setMessage("Cargando...")
                 .setCancelable(false)
                 .build();
-        dialog.show();
+        dialog.show();*/
 
         recyclerView = v.findViewById(R.id.misclases_recycler);
         recyclerView.setHasFixedSize(true);
@@ -115,13 +119,21 @@ public class MisClasesEjm extends Fragment {
         if (milista.size() > 0){
             milista.clear();
         }
+        ((MisClases)getActivity()).showLoader();
+
         db.collection("alumnos/"+IDAlumno+"/misclases")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            if (task.getResult().isEmpty()){
+                                Toast.makeText(getContext(), "No tienes Clases", Toast.LENGTH_SHORT).show();
+                                ((MisClases)getActivity()).hideLoader();
+                            }
+
                             for (QueryDocumentSnapshot document : task.getResult()) {
+
                                 ContentMisClases misclases = new ContentMisClases(
                                         document.getId(),
                                         //document.getDocumentReference("materia"),
@@ -129,6 +141,8 @@ public class MisClasesEjm extends Fragment {
                                 );
 
                                 DocumentReference materiaRef = document.getDocumentReference("materia");
+                                DocumentReference profesorRef = document.getDocumentReference("profesor");
+
                                 materiaRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -136,40 +150,18 @@ public class MisClasesEjm extends Fragment {
                                             DocumentSnapshot document = task.getResult();
                                             if (document.exists()) {
                                                 misclases.setNombremateria(document.getString("nombre"));
-                                                //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                            } else {
-                                                //Log.d(TAG, "No such document");
-                                            }
-                                        } else {
-                                            //Log.d(TAG, "get failed with ", task.getException());
-                                        }
-                                    }
-                                });
-                                DocumentReference profesorRef = document.getDocumentReference("profesor");
-                                profesorRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                misclases.setUrlfoto(document.getString("urlfoto"));
-                                                misclases.setNombreprofesor(document.getString("nombres"));
-                                                //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                            } else {
-                                                //Log.d(TAG, "No such document");
-                                            }
-                                        } else {
-                                            //Log.d(TAG, "get failed with ", task.getException());
-                                        }
-                                    }
-                                });
-
-                                milista.add(misclases);
-                                //Log.d("CHAAAAAA",  + " => " + document.getData());
-                            }
-                            recyclerView.setAdapter(new AdaptadorMisClases(getActivity(), milista, new AdaptadorMisClases.OnItemClickListener() {
-                                @Override public void onItemClick(ContentMisClases item) {
-                                    Toast.makeText(getActivity(), item.getFechahora()+"", Toast.LENGTH_SHORT).show();
+                                                profesorRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                                        if (task.isSuccessful()) {
+                                                            DocumentSnapshot document = task.getResult();
+                                                            if (document.exists()) {
+                                                                misclases.setUrlfoto(document.getString("urlfoto"));
+                                                                misclases.setNombreprofesor(document.getString("nombres"));
+                                                                milista.add(misclases);
+                                                                recyclerView.setAdapter(new AdaptadorMisClases(getActivity(), milista, new AdaptadorMisClases.OnItemClickListener() {
+                                                                    @Override public void onItemClick(ContentMisClases item) {
+                                                                        //Toast.makeText(getActivity(), item.getFechahora()+"", Toast.LENGTH_SHORT).show();
                                     /*DetalleProfesoresDialog dialog = new DetalleProfesoresDialog();
                                     Bundle args = new Bundle();
                                     args.putString("idprofesor", item.getId());
@@ -177,19 +169,39 @@ public class MisClasesEjm extends Fragment {
                                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                                     dialog.setArguments(args);
                                     dialog.show(ft, DetalleProfesoresDialog.TAG);*/
-                                }
-                            }));
-                            //Log.d("DATOS CARGADOS",  "DATOS CARGADOS OK ");
+                                                                    }
+                                                                }));
+                                                                //update vista recycler
 
-                            dialog.dismiss();
+                                                                recyclerView.post(() -> recyclerView.smoothScrollToPosition(1));
+                                                                ((MisClases)getActivity()).hideLoader();
 
+                                                                //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                                                            } else {
+                                                                //Log.d(TAG, "No such document");
+                                                            }
+                                                        } else {
+                                                            //Log.d(TAG, "get failed with ", task.getException());
+                                                        }
+                                                    }
+                                                });
+
+                                            } else {
+                                                //Log.d(TAG, "No such document");
+                                            }
+                                        } else {
+                                            //Log.d(TAG, "get failed with ", task.getException());
+                                        }
+                                    }
+                                });
+                                //Log.d("CHAAAAAA",  + " => " + document.getData());
+                            }
                         }
                         else {
                             Log.w("EEEEEE", "Error getting documents.", task.getException());
                         }
                     }
                 });
-
     }
 
     @Override

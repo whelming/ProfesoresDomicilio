@@ -7,18 +7,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.tdlzgroup.educasa.MenuBottom;
 import com.tdlzgroup.educasa.Perfil.PerfilFragments.PerfilEjm;
 import com.tdlzgroup.educasa.R;
 
 public class Perfil extends MenuBottom {
-
+    public LinearLayout loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
+        loader = findViewById(R.id.perfil_loader_container);
 
         PerfilEjm fragmentprincipal = new PerfilEjm();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -40,6 +44,13 @@ public class Perfil extends MenuBottom {
         // FIN ACTIVIDAD PERFIL
 
 
+    }
+
+    public void showLoader(){
+        loader.setVisibility(View.VISIBLE);
+    }
+    public void hideLoader(){
+        loader.setVisibility(View.GONE);
     }
 
     @Override

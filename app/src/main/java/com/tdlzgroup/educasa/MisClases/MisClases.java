@@ -3,6 +3,10 @@ package com.tdlzgroup.educasa.MisClases;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.tdlzgroup.educasa.MenuBottom;
@@ -10,15 +14,14 @@ import com.tdlzgroup.educasa.MisClases.MisClasesFragments.MisClasesEjm;
 import com.tdlzgroup.educasa.R;
 
 public class MisClases extends MenuBottom {
+    public LinearLayout loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_clases);
-
+        loader = findViewById(R.id.misclases_loader_container);
         // INICIO ACTIVIDAD MISCLASES
-
-        Toast.makeText(this, "CREATE", Toast.LENGTH_SHORT).show();
 
         MisClasesEjm fragmentprincipal = new MisClasesEjm();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -26,6 +29,12 @@ public class MisClases extends MenuBottom {
         transaction.commit();
 
         // FIN ACTIVIDAD MISCLASES
+    }
+    public void showLoader(){
+        loader.setVisibility(View.VISIBLE);
+    }
+    public void hideLoader(){
+        loader.setVisibility(View.GONE);
     }
 
     @Override
@@ -37,45 +46,19 @@ public class MisClases extends MenuBottom {
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        String myString = savedInstanceState.getString("message");
-        //mitexto.setText(myString);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Toast.makeText(this, "START MIS CLASES", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Toast.makeText(this, "STOP", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "RESUME", Toast.LENGTH_SHORT).show();
         ListenerMiMenu(this, 1);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this, "PAUSE", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "DESTROY", Toast.LENGTH_SHORT).show();
     }
 
     // LISTENER MENU BOTTOM NAVIGATION
     @Override
     public void ListenerMiMenu(Context cont, int numberactivity) {
         super.ListenerMiMenu(cont,numberactivity);
+
     }
 
     @Override

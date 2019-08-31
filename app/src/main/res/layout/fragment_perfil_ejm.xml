@@ -3,33 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Perfil.Perfil">
+    android:layout_gravity="center"
+    android:background="@drawable/fondo_blanco_ok_2"
+    tools:context=".Perfil.PerfilFragments.PerfilEjm">
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_editar_perfil"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_margin="12dp"
+        android:layout_gravity="top|right"
+        tools:style="@style/UnelevatedButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:tint="@color/colorWhite"
+        app:srcCompat="@drawable/edit"/>
+
+<!--    <Button
+        android:id="@+id/btn_editar_perfil"
+        android:layout_width="44dp"
+        android:layout_height="50dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginEnd="28dp"
         android:background="@drawable/edit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        />-->
+    <!--style="@style/AppTheme.RoundedCornerMaterialButton"-->
     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/perfil_foto_usuario"
         android:layout_width="186dp"
         android:layout_height="150dp"
-        android:layout_marginStart="96dp"
         android:layout_marginTop="44dp"
-        android:src="@drawable/fotoperfiljuego"
+        android:src="@drawable/user"
         app:civ_border_color="#FF000000"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
     <LinearLayout
         android:layout_width="290dp"
-        android:layout_height="307dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:orientation="vertical"
         android:paddingBottom="60sp"
@@ -39,32 +56,53 @@
 
         <TextView
             android:id="@+id/perfil_nombres"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            android:textAlignment="center"
+            style="@style/AppTheme.Perfil_Textos_Lista"
             android:text="Nombres" />
 
         <TextView
             android:id="@+id/perfil_dni"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:paddingBottom="20dp"
+            style="@style/AppTheme.Perfil_Textos_Lista"
             android:text="DNI" />
 
         <TextView
             android:id="@+id/perfil_telefono"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            style="@style/AppTheme.Perfil_Textos_Lista"
+            android:drawableStart="@drawable/ic_perfil_phone_24dp"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:drawablePadding="8dp"
             android:text="telefono" />
 
         <TextView
             android:id="@+id/perfil_correo"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            style="@style/AppTheme.Perfil_Textos_Lista"
+            android:drawableStart="@drawable/ic_perfil_mail_24dp"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:drawablePadding="8dp"
             android:text="correo" />
 
         <TextView
             android:id="@+id/perfil_direccion"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            style="@style/AppTheme.Perfil_Textos_Lista"
+            android:drawableStart="@drawable/ic_perfil_direccion_24dp"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:drawablePadding="8dp"
             android:text="Dirección" />
 
         <Button

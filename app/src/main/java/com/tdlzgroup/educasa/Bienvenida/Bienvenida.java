@@ -1,28 +1,61 @@
 package com.tdlzgroup.educasa.Bienvenida;
 
+import android.app.AlertDialog;
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.tdlzgroup.educasa.Inicio.Inicio;
 import com.tdlzgroup.educasa.MainActivity;
 import com.tdlzgroup.educasa.R;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import dmax.dialog.SpotsDialog;
 
 public class Bienvenida extends AppCompatActivity {
     private Button btn_iniciar_sesion;
     private Button btn_crear_cuenta;
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    private FirebaseUser user;
+    private FirebaseFirestore db;
+
+    private static final int MY_REQUEST_CODE = 7100;
+    private FirebaseAuth mAuth;
+    List<AuthUI.IdpConfig> providers;
+
+    public AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +63,6 @@ public class Bienvenida extends AppCompatActivity {
         setContentView(R.layout.activity_bienvenida);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
@@ -39,28 +71,157 @@ public class Bienvenida extends AppCompatActivity {
         if (getIntent().getBooleanExtra("EXIT", false)) {
             //finish();
             //finishAffinity();
-            Toast.makeText(this, "exit toast", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "exit toast", Toast.LENGTH_SHORT).show();
         }
+
+        providers = Arrays.asList(
+                new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.PhoneBuilder().build()
+        );
 
         btn_iniciar_sesion = findViewById(R.id.btn_iniciar_sesion);
         //btn_crear_cuenta = findViewById(R.id.btn_crear_cuenta);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        dialog = new SpotsDialog.Builder()
+                .setContext(this)
+                .setMessage("Cargando Perfil...")
+                .setCancelable(false)
+                .build();
+
         btn_iniciar_sesion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(Bienvenida.this, MainActivity.class);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                if (user != null) {
+                    dialog.show();
+                    getTipoUsuario(user);
+                }
+                else {
+                    showSignInOptions();
+                }
             }
         });
 
-/*        btn_crear_cuenta.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Toast.makeText(Bienvenida.this, "CRAR CUENTA", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-
         // FIN ACTIVIDAD BIENVENIDA
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        db = FirebaseFirestore.getInstance();
+    }
+
+    private void CerrarSesion() {
+        AuthUI.getInstance()
+                .signOut(Bienvenida.this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        showSignInOptions();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
+    }
+    private void isTipoUsuario(String tipouser){
+        Intent intent = new Intent(getApplicationContext(), Inicio.class);
+        intent.putExtra("TIPOUSUARIO", tipouser);
+        startActivity(intent);
+    }
+
+    private void getTipoUsuario(FirebaseUser user){
+
+        String emailuser = user.getEmail();
+
+        CollectionReference alumnos = db.collection("alumnos");
+        CollectionReference profesores = db.collection("profesores");
+
+        Query queryalumno = alumnos.whereEqualTo("usuario", emailuser);
+        Query queryprofesor = profesores.whereEqualTo("usuario", emailuser);
+
+        queryalumno.get().addOnCompleteListener((new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    if(!task.getResult().isEmpty()){
+                        isTipoUsuario("alumnos");
+                    }
+                    else {
+                        queryprofesor.get().addOnCompleteListener((new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> taask) {
+                                if (taask.isSuccessful()) {
+                                    if(!taask.getResult().isEmpty()){
+                                        isTipoUsuario("profesores");
+                                    }
+                                    else {
+                                        // CREAR TIPO PERFIL
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }}
+                        }));
+                    }
+                }
+            }
+
+
+        }));
+
+/*            queryprofesor.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if(task.getResult().size()>0){
+                        Toast.makeText(this, "PROFESOR", Toast.LENGTH_SHORT).show();
+                        tipo[0] = "profesor";
+                    }
+                } else {
+                    Log.w("EEEEEE", "Error getting documents.", task.getException());
+                }
+            });*/
+
+/*            db.collection("alumnos")
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Log.d("OKOKOKOK", document.getId() + " => " + document.getData());
+                            }
+                        } else {
+                            Log.w("EEEEEE", "Error getting documents.", task.getException());
+                        }
+                    });*/
+
+
+    }
+    private void showSignInOptions(){
+        //dialog.show();
+        startActivityForResult(
+                AuthUI.getInstance().createSignInIntentBuilder()
+                        .setAvailableProviders(providers)
+                        .setTheme(R.style.MyThemeFireAuth)
+                        .setIsSmartLockEnabled(false)
+                        .build(), MY_REQUEST_CODE
+        );
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == MY_REQUEST_CODE) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+            if (resultCode == RESULT_OK) {
+                dialog.show();
+                user = FirebaseAuth.getInstance().getCurrentUser();
+                getTipoUsuario(user);
+            }
+
+            else {
+                //Toast.makeText(this, ""+response.getError().getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {

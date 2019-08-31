@@ -15,13 +15,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.core.OrderBy;
 import com.tdlzgroup.educasa.Inicio.Class.DetalleProfesoresDialog;
 import com.tdlzgroup.educasa.Inicio.Inicio;
 import com.tdlzgroup.educasa.Inicio.InicioAdapters.AdaptadorInicio;
@@ -45,7 +48,7 @@ public class InicioProfesores extends Fragment {
     private Button btnSolicitarCurso;
 
     private FirebaseFirestore db;
-    public AlertDialog dialog;
+
     RecyclerView.LayoutManager mlayoutManager;
 
     public InicioProfesores() {}
@@ -55,6 +58,7 @@ public class InicioProfesores extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_inicio_profesores, container, false);
         btnSolicitarCurso = v.findViewById(R.id.btn_solicitar_curso);
+
 
         IDMateria = getArguments().getString("IDMateria");
         bundlerecibido = getArguments().getString("NombreMateria");
@@ -74,12 +78,7 @@ public class InicioProfesores extends Fragment {
         if (getActivity() != null) {
           ((Inicio)getActivity()).setSupportActionBar(toolbar);
         }*/
-        dialog = new SpotsDialog.Builder()
-                .setContext(getContext())
-                .setMessage("Cargando...")
-                .setCancelable(false)
-                .build();
-        dialog.show();
+
 
         recyclerView = v.findViewById(R.id.inicio_profesores_recycler);
         recyclerView.setHasFixedSize(true);
@@ -115,20 +114,27 @@ public class InicioProfesores extends Fragment {
         if (milista.size() > 0){
             milista.clear();
         }
-        db.collection("materias/"+IDMateria+"/listaprofesores")
+
+        ((Inicio)getActivity()).showLoader();
+
+        //db.collection("materias/"+IDMateria+"/listaprofesores")
+        db.collection("profesores")
+                .whereArrayContains("materias", bundlerecibido)
+                .orderBy("puntuacion", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                ContentListaProfesores materia = new ContentListaProfesores(
-                                        document.getString("ID"),
-                                        document.getString("urlfoto"),
-                                        document.getString("nombre"),
-                                        document.getDouble("puntuacion")
-                                );
+                                    ContentListaProfesores materia = new ContentListaProfesores(
+                                            document.getString("ID"),
+                                            document.getString("urlfoto"),
+                                            document.getString("nombres"),
+                                            document.getDouble("puntuacion")
+                                    );
                                 milista.add(materia);
+
                                 //Log.d("CHAAAAAA",  + " => " + document.getData());
                             }
                             recyclerView.setAdapter(new AdaptadorProfesores(getActivity(), milista, new AdaptadorProfesores.OnItemClickListener() {
@@ -145,7 +151,7 @@ public class InicioProfesores extends Fragment {
                             }));
                             Log.d("DATOS CARGADOS",  "DATOS CARGADOS OK ");
 
-                            dialog.dismiss();
+                            ((Inicio)getActivity()).hideLoader();
 
                         }
                         else {

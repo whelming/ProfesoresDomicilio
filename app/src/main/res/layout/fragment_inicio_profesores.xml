@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Inicio.InicioFragments.InicioProfesores">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/inicio_toolbar_profesores"
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/inicio_profesores_recycler"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="30dp"
         android:layout_marginStart="8dp"

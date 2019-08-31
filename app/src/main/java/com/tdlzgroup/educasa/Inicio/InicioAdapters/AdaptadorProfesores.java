@@ -51,10 +51,9 @@ public class AdaptadorProfesores extends RecyclerView.Adapter<AdaptadorProfesore
         }
 
         public void bind(final ContentListaProfesores item, final OnItemClickListener listener) {
-            Glide.with(context).load(item.getUrl_foto()).into(imagencircular);
+            Glide.with(context).load(item.getUrl_foto()).centerCrop().placeholder(R.drawable.user).into(imagencircular);
             nombres.setText(item.getNombres());
             puntaje.setRating( (float) item.getPuntuacion());
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);

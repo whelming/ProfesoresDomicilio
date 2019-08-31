@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.tdlzgroup.educasa.MenuBottom;
@@ -18,16 +20,15 @@ public class Solicitudes extends MenuBottom {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    public LinearLayout loader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitudes);
-        //ListenerMiMenu(this,3);
+        loader = findViewById(R.id.solicitudes_loader_container);
 
         // INICIO ACTIVIDAD SOLICITUDES
-        Toast.makeText(this, "CREATE SOLICITUDES", Toast.LENGTH_SHORT).show();
-
         SolicitudesEjm fragmentprincipal = new SolicitudesEjm();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frag_solicitudes_principal, fragmentprincipal);
@@ -35,10 +36,16 @@ public class Solicitudes extends MenuBottom {
         // FIN ACTIVIDAD SOLICITUDES
     }
 
+    public void showLoader(){
+        loader.setVisibility(View.VISIBLE);
+    }
+    public void hideLoader(){
+        loader.setVisibility(View.GONE);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
-        Toast.makeText(this, "START SOLICITUD", Toast.LENGTH_SHORT).show();
     }
 
     @Override

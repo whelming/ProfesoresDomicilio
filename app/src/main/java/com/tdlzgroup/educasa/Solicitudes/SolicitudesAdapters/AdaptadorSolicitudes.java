@@ -28,21 +28,24 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public final TextView nombre;
-        public final TextView solicitudes_interesados;
+        public final TextView titulo;
+        public final TextView interesados;
+        public final TextView fechahora;
         public final AdaptadorSolicitudes AdaptadorSolicitudes;
 
         public MyViewHolder(@NonNull View v, final AdaptadorSolicitudes adapter) {
             super(v);
-            nombre = v.findViewById(R.id.nombre);
-            solicitudes_interesados = v.findViewById(R.id.solicitudes_interesados);
+            titulo = v.findViewById(R.id.solicitudes_card_titulo);
+            interesados = v.findViewById(R.id.solicitudes_card_interesados);
+            fechahora = v.findViewById(R.id.solicitudes_card_fechahora);
             card = v.findViewById(R.id.solicitudes_cardview_alumnos);
             AdaptadorSolicitudes = adapter;
         }
 
         public void bind(final ContentSolicitudes item, final OnItemClickListener listener) {
-            nombre.setText(item.getTextodemo());
-            solicitudes_interesados.setText(item.getId()+" interesados");
+            titulo.setText(item.getTitulo());
+            interesados.setText((int)item.getInteresados()+"");
+            fechahora.setText(item.getFechahora().toDate()+"");
 //            itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override public void onClick(View v) {
 //                    listener.onItemClick(item);

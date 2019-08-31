@@ -1,27 +1,50 @@
 package com.tdlzgroup.educasa.Solicitudes.SolicitudesModels;
 
-public class ContentSolicitudes {
-    private int id;
-    private String textodemo;
 
-    public ContentSolicitudes(int id, String textodemo) {
+import com.google.firebase.Timestamp;
+
+public class ContentSolicitudes {
+    private String id;
+    private String titulo;
+    private double interesados;
+    private Timestamp fechahora;
+
+    public ContentSolicitudes(String id, String titulo, double interesados, Timestamp fechahora) {
         this.id = id;
-        this.textodemo = textodemo;
+        this.titulo = titulo;
+        this.interesados = interesados;
+        this.fechahora = fechahora;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getTextodemo() {
-        return textodemo;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setTextodemo(String textodemo) {
-        this.textodemo = textodemo;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public double getInteresados() {
+        return interesados;
+    }
+
+    public void setInteresados(double interesados) {
+        this.interesados = interesados;
+    }
+
+    public Timestamp getFechahora() {
+        return fechahora;
+    }
+
+    public void setFechahora(Timestamp fechahora) {
+        this.fechahora = fechahora;
     }
 }

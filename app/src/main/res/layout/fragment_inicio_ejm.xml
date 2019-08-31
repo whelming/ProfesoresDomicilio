@@ -1,9 +1,11 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryAlpha"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".Inicio.InicioFragments.InicioEjm">
 
     <ImageView
@@ -13,39 +15,27 @@
         android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
         android:src="@drawable/kraken"
-        app:layout_constraintBottom_toTopOf="@+id/inicio_recycler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+    />
 
     <SearchView
         android:id="@+id/inicio_toolbar"
         android:layout_width="309dp"
         android:layout_height="56dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="-42dp"
         android:queryHint="Buscar"
         android:background="@color/colorWhite"
         android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/inicio_recycler"
-        android:layout_width="0dp"
-        android:layout_height="415dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginEnd="7dp"
+        android:layout_width="360dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="6dp"
         android:scrollbars="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar" />
+    />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

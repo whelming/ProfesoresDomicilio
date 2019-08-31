@@ -24,7 +24,7 @@
         android:layout_height="124dp">
 
         <TextView
-            android:id="@+id/nombre"
+            android:id="@+id/solicitudes_card_titulo"
             android:layout_width="146dp"
             android:layout_height="38dp"
             android:layout_alignParentTop="true"
@@ -37,7 +37,7 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/solicitudes_horafecha"
+            android:id="@+id/solicitudes_card_fechahora"
             android:layout_width="146dp"
             android:layout_height="38dp"
             android:layout_alignParentTop="true"
@@ -49,7 +49,7 @@
             card_view:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/solicitudes_interesados"
+            android:id="@+id/solicitudes_card_interesados"
             android:layout_width="146dp"
             android:layout_height="38dp"
             android:layout_alignParentTop="true"

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Solicitudes.SolicitudesFragments.SolicitudesDetalle">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/solicitudes_toolbar_detalle"
         android:layout_width="match_parent"
@@ -14,40 +15,100 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/solicitudes_title_descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitudes_title_descripcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_toolbar_detalle"
+        />
+    <TextView
+        android:id="@+id/solicitudes_descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitudes_descripcion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_title_descripcion"
+        />
+    <TextView
+        android:id="@+id/solicitudes_title_fechahora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitudes_title_fechahora"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_descripcion"
+        />
+    <TextView
+        android:id="@+id/solicitudes_fechahora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitudes_fechahora"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_title_fechahora"
+        />
+    <TextView
+        android:id="@+id/solicitudes_title_precio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitudes_title_precio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_fechahora"
+        />
+    <TextView
+        android:id="@+id/solicitudes_precio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitudes_precio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_title_precio"
+        />
+    <TextView
+        android:id="@+id/solicitudes_title_foto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solicitudes_title_foto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_precio"
+        />
+    <ImageView
+        android:id="@+id/solicitudes_foto"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_title_foto"
+        />
 
-    <TextView
-        android:id="@+id/solicitudes_detalle_text1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/solicitudes_profesores_interesados_recycler"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Detalle de la Solicitud"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/solicitudes_toolbar_detalle" />
-    <TextView
-        android:id="@+id/solicitudes_detalle_text2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Detalle de la Solicitud"
-        android:theme="@style/AppTheme.Bienvenida_Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_text1" />
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_foto"
+        app:layout_constraintBottom_toTopOf="@+id/btn_eliminar_solicitud"/>
     <Button
         android:id="@+id/btn_eliminar_solicitud"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:theme="@style/AppTheme.Bienvenida_Button"
+        android:layout_marginBottom="30dp"
         android:text="@string/solicitudes_eliminar_solicitud"
-        android:theme="@style/AppTheme.Solicitudes_Button_Eliminar_Solicitud"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_text2"/>
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

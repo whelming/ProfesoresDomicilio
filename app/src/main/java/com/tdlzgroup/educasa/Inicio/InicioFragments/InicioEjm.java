@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,11 +36,13 @@ import dmax.dialog.SpotsDialog;
 public class InicioEjm extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    List<ContentInicio> milista;
+    private List<ContentInicio> milista;
     private FirebaseFirestore db;
-    public AlertDialog dialog;
-    RecyclerView.LayoutManager mlayoutManager;
-    View v;
+    private RecyclerView.LayoutManager mlayoutManager;
+    private View v;
+    private String Direccion = "DIRECCION";
+    private float initialX,initialY;
+    static final int MIN_DISTANCE = 125;
 
     public InicioEjm() {}
 
@@ -52,12 +56,6 @@ public class InicioEjm extends Fragment {
         if (getActivity() != null) {
           ((Inicio)getActivity()).setSupportActionBar(toolbar);
         }*/
-        dialog = new SpotsDialog.Builder()
-                .setContext(getContext())
-                .setMessage("Cargando...")
-                .setCancelable(false)
-                .build();
-        dialog.show();
 
         recyclerView = v.findViewById(R.id.inicio_recycler);
         recyclerView.setHasFixedSize(true);
@@ -74,6 +72,7 @@ public class InicioEjm extends Fragment {
         if (milista.size() > 0){
             milista.clear();
         }
+        ((Inicio)getActivity()).showLoader();
         db.collection("materias")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -89,7 +88,7 @@ public class InicioEjm extends Fragment {
                                 milista.add(materia);
                                 //Log.d("CHAAAAAA",  + " => " + document.getData());
                             }
-                            AdaptadorInicio miadaptador = new AdaptadorInicio(getActivity(), milista, new AdaptadorInicio.OnItemClickListener() {
+                            AdaptadorInicio miadaptador = new AdaptadorInicio(getContext(), milista, new AdaptadorInicio.OnItemClickListener() {
                                 @Override public void onItemClick(ContentInicio item) {
                                     //Toast.makeText(getActivity(), item.getId()+"", Toast.LENGTH_SHORT).show();
                                     if (getActivity() != null){
@@ -105,16 +104,27 @@ public class InicioEjm extends Fragment {
                                     }
                                 }
                             });
-                            //miadaptador.notifyDataSetChanged();
-                            recyclerView.setAdapter(miadaptador);
 
+                            //miadaptador.notifyDataSetChanged();
+                            //recyclerView.invalidate();
+                            recyclerView.setAdapter(miadaptador);
+                            //update vista recycler
+                            recyclerView.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    recyclerView.smoothScrollToPosition(1);
+                                }
+                            });
+                            ((Inicio)getActivity()).hideLoader();
 
                             Log.d("DATOS CARGADOS",  "DATOS CARGADOS OK ");
 
-                            dialog.dismiss();
+
 
                         }
                         else {
+                            ((Inicio)getActivity()).hideLoader();
+
                             Log.w("EEEEEE", "Error getting documents.", task.getException());
                         }
                     }

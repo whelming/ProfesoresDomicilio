@@ -2,9 +2,9 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/inicio_cardview_listaprofesores_alumnos"
+    android:id="@+id/solicitudes_cardview_profesores_interesados"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="210dp"
     android:layout_marginStart="6dp"
     android:layout_marginTop="6dp"
     android:layout_marginEnd="6dp"
@@ -23,7 +23,7 @@
         android:layout_height="match_parent">
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/inicio_lista_profesores_foto"
+            android:id="@+id/solicitudes_detalle_interesados_foto"
             android:layout_width="87dp"
             android:layout_height="78dp"
             android:layout_marginTop="14dp"
@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/inicio_listaprofesores_nombres"
+            android:id="@+id/solicitudes_detalle_nombres"
             android:layout_width="match_parent"
             android:layout_height="18dp"
             android:layout_alignParentTop="true"
@@ -46,19 +46,31 @@
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintHorizontal_bias="0.527"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/inicio_lista_profesores_foto" />
+            card_view:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_interesados_foto" />
         <TextView
-            android:id="@+id/inicio_card_lista_profesores_descripcion"
+            android:id="@+id/solicitudes_detalle_profesores_descripcion"
             android:layout_width="match_parent"
             android:layout_height="15dp"
-            android:text="TextView"
+            android:text="@string/solicitudes_descripcion"
             android:textAlignment="center"
             android:textSize="12dp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/inicio_listaprofesores_nombres" />
+            card_view:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_nombres" />
+        <TextView
+            android:id="@+id/solicitudes_detalle_profesores_precio"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:text="@string/solicitudes_precio"
+            android:textAlignment="center"
+            android:textSize="12dp"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_profesores_descripcion" />
+
+
         <RatingBar
-            android:id="@+id/inicio_rating_listaprofesores"
+            android:id="@+id/solicitudes_detalle_rating_profesores_interesados"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,10 +81,27 @@
             android:textAlignment="center"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/inicio_card_lista_profesores_descripcion"
-        />
+            card_view:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_profesores_precio"
+            />
 
-
+        <Button
+            android:id="@+id/solicitudes_detalle_btn_aceptar"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Aceptar"
+            card_view:layout_constraintEnd_toStartOf="@+id/solicitudes_detalle_btn_eliminar"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_rating_profesores_interesados"
+            />
+        <Button
+            android:id="@+id/solicitudes_detalle_btn_eliminar"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Eliminar"
+            card_view:layout_constraintStart_toEndOf="@+id/solicitudes_detalle_btn_aceptar"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/solicitudes_detalle_rating_profesores_interesados"
+           />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

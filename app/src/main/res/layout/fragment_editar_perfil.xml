@@ -51,23 +51,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         >
 
-
-        <EditText
-            android:id="@+id/perfil_apellidos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Apellidos" />
-
         <EditText
             android:id="@+id/perfil_nombres"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
             android:hint="Nombres" />
 
         <EditText
             android:id="@+id/perfil_dni"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:hint="DNI"
             android:inputType="number"/>
 
@@ -75,6 +71,7 @@
             android:id="@+id/perfil_telefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:hint="telefono"
             android:inputType="number"/>
 
@@ -82,12 +79,16 @@
             android:id="@+id/perfil_correo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
             android:hint="correo" />
 
         <EditText
             android:id="@+id/perfil_direccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
             android:hint="Dirección" />
 
         <Button
