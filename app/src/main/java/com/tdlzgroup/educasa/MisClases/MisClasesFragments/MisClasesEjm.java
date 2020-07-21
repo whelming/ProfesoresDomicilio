@@ -2,9 +2,11 @@ package com.tdlzgroup.educasa.MisClases.MisClasesFragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +26,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -45,6 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dmax.dialog.SpotsDialog;
+import es.dmoral.toasty.Toasty;
 
 public class MisClasesEjm extends Fragment {
     private RecyclerView recyclerView;
@@ -54,64 +58,43 @@ public class MisClasesEjm extends Fragment {
     private FirebaseFirestore db;
     public AlertDialog dialog;
     private String IDAlumno;
-    //RecyclerView.LayoutManager mlayoutManager;
-
+    private View v;
+    private Context context;
     public MisClasesEjm() {}
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 
-        View v = inflater.inflate(R.layout.fragment_mis_clases_ejm, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_mis_clases_ejm, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(v, savedInstanceState);
         Toolbar toolbar = v.findViewById(R.id.misclases_toolbar);
         toolbar.setTitle("Mis Clases");
+
         if (getActivity() != null) {
             ((MisClases)getActivity()).setSupportActionBar(toolbar);
         }
+
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
-        //IDAlumno = ((Globales) getActivity().getApplicationContext()).getIDUsuario();
+
         IDAlumno = currentFirebaseUser.getUid();
-        //Toast.makeText(getContext(), ""+IDAlumno, Toast.LENGTH_SHORT).show();
 
         db = FirebaseFirestore.getInstance();
         milista = new ArrayList<>();
-       /* Toolbar toolbar = v.findViewById(R.id.inicio_toolbar);
-        toolbar.setTitle("Inicio General");
-        if (getActivity() != null) {
-          ((Inicio)getActivity()).setSupportActionBar(toolbar);
-        }*/
-
-/*        dialog = new SpotsDialog.Builder()
-                .setContext(getContext())
-                .setMessage("Cargando...")
-                .setCancelable(false)
-                .build();
-        dialog.show();*/
 
         recyclerView = v.findViewById(R.id.misclases_recycler);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
-
         milista = new ArrayList<>();
         LlenaMILista();
-/*
-        recyclerView.setAdapter(new AdaptadorMisClases(getActivity(), milista, new AdaptadorMisClases.OnItemClickListener() {
-            @Override public void onItemClick(ContentMisClases item) {
-                Toast.makeText(getActivity(), item.getId()+"", Toast.LENGTH_SHORT).show();
-
-                if (getActivity() != null){
-                    Bundle bundle = new Bundle();
-                    bundle.putString("datousuario", item.getTextodemo());
-                    MisClasesDetalle fragmentdetalle = new MisClasesDetalle();
-                    fragmentdetalle.setArguments(bundle);
-                    getActivity().getSupportFragmentManager()
-                            .beginTransaction()
-                            .replace(R.id.frag_misclases_principal, fragmentdetalle, "fragmentDetalle")
-                            .addToBackStack(null).commit();
-
-            }
-        }));}*/
-
-        return v;
     }
 
     private void LlenaMILista() {
@@ -121,81 +104,44 @@ public class MisClasesEjm extends Fragment {
         }
         ((MisClases)getActivity()).showLoader();
 
-        db.collection("alumnos/"+IDAlumno+"/misclases")
+        db.collection("clases")
+                .whereEqualTo("tipo", 2)
+                .whereEqualTo("idAlum", IDAlumno)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             if (task.getResult().isEmpty()){
-                                Toast.makeText(getContext(), "No tienes Clases", Toast.LENGTH_SHORT).show();
+
+                                Toasty.info(context, "Aún no tienes Clases", Toast.LENGTH_SHORT, true).show();
+                                recyclerView.setBackground(ContextCompat.getDrawable(context, R.drawable.placeholder_noclases));
                                 ((MisClases)getActivity()).hideLoader();
                             }
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-
                                 ContentMisClases misclases = new ContentMisClases(
                                         document.getId(),
-                                        //document.getDocumentReference("materia"),
                                         document.getTimestamp("fechahora")
                                 );
-
-                                DocumentReference materiaRef = document.getDocumentReference("materia");
-                                DocumentReference profesorRef = document.getDocumentReference("profesor");
-
-                                materiaRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                misclases.setNombremateria(document.getString("nombre"));
-                                                profesorRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                                        if (task.isSuccessful()) {
-                                                            DocumentSnapshot document = task.getResult();
-                                                            if (document.exists()) {
-                                                                misclases.setUrlfoto(document.getString("urlfoto"));
-                                                                misclases.setNombreprofesor(document.getString("nombres"));
-                                                                milista.add(misclases);
-                                                                recyclerView.setAdapter(new AdaptadorMisClases(getActivity(), milista, new AdaptadorMisClases.OnItemClickListener() {
-                                                                    @Override public void onItemClick(ContentMisClases item) {
-                                                                        //Toast.makeText(getActivity(), item.getFechahora()+"", Toast.LENGTH_SHORT).show();
-                                    /*DetalleProfesoresDialog dialog = new DetalleProfesoresDialog();
-                                    Bundle args = new Bundle();
-                                    args.putString("idprofesor", item.getId());
-                                    args.putString("nombresprofesor", item.getUrlfoto());
-                                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                    dialog.setArguments(args);
-                                    dialog.show(ft, DetalleProfesoresDialog.TAG);*/
-                                                                    }
-                                                                }));
-                                                                //update vista recycler
-
-                                                                recyclerView.post(() -> recyclerView.smoothScrollToPosition(1));
-                                                                ((MisClases)getActivity()).hideLoader();
-
-                                                                //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                                                            } else {
-                                                                //Log.d(TAG, "No such document");
-                                                            }
-                                                        } else {
-                                                            //Log.d(TAG, "get failed with ", task.getException());
-                                                        }
-                                                    }
-                                                });
-
-                                            } else {
-                                                //Log.d(TAG, "No such document");
-                                            }
-                                        } else {
-                                            //Log.d(TAG, "get failed with ", task.getException());
-                                        }
+                                misclases.setNombremateria(document.getString("materia"));
+                                misclases.setUrlfoto(document.getString("urlfotoProf"));
+                                misclases.setNombreprofesor(document.getString("nombreProf"));
+                                milista.add(misclases);
+                                recyclerView.setAdapter(new AdaptadorMisClases(context, milista, new AdaptadorMisClases.OnItemClickListener() {
+                                    @Override public void onItemClick(ContentMisClases item) {
                                     }
-                                });
-                                //Log.d("CHAAAAAA",  + " => " + document.getData());
+                                }));
+                                //recyclerView.post(() -> recyclerView.smoothScrollToPosition(1));
+                                //recyclerView.requestLayout();
+                                ((MisClases)getActivity()).hideLoader();
+
+                                /*
+                                DocumentReference materiaRef = document.getDocumentReference("materia");
+                                */
+
                             }
+
                         }
                         else {
                             Log.w("EEEEEE", "Error getting documents.", task.getException());

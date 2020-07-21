@@ -11,6 +11,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.tdlzgroup.educasa.GlideApp;
 import com.tdlzgroup.educasa.Inicio.InicioModels.ContentListaProfesores;
 import com.tdlzgroup.educasa.R;
 
@@ -24,12 +27,16 @@ public class AdaptadorProfesores extends RecyclerView.Adapter<AdaptadorProfesore
     private Context context;
     private final List<ContentListaProfesores> items;
     private final OnItemClickListener listener;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
+
 
     public AdaptadorProfesores(Context context, List<ContentListaProfesores> items, OnItemClickListener listener) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.items = items;
         this.listener = listener;
+
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -51,9 +58,10 @@ public class AdaptadorProfesores extends RecyclerView.Adapter<AdaptadorProfesore
         }
 
         public void bind(final ContentListaProfesores item, final OnItemClickListener listener) {
-            Glide.with(context).load(item.getUrl_foto()).centerCrop().placeholder(R.drawable.user).into(imagencircular);
-            nombres.setText(item.getNombres());
-            puntaje.setRating( (float) item.getPuntuacion());
+            GlideApp.with(context).load(storageReference.child("perfiles/"+item.getUrlfoto())).centerCrop().placeholder(R.drawable.user).into(imagencircular);
+            nombres.setText(item.getNombre());
+            descripcion.setText(item.getProfesion());
+            puntaje.setRating( (float) item.getPuntaje());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);
@@ -65,6 +73,8 @@ public class AdaptadorProfesores extends RecyclerView.Adapter<AdaptadorProfesore
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = mInflater.inflate(R.layout.card_item_inicio_listaprofesores_alumnos, parent, false);
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
         return new MyViewHolder(v, this);
     }
 

@@ -1,6 +1,8 @@
 package com.tdlzgroup.educasa.Inicio.InicioModels;
 
-public class ContentInicio {
+import java.io.Serializable;
+
+public class ContentInicio implements Serializable {
     private String id;
     private String nombre_materia;
     private String url_imagen_materia;

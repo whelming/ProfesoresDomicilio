@@ -17,10 +17,12 @@ import android.widget.Toast;
 import com.tdlzgroup.educasa.Globales;
 import com.tdlzgroup.educasa.Inicio.InicioFragments.InicioEjm;
 import com.tdlzgroup.educasa.MenuBottom;
+import com.tdlzgroup.educasa.Notificaciones;
 import com.tdlzgroup.educasa.R;
 
 public class Inicio extends MenuBottom {
     public LinearLayout loader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +30,15 @@ public class Inicio extends MenuBottom {
         loader = findViewById(R.id.inicio_loader_container);
 
         // INICIO ACTIVIDAD INICIO
-        Intent intent = getIntent();
-        String extratipouser = intent.getStringExtra("TIPOUSUARIO");
+
+        /*Intent intent = getIntent();
+        String extratipouser = intent.getStringExtra("TIPOUSUARIO");*/
+
         //((Globales) this.getApplication()).settipoUsuario(intent.getStringExtra("TIPOUSUARIO"));
         //Globales.tipoUsuario = intent.getStringExtra("TIPOUSUARIO");
-        if (extratipouser != null)
-            ((Globales) this.getApplication()).setTipoUsuario(extratipouser);
+
+        /*if (extratipouser != null)
+            ((Globales) this.getApplication()).setTipoUsuario(extratipouser);*/
 
         //String tipoUsuario = ((Globales) this.getApplication()).getTipoUsuario();
         //Toast.makeText(this, "TIPO: "+tipoUsuario, Toast.LENGTH_SHORT).show();

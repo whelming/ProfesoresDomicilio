@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Textos de inicio -->
-    <string name="inicio_solicitar_curso">Solicitar una Clase</string>
-    <string name="inicio_confirmar_solicitar_curso">Solicitar Clase</string>
+    <string name="inicio_solicitar_curso">Solicitar Clases</string>
+    <string name="inicio_confirmar_solicitar_curso">Solicitar Clases</string>
     <string name="inicio_cancelar_curso">Cancelar</string>
 
-    <string name="inicio_ejemplo_texto">Tu texto a usar.</string>
-    <string name="inicio_ejemplo_texto2">Tu texto a usar 2.</string>
-    <string name="inicio_ejemplo_texto3">Tu texto a usar 3.</string>
+    <string name="inicio_profesores_conteo_votos">(%1$d)</string>
+
+    <string name="inicio_solicitar_curso_titulo_aprender">Qué quieres aprender?</string>
+    <string name="inicio_solicitar_curso_titulo_descripcion">De qué se trata?</string>
+    <string name="inicio_solicitar_curso_descripcion">Descripción</string>
+    <string name="inicio_solicitar_curso_precio">Cuánto pagarías</string>
+    <string name="inicio_solicitar_curso_fechahora">Cuándo</string>
+    <string name="inicio_solicitar_curso_disponibilidad">Disponibilidad</string>
+    <string name="inicio_solicitar_curso_fecha">Fecha</string>
+    <string name="inicio_solicitar_curso_hora">Hora</string>
+    <string name="inicio_solicitar_curso_adjuntar_fotos">Adjuntar fotos</string>
+    <string name="inicio_solicitar_curso_ubicacion">Dirección</string>
+    <string name="inicio_solicitar_curso_coordenadas">Coordenadas</string>
+    <string name="inicio_solicitar_curso_direccion">En dónde?</string>
+
+
+
 </resources>

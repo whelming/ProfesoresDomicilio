@@ -12,6 +12,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.tdlzgroup.educasa.GlideApp;
+import com.tdlzgroup.educasa.Globales;
 import com.tdlzgroup.educasa.MisClases.MisClasesModels.ContentMisClases;
 import com.tdlzgroup.educasa.R;
 
@@ -23,6 +27,8 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
     private Context context;
     private final List<ContentMisClases> items;
     private final OnItemClickListener listener;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
 
     public AdaptadorMisClases(Context context, List<ContentMisClases> items, OnItemClickListener listener) {
         this.mInflater = LayoutInflater.from(context);
@@ -34,7 +40,8 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public final TextView categoria;
         public final TextView profesor;
-        public final TextView horafecha;
+        public final TextView hora;
+        public final TextView fecha;
         public final CircleImageView foto;
 
         public final AdaptadorMisClases AdaptadorMisClases;
@@ -43,7 +50,8 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
             super(v);
             categoria = v.findViewById(R.id.mis_clases_categoria);
             profesor = v.findViewById(R.id.mis_clases_profesores);
-            horafecha= v.findViewById(R.id.mis_clases_fecha);
+            fecha= v.findViewById(R.id.mis_clases_fecha);
+            hora= v.findViewById(R.id.mis_clases_hora);
             foto = v.findViewById(R.id.mis_clases_foto);
             card = v.findViewById(R.id.misclases_cardview_alumnos);
             AdaptadorMisClases = adapter;
@@ -52,9 +60,14 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
         public void bind(final ContentMisClases item, final OnItemClickListener listener) {
             categoria.setText(item.getNombremateria());
             profesor.setText(item.getNombreprofesor());
-            horafecha.setText(""+item.getFechahora().toDate());
-            Glide.with(context).load(item.getUrlfoto()).into(foto);
 
+            String strFecha = ((Globales) context.getApplicationContext()).formatDate(item.getFechahora().toDate());
+            String strHora = ((Globales) context.getApplicationContext()).formatHour(item.getFechahora().toDate());
+
+            fecha.setText(strFecha);
+            hora.setText(strHora);
+
+            GlideApp.with(context).load(storageReference.child("perfiles/"+item.getUrlfoto())).centerCrop().placeholder(R.drawable.user).into(foto);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
                     listener.onItemClick(item);
@@ -66,6 +79,8 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = mInflater.inflate(R.layout.card_item_misclases_alumnos, parent, false);
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
         return new MyViewHolder(v, this);
     }
 

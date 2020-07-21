@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.tdlzgroup.educasa.Globales;
 import com.tdlzgroup.educasa.MenuBottom;
 import com.tdlzgroup.educasa.Perfil.PerfilFragments.PerfilEjm;
 import com.tdlzgroup.educasa.R;
@@ -24,26 +26,16 @@ public class Perfil extends MenuBottom {
         setContentView(R.layout.activity_perfil);
         loader = findViewById(R.id.perfil_loader_container);
 
+        // INICIO ACTIVIDAD PERFIL
+/*        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.frag_perfil_principal, new PerfilEjm()).commit();*/
+
         PerfilEjm fragmentprincipal = new PerfilEjm();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frag_perfil_principal, fragmentprincipal);
+        transaction.add(R.id.frag_perfil_principal, fragmentprincipal);
         transaction.commit();
-
-        // INICIO ACTIVIDAD PERFIL
-       /* btn_cerrar_sesion = findViewById(R.id.btn_cerrar_sesion);
-        btn_editar = findViewById(R.id.btn_editar_perfil);
-
-        btn_cerrar_sesion.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(Perfil.this, Bienvenida.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        });*/
-
         // FIN ACTIVIDAD PERFIL
-
-
     }
 
     public void showLoader(){
@@ -51,12 +43,6 @@ public class Perfil extends MenuBottom {
     }
     public void hideLoader(){
         loader.setVisibility(View.GONE);
-    }
-
-    @Override
-    protected void onStart()  {
-        super.onStart();
-
     }
 
     @Override

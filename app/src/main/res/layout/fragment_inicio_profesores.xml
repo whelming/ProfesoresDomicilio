@@ -9,30 +9,50 @@
         android:id="@+id/inicio_toolbar_profesores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryAlpha"
-        android:elevation="6dp"
+        android:background="@color/colorPrimaryDark"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        android:elevation="0dp"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+        <ImageView
+            android:id="@+id/inicio_profesores_icono_toolbar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/placeholder_materia"
+            />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@drawable/background_blue_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar_profesores"
+        >
+    </LinearLayout>
+    <!--android:theme="@style/AppTheme.Bienvenida_Button"-->
+    <!--android:background="@drawable/background_orange_rounded"-->
+
     <Button
         android:id="@+id/btn_solicitar_curso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.Bienvenida_Button"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        style="@style/AppTheme.Inicio_btn_orange_rounded"
+        android:layout_marginTop="38dp"
         android:text="@string/inicio_solicitar_curso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar_profesores"/>
+        app:layout_constraintTop_toBottomOf="@+id/inicio_toolbar_profesores"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/inicio_profesores_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="12dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:scrollbars="vertical"
@@ -40,6 +60,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_solicitar_curso" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

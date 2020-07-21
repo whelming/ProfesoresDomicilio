@@ -1,16 +1,25 @@
 package com.tdlzgroup.educasa.Inicio.InicioModels;
 
-public class ContentListaProfesores {
-    private String id;
-    private String url_foto;
-    private String nombres;
-    private double puntuacion;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
-    public ContentListaProfesores(String id, String url_foto, String nombres, double puntuacion) {
+public class ContentListaProfesores implements Serializable {
+    private String id;
+    private String nombre;
+    private String descripcion;
+    private String profesion;
+    private String urlfoto;
+    private double puntaje;
+    private double votos;
+    private List<String> materias;
+    private List<String> medallas;
+    private List<String> categorias;
+    private Date creacion;
+    private double sexo;
+
+    public ContentListaProfesores(String id) {
         this.id = id;
-        this.url_foto = url_foto;
-        this.nombres = nombres;
-        this.puntuacion = puntuacion;
     }
 
     public String getId() {
@@ -21,27 +30,91 @@ public class ContentListaProfesores {
         this.id = id;
     }
 
-    public String getUrl_foto() {
-        return url_foto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setUrl_foto(String url_foto) {
-        this.url_foto = url_foto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public double getPuntuacion() {
-        return puntuacion;
+    public String getUrlfoto() {
+        return urlfoto;
     }
 
-    public void setPuntuacion(double puntuacion) {
-        this.puntuacion = puntuacion;
+    public void setUrlfoto(String urlfoto) {
+        this.urlfoto = urlfoto;
+    }
+
+    public double getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(double puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    public List<String> getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(List<String> materias) {
+        this.materias = materias;
+    }
+
+    public List<String> getMedallas() {
+        return medallas;
+    }
+
+    public void setMedallas(List<String> medallas) {
+        this.medallas = medallas;
+    }
+
+    public Date getCreacion() {
+        return creacion;
+    }
+
+    public List<String> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<String> categorias) {
+        this.categorias = categorias;
+    }
+
+    public void setCreacion(Date creacion) {
+        this.creacion = creacion;
+    }
+
+    public double getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(double sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getProfesion() {
+        return profesion;
+    }
+
+    public void setProfesion(String profesion) {
+        this.profesion = profesion;
+    }
+
+    public double getVotos() {
+        return votos;
+    }
+
+    public void setVotos(double votos) {
+        this.votos = votos;
     }
 }

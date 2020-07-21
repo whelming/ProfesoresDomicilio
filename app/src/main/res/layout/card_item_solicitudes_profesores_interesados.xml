@@ -27,7 +27,7 @@
             android:layout_width="87dp"
             android:layout_height="78dp"
             android:layout_marginTop="14dp"
-            android:src="@drawable/fotoperfiljuego"
+            android:src="@drawable/user"
             app:civ_border_color="#FF000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

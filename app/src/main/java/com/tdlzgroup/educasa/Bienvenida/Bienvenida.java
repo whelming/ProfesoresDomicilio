@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,17 +28,26 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.tdlzgroup.educasa.Globales;
 import com.tdlzgroup.educasa.Inicio.Inicio;
 import com.tdlzgroup.educasa.MainActivity;
 import com.tdlzgroup.educasa.R;
+import com.tdlzgroup.educasa.VProfInicio.VProfInicio;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +65,6 @@ public class Bienvenida extends AppCompatActivity {
     private static final int MY_REQUEST_CODE = 7100;
     private FirebaseAuth mAuth;
     List<AuthUI.IdpConfig> providers;
-
     public AlertDialog dialog;
 
     @Override
@@ -84,6 +94,7 @@ public class Bienvenida extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
+
         dialog = new SpotsDialog.Builder()
                 .setContext(this)
                 .setMessage("Cargando Perfil...")
@@ -101,9 +112,7 @@ public class Bienvenida extends AppCompatActivity {
                 }
             }
         });
-
         // FIN ACTIVIDAD BIENVENIDA
-
     }
 
     @Override
@@ -128,30 +137,86 @@ public class Bienvenida extends AppCompatActivity {
         });
     }
     private void isTipoUsuario(String tipouser){
-        Intent intent = new Intent(getApplicationContext(), Inicio.class);
-        intent.putExtra("TIPOUSUARIO", tipouser);
+        dialog.hide();
+        ((Globales) getApplicationContext()).setTipoUsuario(tipouser);
+        Class activ = null;
+        if (tipouser.equals("profesores"))
+            activ = VProfInicio.class;
+        else if (tipouser.equals("alumnos"))
+            activ = Inicio.class;
+        Intent intent = new Intent(getApplicationContext(), activ);
         startActivity(intent);
     }
 
     private void getTipoUsuario(FirebaseUser user){
+//        String emailuser = user.getEmail();
+//        CollectionReference usuarios = db.collection("usuarios");
+//        Query queryusuarios = usuarios.whereEqualTo("email", emailuser);
+        String userID = user.getUid();
+        DocumentReference docRef = db.collection("usuarios").document(userID);
 
-        String emailuser = user.getEmail();
+        docRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
 
-        CollectionReference alumnos = db.collection("alumnos");
-        CollectionReference profesores = db.collection("profesores");
+                    int tipouser = document.getLong("tipo").intValue();
+                    String urlFoto = document.getString("urlfoto");
 
-        Query queryalumno = alumnos.whereEqualTo("usuario", emailuser);
-        Query queryprofesor = profesores.whereEqualTo("usuario", emailuser);
+                    ((Globales) getApplicationContext()).setUrlFotoUser(urlFoto);
 
-        queryalumno.get().addOnCompleteListener((new OnCompleteListener<QuerySnapshot>() {
+                    if(tipouser == 2){
+                        isTipoUsuario("profesores");
+                    }
+                    else if(tipouser == 3){
+                        isTipoUsuario("alumnos");
+                    }
+                    else if (tipouser == 1){
+                        dialog.hide();
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(intent);
+                    }
+                }
+
+                else {
+                    registrarUser();
+                }
+            } else {
+                Log.d("Error", "Ocurrió un error.", task.getException());
+            }
+        });
+
+        /*queryusuarios.get().addOnCompleteListener((new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
-                    if(!task.getResult().isEmpty()){
-                        isTipoUsuario("alumnos");
+                    if(task.getResult().isEmpty()){
+                        registrarUser();
                     }
                     else {
-                        queryprofesor.get().addOnCompleteListener((new OnCompleteListener<QuerySnapshot>() {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            double number = document.getDouble("tipo");
+                            int tiponum = (int) number;
+                            if (tiponum == 1){
+                                // CREAR TIPO PERFIL
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                            }
+                            else if (tiponum == 2){
+                                isTipoUsuario("profesores");
+                            }
+                            else if (tiponum == 3){
+                                isTipoUsuario("alumnos");
+                            }
+                            //Log.d(TAG, document.getId() + " => " + document.getData());
+                        }
+                    }
+                }
+            }
+
+
+        }));*/
+                        /*queryprofesor.get().addOnCompleteListener((new OnCompleteListener<QuerySnapshot>() {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> taask) {
                                 if (taask.isSuccessful()) {
@@ -159,44 +224,45 @@ public class Bienvenida extends AppCompatActivity {
                                         isTipoUsuario("profesores");
                                     }
                                     else {
-                                        // CREAR TIPO PERFIL
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(intent);
+
                                     }
                                 }}
-                        }));
-                    }
-                }
-            }
-
-
-        }));
-
-/*            queryprofesor.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if(task.getResult().size()>0){
-                        Toast.makeText(this, "PROFESOR", Toast.LENGTH_SHORT).show();
-                        tipo[0] = "profesor";
-                    }
-                } else {
-                    Log.w("EEEEEE", "Error getting documents.", task.getException());
-                }
-            });*/
-
-/*            db.collection("alumnos")
-                    .get()
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d("OKOKOKOK", document.getId() + " => " + document.getData());
-                            }
-                        } else {
-                            Log.w("EEEEEE", "Error getting documents.", task.getException());
-                        }
-                    });*/
-
-
+                        }));*/
     }
+
+    private void registrarUser() {
+        Map<String, Object> newuser = new HashMap<>();
+        newuser.put("tipo", 1);
+        newuser.put("nombre", user.getDisplayName());
+        newuser.put("email", user.getEmail());
+        newuser.put("dni", "");
+        newuser.put("celular", "");
+        newuser.put("creacion", new Timestamp(new Date()));
+        newuser.put("urlfoto", "foto_user.png");
+        newuser.put("departamento", "");
+        newuser.put("provincia", "");
+        newuser.put("distrito", "");
+
+        db.collection("usuarios")
+                    .document(user.getUid())
+                    .set(newuser)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void thisVoid) {
+                            dialog.hide();
+                            ((Globales) getApplicationContext()).setUrlFotoUser("foto_user.png");
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("NOLES", "Error adding document", e);
+                        }
+                    });
+    }
+
     private void showSignInOptions(){
         //dialog.show();
         startActivityForResult(
@@ -210,17 +276,11 @@ public class Bienvenida extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == MY_REQUEST_CODE) {
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-            if (resultCode == RESULT_OK) {
-                dialog.show();
-                user = FirebaseAuth.getInstance().getCurrentUser();
-                getTipoUsuario(user);
-            }
-
-            else {
-                //Toast.makeText(this, ""+response.getError().getMessage(), Toast.LENGTH_SHORT).show();
-            }
+        if(requestCode == MY_REQUEST_CODE && resultCode == RESULT_OK) {
+//          IdpResponse response = IdpResponse.fromResultIntent(data);
+            dialog.show();
+            user = FirebaseAuth.getInstance().getCurrentUser();
+            getTipoUsuario(user);
         }
     }
 

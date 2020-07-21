@@ -4,17 +4,21 @@ public class ContentProfesoresInteresados {
     String id;
     String nombres;
     String descripcion;
-    String precio;
-    String url_foto;
+    double precio;
     double puntuacion;
+    String url_foto;
 
-    public ContentProfesoresInteresados(String id, String nombres, String descripcion, String precio, String url_foto, double puntuacion) {
+    public ContentProfesoresInteresados() {
+
+    }
+
+    public ContentProfesoresInteresados(String id, String nombres, String descripcion, double precio, double puntuacion, String url_foto) {
         this.id = id;
         this.nombres = nombres;
         this.descripcion = descripcion;
         this.precio = precio;
-        this.url_foto = url_foto;
         this.puntuacion = puntuacion;
+        this.url_foto = url_foto;
     }
 
     public String getId() {
@@ -41,20 +45,12 @@ public class ContentProfesoresInteresados {
         this.descripcion = descripcion;
     }
 
-    public String getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(String precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    public String getUrl_foto() {
-        return url_foto;
-    }
-
-    public void setUrl_foto(String url_foto) {
-        this.url_foto = url_foto;
     }
 
     public double getPuntuacion() {
@@ -63,5 +59,13 @@ public class ContentProfesoresInteresados {
 
     public void setPuntuacion(double puntuacion) {
         this.puntuacion = puntuacion;
+    }
+
+    public String getUrl_foto() {
+        return url_foto;
+    }
+
+    public void setUrl_foto(String url_foto) {
+        this.url_foto = url_foto;
     }
 }

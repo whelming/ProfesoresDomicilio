@@ -9,7 +9,8 @@
         android:id="@+id/solicitudes_toolbar_detalle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryAlpha"
+        android:background="@color/colorPrimaryDark"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
         android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,12 +80,33 @@
         app:layout_constraintTop_toBottomOf="@+id/solicitudes_precio"
         />
     <ImageView
-        android:id="@+id/solicitudes_foto"
+        android:id="@+id/solicitudes_foto1"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/user"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/placeholder_img"
+
+        app:layout_constraintEnd_toStartOf="@+id/solicitudes_foto2"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_title_foto"
+        />
+    <ImageView
+        android:id="@+id/solicitudes_foto2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/placeholder_img"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/solicitudes_foto3"
+        app:layout_constraintStart_toEndOf="@+id/solicitudes_foto1"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_title_foto"
+        />
+    <ImageView
+        android:id="@+id/solicitudes_foto3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/placeholder_img"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/solicitudes_foto2"
         app:layout_constraintTop_toBottomOf="@+id/solicitudes_title_foto"
         />
 
@@ -98,14 +120,14 @@
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/solicitudes_foto"
+        app:layout_constraintTop_toBottomOf="@+id/solicitudes_foto2"
         app:layout_constraintBottom_toTopOf="@+id/btn_eliminar_solicitud"/>
     <Button
         android:id="@+id/btn_eliminar_solicitud"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.Bienvenida_Button"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="18dp"
         android:text="@string/solicitudes_eliminar_solicitud"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

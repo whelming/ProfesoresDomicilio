@@ -9,267 +9,554 @@
         android:id="@+id/inicio_toolbar_solicitar_curso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryAlpha"
+        android:background="@color/colorPrimaryDark"
         android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="match_parent"
-        android:layout_height="544dp"
-        android:layout_marginTop="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/inicio_solicitud_icono_toolbar"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:src="@drawable/placeholder_materia" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/inicio_solicitud_scrollViewForm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inicio_toolbar_solicitar_curso">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/inicio_solicitar_curso_titulo_aprender"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/colorWhite"
+                android:elevation="0dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
 
-                <Spinner
-                    android:id="@+id/inicio_solicitud_curso_spinner"
-                    android:layout_width="252dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/Categoria"
-                    android:tooltipText="Materia" />
+                <EditText
+                    android:id="@+id/inicio_solicitar_curso_titulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="Título"
+                    android:inputType="text"
+                    android:maxLength="32"
+                    android:maxLines="1"
+                    android:padding="12dp"
+                    android:singleLine="true"
+                    android:textSize="17sp" />
+            </androidx.cardview.widget.CardView>
+            <!--            <Spinner
+                            android:id="@+id/inicio_solicitud_curso_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp"
+                            android:tooltipText="Materias" />-->
 
-            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/inicio_solicitar_curso_titulo_descripcion"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/colorWhite"
+                android:elevation="0dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
 
                 <EditText
                     android:id="@+id/inicio_solicitar_curso_descripcion"
-                    android:layout_width="250dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Descripción del curso"
-                    android:inputType="textMultiLine" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="@string/inicio_solicitar_curso_descripcion"
+                    android:inputType="textMultiLine"
+                    android:padding="12dp"
+                    android:singleLine="false"
+                    android:textSize="17sp" />
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/inicio_solicitar_curso_precio"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/inicio_solicitar_curso_costo_hora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="S/10 x Hora"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/colorWhite"
+                android:clickable="true"
+                android:elevation="0dp"
+                android:focusable="true"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
+
+                <SeekBar
+                    android:id="@+id/inicio_solicitar_curso_seekbar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:padding="12dp"
+                    android:progress="0"
+                    android:thumb="@drawable/ic_icons_circle" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <!--            <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginBottom="10dp">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/inicio_solicitar_curso_precio"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:hint="Precio"
+                                android:inputType="numberDecimal"
+                                android:maxLines="1"
+                                android:singleLine="true" />
+                        </com.google.android.material.textfield.TextInputLayout>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/inicio_solicitar_curso_fechahora"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
-                <EditText
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/inicio_solicitar_curso_fecha_boton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="7"
+                    android:backgroundTint="@color/colorWhite"
+                    android:clickable="true"
+                    android:descendantFocusability="blocksDescendants"
+                    android:elevation="0dp"
+                    android:focusable="true"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
-                    android:id="@+id/inicio_solicitar_curso_precio"
-                    android:layout_width="251dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginEnd="8dp"
-                    android:ems="18"
-                    android:hint="Precio"
-                    android:inputType="numberDecimal" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingEnd="10dp">
+
+
+                        <TextView
+                            android:id="@+id/inicio_solicitar_curso_fecha"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:focusable="false"
+                            android:gravity="start|center"
+                            android:hint="Fecha"
+                            android:maxLines="1"
+                            android:padding="12dp"
+                            android:textSize="17sp" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/ic_icons_calendario"
+                            android:backgroundTint="@color/colorAccent"
+                            android:clickable="false" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/inicio_solicitar_curso_disponibilidad"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/solicitar_curso_fecha"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/inicio_solicitar_curso_hora_inicio_boton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Fecha"
-                    android:inputType="date" />
+                    android:backgroundTint="@color/colorWhite"
+                    android:clickable="true"
+                    android:descendantFocusability="blocksDescendants"
+                    android:elevation="0dp"
+                    android:focusable="true"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
-                <Button
-                    android:id="@+id/solicitar_curso_fecha_boton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@drawable/calendarr"
-                    android:ems="18"
-                    tools:layout_editor_absoluteX="24dp"
-                    tools:layout_editor_absoluteY="350dp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingEnd="10dp">
 
-                <EditText
-                    android:id="@+id/inicio_solicitar_curso_hora"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="11dp"
+
+                        <TextView
+                            android:id="@+id/inicio_solicitar_curso_hora_inicio"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:focusable="false"
+                            android:gravity="start|center"
+                            android:hint="Hora Inicio"
+                            android:maxLines="1"
+                            android:padding="12dp"
+                            android:textSize="17sp" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/ic_icons_reloj"
+                            android:backgroundTint="@color/colorAccent"
+                            android:clickable="false" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/inicio_solicitar_curso_hora_final_boton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="1"
-                    android:hint="Hora"
-                    android:inputType="time" />
+                    android:backgroundTint="@color/colorWhite"
+                    android:clickable="true"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
 
-                <Button
-                    android:id="@+id/inicio_solicitar_curso_hora_boton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/oclock" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingEnd="10dp">
+
+                        <TextView
+                            android:id="@+id/inicio_solicitar_curso_hora_final"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:focusable="false"
+                            android:gravity="start|center"
+                            android:hint="Hora Final"
+                            android:maxLines="1"
+                            android:padding="12dp"
+                            android:textSize="17sp" />
+
+                        <Button
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/ic_icons_reloj"
+                            android:backgroundTint="@color/colorAccent"
+                            android:clickable="false" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/inicio_solicitud_adjuntar_fotos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/inicio_solicitar_curso_adjuntar_fotos"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/inicio_solicitud_imgfotoconst1"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/inicio_solicitud_btn_foto1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_icons_camaraplus"
+                        android:backgroundTint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/inicio_solicitud_foto1"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@color/colorPrimaryAlpha"
-
-                        />
-
-                    <Button
-                        android:id="@+id/inicio_solicitud_btn_foto1"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/photoscamera"
-                        app:layout_constraintBottom_toBottomOf="@+id/inicio_solicitud_foto1"
+                        android:background="@color/colorWhite"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/inicio_solicitud_foto1" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/inicio_solicitud_imgfotoconst2"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toStartOf="@id/inicio_solicitud_imgfotoconst3"
+                    app:layout_constraintStart_toEndOf="@+id/inicio_solicitud_imgfotoconst1"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/inicio_solicitud_btn_foto2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_icons_camaraplus"
+                        android:backgroundTint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/inicio_solicitud_foto2"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:background="@color/colorPrimaryAlpha"
-
-                        />
-
-                    <Button
-                        android:id="@+id/inicio_solicitud_btn_foto2"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/photoscamera"
+                        android:background="@color/colorWhite"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/inicio_solicitud_foto2" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/inicio_solicitud_imgfotoconst3"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <Button
+                        android:id="@+id/inicio_solicitud_btn_foto3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/ic_icons_camaraplus"
+                        android:backgroundTint="@color/colorAccent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
                         android:id="@+id/inicio_solicitud_foto3"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:background="@color/colorPrimaryAlpha" />
-
-                    <Button
-                        android:id="@+id/inicio_solicitud_btn_foto3"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="8dp"
-
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/photoscamera"
+                        android:background="@color/colorWhite"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/inicio_solicitud_foto3" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/inicio_solicitud_titulo_mapa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="2dp"
+                android:text="@string/inicio_solicitar_curso_direccion"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/colorWhite"
+                android:elevation="0dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
 
-                <Button
-                    android:id="@+id/inicio_solicitar_curso_direccion"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/mapslocation"
-                    android:ems="10"
-                    android:inputType="textPersonName" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
 
-                <EditText
-                    android:id="@+id/inicio_solicitar_curso_latitud"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
 
-                    android:ems="10"
-                    android:hint="Latitud"
-                    android:inputType="textPersonName" />
+                    <EditText
+                        android:id="@+id/inicio_solicitar_curso_direccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/inicio_solicitar_curso_ubicacion"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:padding="12dp"
+                        android:singleLine="true"
+                        android:textSize="17sp" />
 
-                <EditText
-                    android:id="@+id/inicio_solicitar_curso_longitud"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Longitud"
-                    android:inputType="textPersonName" />
+<!--                    <Button
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/ic_icons_ubicacion"
+                        android:backgroundTint="@color/colorAccent"
+                        android:clickable="false" />-->
 
-            </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/inicio_solicitar_curso_btn_mapa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/colorWhite"
+                android:clickable="true"
+                android:elevation="0dp"
+                android:focusable="true"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp">
+                    <Button
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/ic_icons_ubicacion"
+                        android:backgroundTint="@color/colorAccent"
+                        android:clickable="false" />
+                    <TextView
+                        android:id="@+id/inicio_solicitar_curso_coordenadas"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:focusable="false"
+                        android:gravity="start|center"
+                        android:hint="@string/inicio_solicitar_curso_coordenadas"
+                        android:maxLines="1"
+                        android:padding="12dp"
+                        android:textSize="13sp" />
+
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/btn_confirmar_solicitar_curso"
+                style="@style/AppTheme.Inicio_btn_orange_rounded"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp"
-                android:text="@string/inicio_confirmar_solicitar_curso"
-                android:theme="@style/AppTheme.Bienvenida_Button" />
-
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:text="@string/inicio_confirmar_solicitar_curso" />
 
         </LinearLayout>
 
