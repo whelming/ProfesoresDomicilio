@@ -1,41 +1,89 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryAlpha"
-    android:orientation="vertical"
+    android:background="@color/colorGrayLight"
     android:gravity="center"
     tools:context=".Inicio.InicioFragments.InicioEjm">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/inicio_appBarLayout"
+        android:layout_width="match_parent"
         android:layout_height="197dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
-        android:src="@drawable/kraken"
-    />
+        android:layout_marginBottom="30dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="@color/colorPrimaryDark"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll">
+
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="197dp"
+                android:src="@drawable/background_inicio_ok" />
+
+            <!--            <androidx.appcompat.widget.Toolbar
+                            android:layout_width="match_parent"
+                            android:layout_height="?attr/actionBarSize"
+                            app:layout_collapseMode="pin"
+                            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />-->
+
+            <!--            <SearchView
+                            android:id="@+id/inicio_toolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="?attr/actionBarSize"
+                            android:layout_marginStart="44dp"
+                            android:layout_marginTop="-50dp"
+                            android:layout_marginEnd="44dp"
+                            android:background="@drawable/background_white_rounded"
+                            android:clickable="true"
+                            android:elevation="0dp"
+                            android:focusable="true" />-->
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryAlpha"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/inicio_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <SearchView
         android:id="@+id/inicio_toolbar"
-        android:layout_width="309dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="-42dp"
-        android:queryHint="Buscar"
-        android:background="@color/colorWhite"
-        android:elevation="6dp"
-        android:minHeight="?attr/actionBarSize"
-    />
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/background_white_rounded"
+        android:elevation="0dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_anchor="@id/inicio_appBarLayout"
+        app:layout_anchorGravity="bottom|center" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/inicio_recycler"
-        android:layout_width="360dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="6dp"
-        android:scrollbars="vertical"
-    />
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

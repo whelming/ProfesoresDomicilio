@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.tdlzgroup.educasa.Globales;
 import com.tdlzgroup.educasa.Solicitudes.SolicitudesModels.ContentSolicitudes;
 import com.tdlzgroup.educasa.R;
 
@@ -30,14 +32,16 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public final TextView titulo;
         public final TextView interesados;
-        public final TextView fechahora;
+        public final TextView fecha;
+        public final TextView hora;
         public final AdaptadorSolicitudes AdaptadorSolicitudes;
 
         public MyViewHolder(@NonNull View v, final AdaptadorSolicitudes adapter) {
             super(v);
             titulo = v.findViewById(R.id.solicitudes_card_titulo);
             interesados = v.findViewById(R.id.solicitudes_card_interesados);
-            fechahora = v.findViewById(R.id.solicitudes_card_fechahora);
+            fecha = v.findViewById(R.id.solicitudes_card_fecha);
+            hora = v.findViewById(R.id.solicitudes_card_hora);
             card = v.findViewById(R.id.solicitudes_cardview_alumnos);
             AdaptadorSolicitudes = adapter;
         }
@@ -45,12 +49,12 @@ public class AdaptadorSolicitudes extends RecyclerView.Adapter<AdaptadorSolicitu
         public void bind(final ContentSolicitudes item, final OnItemClickListener listener) {
             titulo.setText(item.getTitulo());
             interesados.setText((int)item.getInteresados()+"");
-            fechahora.setText(item.getFechahora().toDate()+"");
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override public void onClick(View v) {
-//                    listener.onItemClick(item);
-//                }
-//            });
+
+            String strFecha = ((Globales) context.getApplicationContext()).formatDate(item.getFechahora());
+            String strHora = ((Globales) context.getApplicationContext()).formatHour(item.getFechahora());
+
+            fecha.setText(strFecha);
+            hora.setText(strHora);
             itemView.setOnClickListener((View v) -> {
                     listener.onItemClick(item);
             });

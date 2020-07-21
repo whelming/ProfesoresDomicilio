@@ -13,6 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.tdlzgroup.educasa.GlideApp;
 import com.tdlzgroup.educasa.Solicitudes.SolicitudesModels.ContentProfesoresInteresados;
 import com.tdlzgroup.educasa.R;
 
@@ -26,6 +29,8 @@ public class AdaptadorProfesoresInteresados extends RecyclerView.Adapter<Adaptad
     private Context context;
     private final List<ContentProfesoresInteresados> items;
     private final OnItemClickListener listener;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
 
     public AdaptadorProfesoresInteresados(Context context, List<ContentProfesoresInteresados> items, OnItemClickListener listener) {
         this.mInflater = LayoutInflater.from(context);
@@ -59,10 +64,10 @@ public class AdaptadorProfesoresInteresados extends RecyclerView.Adapter<Adaptad
         }
 
         public void bind(final ContentProfesoresInteresados item, final OnItemClickListener listener) {
-            Glide.with(context).load(item.getUrl_foto()).centerCrop().placeholder(R.drawable.user).into(imagencircular);
+            GlideApp.with(context).load(storageReference.child("perfiles/"+item.getUrl_foto())).centerCrop().placeholder(R.drawable.user).into(imagencircular);
             nombres.setText(item.getNombres());
             descripcion.setText(item.getDescripcion());
-            precio.setText(item.getPrecio());
+            precio.setText(item.getPrecio()+"");
             puntaje.setRating( (float) item.getPuntuacion());
 
             btn_aceptar.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +94,8 @@ public class AdaptadorProfesoresInteresados extends RecyclerView.Adapter<Adaptad
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = mInflater.inflate(R.layout.card_item_solicitudes_profesores_interesados, parent, false);
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
         return new MyViewHolder(v, this);
     }
 

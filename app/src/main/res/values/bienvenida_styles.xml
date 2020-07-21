@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme.Bienvenida_Button" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_orange_rounded</item>
         <item name="colorButtonNormal">@color/colorPrimary</item>
         <item name="android:paddingTop">15sp</item>
-        <item name="android:paddingRight">25dp</item>
+        <item name="android:paddingRight">30dp</item>
         <item name="android:paddingBottom">15sp</item>
-        <item name="android:paddingLeft">25dp</item>
+        <item name="android:paddingLeft">30dp</item>
     </style>
 </resources>

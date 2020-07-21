@@ -1,8 +1,10 @@
 package com.tdlzgroup.educasa.Inicio.InicioFragments;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,9 +17,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +29,9 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.core.OrderBy;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.tdlzgroup.educasa.GlideApp;
 import com.tdlzgroup.educasa.Inicio.Class.DetalleProfesoresDialog;
 import com.tdlzgroup.educasa.Inicio.Inicio;
 import com.tdlzgroup.educasa.Inicio.InicioAdapters.AdaptadorInicio;
@@ -39,64 +46,84 @@ import java.util.List;
 import dmax.dialog.SpotsDialog;
 
 public class InicioProfesores extends Fragment {
+    public static int TAG = 210;
+    private ImageView icontoolbar;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     List<ContentListaProfesores> milista;
-    private String bundlerecibido;
-    private String IDMateria;
-
     private Button btnSolicitarCurso;
 
     private FirebaseFirestore db;
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
 
     RecyclerView.LayoutManager mlayoutManager;
+    private Bundle bundle;
+    private String IDMateria;
+    private String nombreMateria;
+    private String urlImgMateria;
+    private String tipoUsuario;
+    private Context context;
+
 
     public InicioProfesores() {}
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_inicio_profesores, container, false);
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_inicio_profesores, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(v, savedInstanceState);
+        icontoolbar = v.findViewById(R.id.inicio_profesores_icono_toolbar);
         btnSolicitarCurso = v.findViewById(R.id.btn_solicitar_curso);
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
 
+        bundle = this.getArguments();
+        if (bundle != null) {
+            tipoUsuario = bundle.getString("tipoUsuario");
+            ContentInicio objetoMateria = (ContentInicio) bundle.getSerializable("ObjetoMateria");
+            IDMateria = objetoMateria.getId();
+            urlImgMateria = objetoMateria.getUrl_imagen_materia();
+            nombreMateria = objetoMateria.getNombre_materia();
 
-        IDMateria = getArguments().getString("IDMateria");
-        bundlerecibido = getArguments().getString("NombreMateria");
+            GlideApp.with(context).load(storageReference.child("iconos/"+urlImgMateria)).centerCrop().placeholder(R.drawable.placeholder_materia).into(icontoolbar);
+
+        }
 
         Toolbar toolbar = v.findViewById(R.id.inicio_toolbar_profesores);
-        toolbar.setTitle("Profesores de "+ bundlerecibido);
-        if (getActivity() != null) {
-            ((Inicio) getActivity()).setSupportActionBar(toolbar);
-            ((Inicio) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            ((Inicio) getActivity()).getSupportActionBar().show();
+        toolbar.setTitle("Profesores de "+ nombreMateria);
+
+        if(getActivity() != null) {
+            ((Inicio) context).setSupportActionBar(toolbar);
+            ((Inicio) context).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            ((Inicio) context).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_icons_back_24dp);
+            ((Inicio) context).getSupportActionBar().show();
         }
 
         db = FirebaseFirestore.getInstance();
         milista = new ArrayList<>();
-       /* Toolbar toolbar = v.findViewById(R.id.inicio_toolbar);
-        toolbar.setTitle("Inicio General");
-        if (getActivity() != null) {
-          ((Inicio)getActivity()).setSupportActionBar(toolbar);
-        }*/
-
 
         recyclerView = v.findViewById(R.id.inicio_profesores_recycler);
         recyclerView.setHasFixedSize(true);
         //layoutManager = new LinearLayoutManager(getActivity());
         //recyclerView.setLayoutManager(layoutManager);
-        mlayoutManager = new GridLayoutManager(getActivity(), 2);
+        mlayoutManager = new GridLayoutManager(context, 2);
         recyclerView.setLayoutManager(mlayoutManager);
         milista = new ArrayList<>();
         LlenaMILista();
 
-
-
         btnSolicitarCurso.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Toast.makeText(getActivity(), "Solicitar Curso de "+ bundlerecibido, Toast.LENGTH_SHORT).show();
                 if (getActivity() != null){
-                    Bundle bundle = new Bundle();
-                    bundle.putString("datosolicitarcurso", bundlerecibido);
                     InicioSolicitarCurso fragmentSolicitarCurso = new InicioSolicitarCurso();
                     fragmentSolicitarCurso.setArguments(bundle);
                     getActivity().getSupportFragmentManager()
@@ -106,8 +133,6 @@ public class InicioProfesores extends Fragment {
                 }
             }
         });
-
-        return v;
     }
 
     private void LlenaMILista() {
@@ -115,68 +140,50 @@ public class InicioProfesores extends Fragment {
             milista.clear();
         }
 
-        ((Inicio)getActivity()).showLoader();
+        ((Inicio)context).showLoader();
 
-        //db.collection("materias/"+IDMateria+"/listaprofesores")
-        db.collection("profesores")
-                .whereArrayContains("materias", bundlerecibido)
-                .orderBy("puntuacion", Query.Direction.DESCENDING)
+        db.collection("usuarios")
+                .whereArrayContains("materias", nombreMateria)
+                .orderBy("puntaje", Query.Direction.DESCENDING)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                    ContentListaProfesores materia = new ContentListaProfesores(
-                                            document.getString("ID"),
-                                            document.getString("urlfoto"),
-                                            document.getString("nombres"),
-                                            document.getDouble("puntuacion")
-                                    );
-                                milista.add(materia);
-
-                                //Log.d("CHAAAAAA",  + " => " + document.getData());
+                                    ContentListaProfesores unprofesor = new ContentListaProfesores(document.getId());
+                                    unprofesor.setUrlfoto(document.getString("urlfoto"));
+                                    unprofesor.setNombre(document.getString("nombre"));
+                                    unprofesor.setDescripcion(document.getString("descripcion"));
+                                    unprofesor.setProfesion(document.getString("profesion"));
+                                    unprofesor.setPuntaje(document.getDouble("puntaje"));
+                                    unprofesor.setVotos(document.getDouble("votos"));
+                                    unprofesor.setCreacion(document.getTimestamp("creacion").toDate());
+                                    unprofesor.setSexo(document.getDouble("sexo"));
+                                    unprofesor.setMaterias((List<String>) document.get("materias"));
+                                    unprofesor.setMedallas((List<String>) document.get("medallas"));
+                                    unprofesor.setCategorias((List<String>) document.get("categorias"));
+                                milista.add(unprofesor);
                             }
-                            recyclerView.setAdapter(new AdaptadorProfesores(getActivity(), milista, new AdaptadorProfesores.OnItemClickListener() {
+                            recyclerView.setAdapter(new AdaptadorProfesores(context, milista, new AdaptadorProfesores.OnItemClickListener() {
                                 @Override public void onItemClick(ContentListaProfesores item) {
                                     //Toast.makeText(getActivity(), item.getId()+"", Toast.LENGTH_SHORT).show();
                                     DetalleProfesoresDialog dialog = new DetalleProfesoresDialog();
-                                    Bundle args = new Bundle();
-                                    args.putString("idprofesor", item.getId());
-                                    args.putString("nombresprofesor", item.getNombres());
+                                    Bundle args = bundle;
+                                    args.putString("idProfesor", item.getId());
+                                    args.putSerializable("ObjetoProfesor", item);
                                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                                     dialog.setArguments(args);
                                     dialog.show(ft, DetalleProfesoresDialog.TAG);
                                 }
                             }));
                             Log.d("DATOS CARGADOS",  "DATOS CARGADOS OK ");
-
-                            ((Inicio)getActivity()).hideLoader();
-
+                            ((Inicio)context).hideLoader();
                         }
                         else {
                             Log.w("EEEEEE", "Error getting documents.", task.getException());
                         }
                     }
                 });
-
-
-                //R.id.TXT_Exit:
-
-
-
-                /*new AlertDialog.Builder(getActivity())
-                        .setTitle(item.getTextodemo())
-                        .setMessage("Persona responsable y con unagran trayectoria.\n\nEdad: 35\nCategorías:\n- Matemática\n- Física\n- Trigonometría")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getActivity(), "Cerrar", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        //.setNegativeButton(android.R.string.no, null)
-                        .setIcon(R.drawable.ic_perfil_black_24dp)
-                        .show();*/
-
     }
-
 }

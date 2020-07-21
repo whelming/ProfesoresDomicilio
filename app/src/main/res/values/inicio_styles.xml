@@ -22,4 +22,16 @@
     <style name="AppTheme.Inicio_Nombre2" parent="Base.Widget.AppCompat.Button">
         <item name="colorButtonNormal">@color/colorWhite</item>
     </style>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorGray</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.Inicio_btn_orange_rounded" parent="Base.Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_orange_rounded</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:paddingTop">8sp</item>
+        <item name="android:paddingRight">32sp</item>
+        <item name="android:paddingBottom">8sp</item>
+        <item name="android:paddingLeft">32sp</item>
+    </style>
 </resources>

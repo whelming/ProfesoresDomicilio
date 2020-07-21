@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tdlzgroup.educasa">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -15,29 +17,61 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Solicitudes.Solicitudes"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Perfil.Perfil"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Inicio.InicioFragments.InicioMapaFragmen"
-            android:screenOrientation="portrait" />
-        <activity android:name=".MisClases.MisClases"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Inicio.Inicio"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity android:name=".Chat.Chat"
-            android:screenOrientation="portrait" />
-        <activity android:name=".Bienvenida.Bienvenida"
-            android:screenOrientation="portrait" >
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAGjDjvl6gFwf7uEGvwP1vokwhR1z5G0SU" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".Bienvenida.Bienvenida"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeBack">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Inicio.Inicio"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Inicio.InicioFragments.InicioMapaFragmen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MisClases.MisClases"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Chat.Chat"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Solicitudes.Solicitudes"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Perfil.Perfil"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity android:name=".VProfInicio.VProfInicio"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".VProfMisClases.VProfMisClases"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".VProfSolicitudes.VProfSolicitudes"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".VProfPerfil.VProfPerfil"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+
     </application>
 
 </manifest>

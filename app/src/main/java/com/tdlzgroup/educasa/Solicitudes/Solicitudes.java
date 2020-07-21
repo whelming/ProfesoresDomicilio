@@ -17,9 +17,6 @@ import com.tdlzgroup.educasa.R;
 import com.tdlzgroup.educasa.Solicitudes.SolicitudesFragments.SolicitudesEjm;
 
 public class Solicitudes extends MenuBottom {
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
     public LinearLayout loader;
 
     @Override

@@ -1,9 +1,11 @@
 package com.tdlzgroup.educasa.Perfil.PerfilFragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -31,9 +33,13 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.tdlzgroup.educasa.Bienvenida.Bienvenida;
+import com.tdlzgroup.educasa.GlideApp;
 import com.tdlzgroup.educasa.Globales;
 import com.tdlzgroup.educasa.MainActivity;
+import com.tdlzgroup.educasa.MenuBottom;
 import com.tdlzgroup.educasa.Perfil.Perfil;
 import com.tdlzgroup.educasa.R;
 
@@ -59,17 +65,31 @@ public class PerfilEjm extends Fragment {
     private FirebaseFirestore db;
     private String IDUser;
     private String tipoUsuario;
-    private View v;
     private DocumentReference miperfil;
 
-    private void setContentView(int activity_perfil) {   }
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
+    private Context context;
 
     public PerfilEjm() { }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 
-        v = inflater.inflate(R.layout.fragment_perfil_ejm, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_perfil_ejm, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(v, savedInstanceState);
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReference();
+
         editar = v.findViewById(R.id.btn_editar_perfil);
         cerrarsesion= v.findViewById(R.id.btn_cerrar_sesion);
         perfil_nombres = v.findViewById(R.id.perfil_nombres);
@@ -84,54 +104,34 @@ public class PerfilEjm extends Fragment {
         IDUser = user.getUid();
         tipoUsuario = ((Globales) getActivity().getApplicationContext()).getTipoUsuario();
 
-
         if (user != null) {
 
             //CollectionReference alumnos = db.collection("alumnos");
             //DocumentReference materiaRef = document.getDocumentReference("materia");
             db = FirebaseFirestore.getInstance();
 
-            if(tipoUsuario.equals("alumnos")){
-                miperfil = db.collection("alumnos").document(IDUser);
+            miperfil = db.collection("usuarios").document(IDUser);
+/*            if(tipoUsuario.equals("alumnos")){
             }
             else if(tipoUsuario.equals("profesores")){
-                miperfil = db.collection("profesores").document(IDUser);
-            }
-
+            }*/
             loadDataPerfil(miperfil);
-
-            Map<String, Object> user = new HashMap<>();
-            user.put("first", "Ada");
-            user.put("last", "Lovelace");
-            user.put("born", 1815);
-/*            db.collection("alumnos")
-                    .add(user)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Log.d("OKIDOKI", "DocumentSnapshot added with ID: " + documentReference.getId());
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w("NOLES", "Error adding document", e);
-                        }
-                    });*/
         }
 
         cerrarsesion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 //FirebaseAuth.getInstance().signOut();
+
                 AuthUI.getInstance()
-                        .signOut(getContext())
+                        .signOut(context)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 //getActivity().finish();
                                 //getActivity().moveTaskToBack(true);
                                 //System.exit(0);
-                                Intent intent = new Intent(getContext(), Bienvenida.class);
+                                Intent intent = new Intent(context, Bienvenida.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 intent.putExtra("EXIT", true);
                                 startActivity(intent);
@@ -141,7 +141,6 @@ public class PerfilEjm extends Fragment {
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-
             }
         });
 
@@ -157,14 +156,11 @@ public class PerfilEjm extends Fragment {
                             .replace(R.id.frag_perfil_principal, editarperfilalumno, "fragmentPerfilEditar")
                             .addToBackStack(null).commit();
                 }
-
             }
         });
-
-        return v;
     }
 
-    private void loadDataPerfil( DocumentReference miperfil){
+    private void loadDataPerfil(DocumentReference miperfil){
         ((Perfil)getActivity()).showLoader();
         miperfil.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -172,18 +168,17 @@ public class PerfilEjm extends Fragment {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        perfil_nombres.setText(document.getString("nombres"));
+                        perfil_nombres.setText(document.getString("nombre"));
                         perfil_dni.setText(document.getString("dni"));
-                        perfil_telefono.setText(document.getString("telefono"));
+                        perfil_telefono.setText(document.getString("celular"));
                         perfil_correo.setText(user.getEmail());
                         perfil_direccion.setText(document.getString("direccion"));
-                        Glide.with(getContext()).load(document.getString("urlfoto")).centerCrop().placeholder(R.drawable.user).into(circleimage);
-                        ((Perfil)getActivity()).hideLoader();
+                        GlideApp.with(context).load(storageReference.child("perfiles/"+document.getString("urlfoto"))).centerCrop().placeholder(R.drawable.user).into(circleimage);
                     } else {
-                        Toast.makeText(getContext(), "Algo salió mal", Toast.LENGTH_SHORT).show();
-                        ((Perfil)getActivity()).hideLoader();
-                        //Log.d(TAG, "No such document");
+                        Toast.makeText(context, "Algo salió mal", Toast.LENGTH_SHORT).show();
                     }
+                    ((Perfil)getActivity()).hideLoader();
+
                 } else {
                     //Log.d(TAG, "get failed with ", task.getException());
                 }

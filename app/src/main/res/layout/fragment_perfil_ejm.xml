@@ -1,117 +1,228 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:background="@drawable/fondo_blanco_ok_2"
+    android:background="@drawable/background_perfil_ok"
     tools:context=".Perfil.PerfilFragments.PerfilEjm">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_editar_perfil"
-        android:layout_width="58dp"
-        android:layout_height="58dp"
-        android:layout_margin="12dp"
-        android:layout_gravity="top|right"
-        tools:style="@style/UnelevatedButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:tint="@color/colorWhite"
-        app:srcCompat="@drawable/edit"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center">
 
-<!--    <Button
-        android:id="@+id/btn_editar_perfil"
-        android:layout_width="44dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/edit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />-->
-    <!--style="@style/AppTheme.RoundedCornerMaterialButton"-->
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/perfil_foto_usuario"
-        android:layout_width="186dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="44dp"
-        android:src="@drawable/user"
-        app:civ_border_color="#FF000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_editar_perfil"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:layout_gravity="top|right"
+            android:layout_margin="12dp"
+            android:tint="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/edit"
+            tools:style="@style/UnelevatedButton" />
 
+        <!--    <Button
+                android:id="@+id/btn_editar_perfil"
+                android:layout_width="44dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="28dp"
+                android:background="@drawable/edit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />-->
+        <!--style="@style/AppTheme.RoundedCornerMaterialButton"-->
 
-
-
-    <LinearLayout
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="vertical"
-        android:paddingBottom="60sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/perfil_foto_usuario">
-
-        <TextView
-            android:id="@+id/perfil_nombres"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            android:textAlignment="center"
-            style="@style/AppTheme.Perfil_Textos_Lista"
-            android:text="Nombres" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/perfil_dni"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:paddingBottom="20dp"
-            style="@style/AppTheme.Perfil_Textos_Lista"
-            android:text="DNI" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="32dp">
 
-        <TextView
-            android:id="@+id/perfil_telefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            style="@style/AppTheme.Perfil_Textos_Lista"
-            android:drawableStart="@drawable/ic_perfil_phone_24dp"
-            android:drawableTint="@color/colorPrimaryDark"
-            android:drawablePadding="8dp"
-            android:text="telefono" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/perfil_correo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            style="@style/AppTheme.Perfil_Textos_Lista"
-            android:drawableStart="@drawable/ic_perfil_mail_24dp"
-            android:drawableTint="@color/colorPrimaryDark"
-            android:drawablePadding="8dp"
-            android:text="correo" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/borde_user"
+                        app:civ_border_color="#FA000000"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/perfil_direccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="20dp"
-            style="@style/AppTheme.Perfil_Textos_Lista"
-            android:drawableStart="@drawable/ic_perfil_direccion_24dp"
-            android:drawableTint="@color/colorPrimaryDark"
-            android:drawablePadding="8dp"
-            android:text="Dirección" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="186dp"
+                        android:layout_height="186dp"
+                        android:layout_marginTop="36dp"
+                        android:backgroundTint="@color/colorAccent"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="93dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        >
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/perfil_foto_usuario"
+                            android:layout_width="182dp"
+                            android:layout_height="182dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginTop="2dp"
+                            android:src="@drawable/user"
+                            app:civ_border_color="#FA000000" />
+                    </androidx.cardview.widget.CardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <Button
-            android:id="@+id/btn_cerrar_sesion"
-            android:layout_width="180dp"
-            android:layout_height="wrap_content"
-            android:text="@string/perfil_cerrar_sesion"
-            android:theme="@style/AppTheme.Bienvenida_Button" />
+                <TextView
+                    android:id="@+id/perfil_dni"
+                    style="@style/AppTheme.Perfil_Textos_Lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-18dp"
+                    android:paddingBottom="4dp"
+                    android:text="47797605"
+                    android:letterSpacing="0.08"
+                    android:textAlignment="center"
+                    android:textStyle="normal"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorWhite" />
 
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/perfil_nombres"
+                    style="@style/AppTheme.Perfil_Textos_Lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="24dp"
+                    android:text="Nombres"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.1"
+                    android:textStyle="normal"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <include layout="@layout/views_separator_white" />
+
+                <TextView
+                    android:id="@+id/perfil_telefono"
+                    style="@style/AppTheme.Perfil_Textos_Lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_perfil_phone_24dp"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/colorWhite"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:text="telefono"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorWhite" />
+
+                <include layout="@layout/views_separator_white" />
+
+                <TextView
+                    android:id="@+id/perfil_correo"
+                    style="@style/AppTheme.Perfil_Textos_Lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_icons_correo"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:text="correo"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorWhite" />
+
+                <include layout="@layout/views_separator_white" />
+
+                <TextView
+                    android:id="@+id/perfil_departamento"
+                    style="@style/AppTheme.Perfil_Textos_Lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_icons_ubicacion"
+                    android:drawablePadding="8dp"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:text="Departamento"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorWhite" />
+
+                <include layout="@layout/views_separator_white" />
+
+                <TextView
+                    android:id="@+id/perfil_provincia"
+                    style="@style/AppTheme.Perfil_Textos_Lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_perfil_direccion_24dp"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/colorWhite"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:text="Provincia"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorWhite" />
+
+                <include layout="@layout/views_separator_white" />
+
+                <TextView
+                    android:id="@+id/perfil_distrito"
+                    style="@style/AppTheme.Perfil_Textos_Lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_perfil_direccion_24dp"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/colorWhite"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:text="Distrito"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorWhite" />
+
+                <include layout="@layout/views_separator_white" />
+
+                <TextView
+                    android:id="@+id/perfil_direccion"
+                    style="@style/AppTheme.Perfil_Textos_Lista"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_perfil_direccion_24dp"
+                    android:drawablePadding="8dp"
+                    android:drawableTint="@color/colorWhite"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="14dp"
+                    android:text="Dirección"
+                    android:textStyle="normal"
+                    android:textColor="@color/colorWhite" />
+
+                <include layout="@layout/views_separator_white" />
+
+
+
+                <Button
+                    android:id="@+id/btn_cerrar_sesion"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/perfil_cerrar_sesion"
+                    android:theme="@style/AppTheme.Bienvenida_Button" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

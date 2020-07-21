@@ -5,10 +5,10 @@
     android:id="@+id/solicitudes_cardview_alumnos"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="132dp"
+    android:layout_height="92dp"
     android:padding="10dp"
-    card_view:cardElevation="6dp"
-    card_view:cardCornerRadius="6dp"
+    card_view:cardElevation="0dp"
+    card_view:cardCornerRadius="8dp"
     android:layout_marginStart="6dp"
     android:layout_marginEnd="6dp"
     android:layout_marginTop="6dp"
@@ -21,44 +21,80 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="124dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/solicitudes_card_titulo"
-            android:layout_width="146dp"
-            android:layout_height="38dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="solicitudes"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Titulo de la Solicitud"
+            android:textSize="15sp"
+            android:lines="1"
+            android:maxLines="1"
             android:textColor="#000"
             android:textStyle="bold"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent" />
+            card_view:layout_constraintEnd_toStartOf="@+id/solicitudes_container_num"
+            card_view:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
-            android:id="@+id/solicitudes_card_fechahora"
-            android:layout_width="146dp"
-            android:layout_height="38dp"
+            android:id="@+id/solicitudes_card_fecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="18/06/2019 05:00pm"
-            android:textColor="#000"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:drawableStart="@drawable/ic_icons_calendario"
+            android:text="18/06/2019"
+            android:textSize="13sp"
+            android:textColor="@color/colorAccent"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/solicitudes_card_interesados"
-            android:layout_width="146dp"
-            android:layout_height="38dp"
+            android:id="@+id/solicitudes_card_hora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="3 Interesados"
-            android:textColor="#000"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:drawableStart="@drawable/ic_icons_reloj"
+            android:text="05:00pm"
+            android:textSize="13sp"
+            android:textColor="@color/colorAccent"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toEndOf="@+id/solicitudes_card_fecha"
+            />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/solicitudes_container_num"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="18dp"
+            card_view:cardCornerRadius="20dp"
+            android:backgroundTint="@color/colorAccent"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent" />
+            card_view:layout_constraintTop_toTopOf="parent"
+            card_view:layout_constraintBottom_toBottomOf="parent">
+            <TextView
+                android:id="@+id/solicitudes_card_interesados"
+                android:layout_width="40dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="18dp"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="17sp"
+                android:textColor="@color/colorWhite"
+                />
+        </androidx.cardview.widget.CardView>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

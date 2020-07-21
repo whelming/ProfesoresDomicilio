@@ -1,19 +1,23 @@
 package com.tdlzgroup.educasa.Solicitudes.SolicitudesModels;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-import com.google.firebase.Timestamp;
-
-public class ContentSolicitudes {
+public class ContentSolicitudes implements Serializable {
     private String id;
     private String titulo;
     private double interesados;
-    private Timestamp fechahora;
+    private Date fechahora;
 
-    public ContentSolicitudes(String id, String titulo, double interesados, Timestamp fechahora) {
-        this.id = id;
-        this.titulo = titulo;
-        this.interesados = interesados;
-        this.fechahora = fechahora;
+    private String descripcion;
+    private double precio;
+    private List<String> urlsfotos;
+
+
+    public ContentSolicitudes() {
+        this.urlsfotos = new ArrayList<>();
     }
 
     public String getId() {
@@ -40,11 +44,35 @@ public class ContentSolicitudes {
         this.interesados = interesados;
     }
 
-    public Timestamp getFechahora() {
+    public Date getFechahora() {
         return fechahora;
     }
 
-    public void setFechahora(Timestamp fechahora) {
+    public void setFechahora(Date fechahora) {
         this.fechahora = fechahora;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public List<String> getUrlsfotos() {
+        return urlsfotos;
+    }
+
+    public void setUrlsfotos(List<String> urlsfotos) {
+        this.urlsfotos = urlsfotos;
     }
 }
